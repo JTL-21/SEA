@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Ticket, User } from "../types";
 import Markdown from "./Markdown";
 import { priorityNameMap } from "./Ticket";
@@ -9,16 +9,18 @@ import {
   PencilIcon,
   ClockIcon,
   UserCircleIcon,
-} from "@heroicons/react/24/outline";
+} from "@heroicons/react/24/solid";
 import React from "react";
 import cn from "clsx";
 import Button, { Props as ButtonProps } from "./Button";
 import API from "../api";
-import formatDateTime from "../utils/time";
+import { formatDateTime } from "../utils/time";
 import { Dialog, Popover } from "@headlessui/react";
 import CommentColumn from "./CommentColumn";
 import UserSearch from "./UserSearch";
 import Priority from "./icons/Priority";
+import ModalOverlay from "./ModelOverlay";
+import Username from "./Username";
 
 interface TicketModalProps {
   ticket: Ticket;
@@ -28,16 +30,6 @@ interface TicketModalProps {
 interface UserLinkProps extends React.ComponentPropsWithoutRef<"a"> {
   children: string;
 }
-
-const UserLink = ({ children, className, ...aProps }: UserLinkProps) => (
-  <Link
-    to={`/account/${children}`}
-    className={cn(className, "underline")}
-    {...aProps}
-  >
-    {children}
-  </Link>
-);
 
 interface ModalDataProps extends React.ComponentPropsWithoutRef<"div"> {
   icon: React.ReactNode;
@@ -155,7 +147,7 @@ const TicketModal = ({ ticket, refreshProject }: TicketModalProps) => {
       onClose={handleModalClose}
       className="fixed inset-0 grid place-content-center p-2"
     >
-      <Dialog.Overlay className="fixed inset-0 bg-gray-700 bg-opacity-50" />
+      <ModalOverlay />
 
       <Dialog.Panel
         as="div"
@@ -201,14 +193,14 @@ const TicketModal = ({ ticket, refreshProject }: TicketModalProps) => {
                 Story Points
               </ModalData>
               <ModalData icon={<UserCircleIcon />} className="relative">
-                <span>
+                <div className="flex space-x-1">
                   Assigned to{" "}
                   {ticket.assignee ? (
-                    <UserLink>{ticket.assignee.username}</UserLink>
+                    <Username user={ticket.assignee} icons={false} />
                   ) : (
                     "Nobody"
                   )}
-                </span>
+                </div>
               </ModalData>
             </ModalGroup>
             <ModalGroupDivider />
@@ -239,9 +231,9 @@ const TicketModal = ({ ticket, refreshProject }: TicketModalProps) => {
             <ModalGroup>
               <ModalData icon={<ClockIcon />}>{formatDateTime(date)}</ModalData>
               <ModalData icon={<UserCircleIcon />}>
-                <span>
-                  Created by <UserLink>{ticket.author.username}</UserLink>
-                </span>
+                <div className="flex space-x-1">
+                  Added by <Username user={ticket.author} icons={false} />
+                </div>
               </ModalData>
             </ModalGroup>
           </div>
