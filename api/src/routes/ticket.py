@@ -39,10 +39,13 @@ def edit_ticket(slug):
 
     ticket = response
 
-    title, description = item_getter("title", "description")(request.json)
+    title, description, status = item_getter("title", "description", "status")(
+        request.json
+    )
 
     ticket.title = title or ticket.title
     ticket.description = description or ticket.description
+    ticket.status = status or ticket.status
 
     db.session.commit()
 

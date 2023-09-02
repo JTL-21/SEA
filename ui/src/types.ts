@@ -1,42 +1,3 @@
-interface CreateUserBody {
-  username: string;
-  password: string;
-}
-
-interface CreateProjectBody {
-  key: string;
-  title: string;
-  description?: string;
-}
-
-type EditProjectBody =
-  | { title: string }
-  | { description: string }
-  | { title: string; description: string };
-
-interface CreateTicketBody {
-  project: string;
-  title: string;
-  description?: string;
-}
-
-type EditTicketBody =
-  | { title: string }
-  | { description: string }
-  | { title: string; description: string };
-
-interface CreateCommentBody {
-  text: string;
-}
-
-interface APIError {
-  message: string;
-}
-
-type APIResponse<TResponse> =
-  | { ok: true; err: false; data: TResponse }
-  | { ok: false; err: true; error: APIError };
-
 interface User {
   username: string;
   is_admin: boolean;
@@ -68,6 +29,46 @@ interface Comment {
   author: User;
   created_at: Date;
 }
+
+interface CreateUserBody {
+  username: string;
+  password: string;
+}
+
+interface CreateProjectBody {
+  key: string;
+  title: string;
+  description?: string;
+}
+
+interface EditProjectBody {
+  title?: string;
+  description?: string;
+}
+
+interface CreateTicketBody {
+  project: string;
+  title: string;
+  description?: string;
+}
+
+interface EditTicketBody {
+  title?: string;
+  description?: string;
+  status?: Ticket["status"];
+}
+
+interface CreateCommentBody {
+  text: string;
+}
+
+interface APIError {
+  message: string;
+}
+
+type APIResponse<TResponse> =
+  | { ok: true; err: false; data: TResponse }
+  | { ok: false; err: true; error: APIError };
 
 export type {
   CreateUserBody,

@@ -25,7 +25,16 @@ edit_ticket_schema = {
     "properties": {
         "title": create_ticket_schema["properties"]["title"],
         "description": create_ticket_schema["properties"]["description"],
+        "status": {
+            "type": "string",
+            "enum": ["WAITING", "IN_PROGRESS", "IN_TEST", "DONE"],
+            "error_message": "Ticket status must be WAITING, IN_PROGRESS, IN_TEST or DONE.",
+        },
     },
-    "anyOf": [{"required": ["title"]}, {"required": ["description"]}],
+    "anyOf": [
+        {"required": ["title"]},
+        {"required": ["description"]},
+        {"required": ["status"]},
+    ],
     "error_message": "At least one property must be provided (title, description).",
 }

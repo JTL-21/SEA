@@ -43,8 +43,10 @@ const ProjectPage = () => {
   const handleDragEnd = (event: DragEndEvent) => {
     setActiveTicket(null);
     if (!event.collisions || !event.collisions[0]) return;
-    const ticketSlug = event.active.id;
-    const newStatus = event.collisions[0].id;
+    const ticketSlug = String(event.active.id);
+    const newStatus = event.collisions[0].id as Ticket["status"];
+
+    API.editTicket(ticketSlug, { status: newStatus });
 
     setTickets((old) =>
       old.map((ticket) => {
