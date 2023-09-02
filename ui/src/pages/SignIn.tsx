@@ -24,7 +24,7 @@ const SignIn = () => {
   useTitle("Sign In");
   const navigate = useNavigate();
   const id = React.useId();
-  const { user, setUser } = useUser();
+  const { setUser } = useUser();
   const [formError, setFormError] = React.useState<string | undefined>(
     undefined
   );
