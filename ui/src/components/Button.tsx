@@ -1,4 +1,4 @@
-import React, { JSXElementConstructor } from "react";
+import React from "react";
 import cn from "clsx";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
@@ -10,10 +10,10 @@ interface Props extends React.ComponentPropsWithoutRef<"button"> {
   requireConfirmation?: boolean;
   confirmClasses?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  as?: keyof JSX.IntrinsicElements | JSXElementConstructor<any>;
+  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
 }
 
-const Button = React.forwardRef<HTMLElement, Props>(
+const Button = React.forwardRef<HTMLButtonElement, Props>(
   (
     {
       icon,
@@ -26,7 +26,7 @@ const Button = React.forwardRef<HTMLElement, Props>(
       confirmClasses = "text-rose-600",
       onClick,
       onMouseLeave,
-      as: Element = "button",
+      as: Component = "button",
       ...buttonProps
     },
     ref
@@ -53,7 +53,7 @@ const Button = React.forwardRef<HTMLElement, Props>(
     };
 
     return (
-      <Element
+      <Component
         type={type ?? "button"}
         {...buttonProps}
         onClick={handleOnClick}
@@ -80,7 +80,7 @@ const Button = React.forwardRef<HTMLElement, Props>(
             {children}
           </>
         )}
-      </Element>
+      </Component>
     );
   }
 );

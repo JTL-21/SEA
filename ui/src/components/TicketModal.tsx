@@ -12,7 +12,7 @@ import {
 } from "@heroicons/react/24/solid";
 import React from "react";
 import cn from "clsx";
-import Button, { Props as ButtonProps } from "./Button";
+import Button from "./Button";
 import API from "../api";
 import { formatDateTime } from "../utils/time";
 import { Dialog, Popover } from "@headlessui/react";
@@ -51,14 +51,14 @@ const ModalData = ({
   );
 };
 
-interface ModalButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+interface ModalButtonProps extends React.ComponentPropsWithRef<"button"> {
   icon: React.ReactNode;
   requireConfirmation?: boolean;
   onClick?: () => void;
-  as?: ButtonProps["as"];
+  isPopoverButton?: boolean;
 }
 
-const ModalButton = React.forwardRef<HTMLElement, ModalButtonProps>(
+const ModalButton = React.forwardRef<HTMLButtonElement, ModalButtonProps>(
   (
     {
       icon,
@@ -66,11 +66,13 @@ const ModalButton = React.forwardRef<HTMLElement, ModalButtonProps>(
       className,
       requireConfirmation = false,
       onClick,
-      as = "button",
+      isPopoverButton = false,
       ...buttonProps
     },
     ref
   ) => {
+    const Component = isPopoverButton ? Popover.Button : "button";
+
     return (
       <Button
         className={cn(
@@ -82,9 +84,9 @@ const ModalButton = React.forwardRef<HTMLElement, ModalButtonProps>(
         centered={false}
         requireConfirmation={requireConfirmation}
         icon={icon}
-        as={as}
         ref={ref}
         {...buttonProps}
+        as={Component}
       >
         {children}
       </Button>
@@ -108,7 +110,7 @@ const TicketModal = ({ ticket, refreshProject }: TicketModalProps) => {
   const navigate = useNavigate();
 
   const handleModalClose = () => navigate(`/project/${ticket.project.key}`);
-  const assignUserButtonRef = React.useRef<HTMLElement | null>(null);
+  const assignUserButtonRef = React.useRef<HTMLButtonElement>(null);
 
   const handleDeleteTicket = () => {
     API.deleteTicket(ticket.slug).then((response) => {
@@ -147,7 +149,7 @@ const TicketModal = ({ ticket, refreshProject }: TicketModalProps) => {
 
       <Dialog.Panel
         as="div"
-        className="relative flex min-h-[550px] max-w-[1400px] flex-col rounded-md bg-white text-gray-600 shadow-2xl ring-1 ring-black ring-opacity-5"
+        className="relative flex min-h-[550px] w-[90vw] max-w-[1200px] flex-col rounded-md bg-white text-gray-600 shadow-2xl ring-1 ring-black ring-opacity-5"
       >
         <div className="flex items-stretch gap-2 border-b-[1px] text-2xl">
           <div className="flex items-center pl-4 ">
@@ -212,7 +214,7 @@ const TicketModal = ({ ticket, refreshProject }: TicketModalProps) => {
               <Popover className="relative">
                 <ModalButton
                   icon={<TagIcon />}
-                  as={Popover.Button}
+                  isPopoverButton={true}
                   className="w-full"
                   ref={assignUserButtonRef}
                 >
