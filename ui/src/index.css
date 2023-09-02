@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Inter;
+  src: url("Inter-roman.var.woff2") format("woff2");
+}
+
 @layer base {
   [type="text"],
   input:where(:not([type])),
