@@ -33,7 +33,7 @@ const UserSearch = ({ onChange }: UserSearchProps) => {
 
   return (
     <Combobox onChange={handleOnChange}>
-      <div className="list-none overflow-hidden rounded-md bg-white shadow-xl ring-1 ring-black ring-opacity-10">
+      <div className="ring-border list-none overflow-hidden rounded-md bg-white shadow-xl">
         <div className="flex items-center gap-1 border-b-[1px] pl-2">
           <MagnifyingGlassIcon className="h-6 w-6" />
           <Combobox.Input

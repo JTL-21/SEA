@@ -20,7 +20,7 @@ const MarkdownEditor = React.forwardRef<
   const [focus, setFocus] = React.useState<"edit" | "preview">("edit");
 
   return (
-    <div className="h-auto w-full overflow-hidden rounded-md border-[1px] border-gray-300 shadow-sm ring-1 ring-black ring-opacity-5 focus-within:ring-2 focus-within:ring-amber-300">
+    <div className="ring-border h-auto w-full overflow-hidden rounded-md border-[1px] border-gray-300 shadow-sm focus-within:ring-2 focus-within:ring-amber-300">
       <div className="flex border-b-[1px]">
         <button
           type="button"

@@ -21,7 +21,7 @@ const Modal = ({ open, title, children, onClose }: ModalProps) => {
 
       <Dialog.Panel
         as="div"
-        className="relative flex min-h-[500px] w-[90vw] max-w-[1200px] flex-col rounded-md bg-white text-gray-600 shadow-2xl ring-1 ring-black ring-opacity-5"
+        className="ring-border relative flex min-h-[500px] w-[90vw] max-w-[1200px] flex-col rounded-md bg-white text-gray-600 shadow-2xl"
       >
         <div className="flex items-stretch gap-2 border-b-[1px] pl-4 text-2xl">
           {title}

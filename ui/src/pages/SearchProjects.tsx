@@ -21,7 +21,7 @@ interface ProjectTabProps {
 const ProjectTab = ({ project }: ProjectTabProps) => {
   return (
     <Link
-      className="flex min-h-[80px] min-w-[200px] gap-2 rounded-md bg-white py-2 pr-2 shadow ring-1 ring-black ring-opacity-5 filter hover:bg-gray-50 active:brightness-95"
+      className="ring-border flex min-h-[80px] min-w-[200px] gap-2 rounded-md bg-white py-2 pr-2 shadow filter hover:bg-gray-50 active:brightness-95"
       to={`/project/${project.key}`}
     >
       <div className="flex w-24 items-center justify-center border-r-[1px] text-3xl font-bold text-gray-400 drop-shadow-sm">
