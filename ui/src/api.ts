@@ -16,8 +16,8 @@ import { wait } from "./utils/time";
 
 const { VITE_API_URL } = import.meta.env;
 
-const ARTIFICIAL_LATENCY = 100;
-const ARTIFICIAL_LATENCY_DEVIATION = 50;
+const ARTIFICIAL_LATENCY = 0;
+const ARTIFICIAL_LATENCY_DEVIATION = 0;
 
 const prefixURL = (url: string) => {
   if (url.startsWith("http")) {
@@ -35,9 +35,12 @@ const APIFetch = async <TResponse>(
 ): Promise<APIResponse<TResponse>> => {
   let response: Response;
   try {
-    await wait(
-      ARTIFICIAL_LATENCY + Math.random() * ARTIFICIAL_LATENCY_DEVIATION
-    );
+    ARTIFICIAL_LATENCY > 0 &&
+      (await wait(
+        ARTIFICIAL_LATENCY +
+          Math.random() * ARTIFICIAL_LATENCY_DEVIATION * 2 -
+          ARTIFICIAL_LATENCY_DEVIATION
+      ));
     response = await fetch(prefixURL(url), {
       credentials: "include", // Include credentials by default
       ...config,
@@ -120,6 +123,8 @@ const editProject = (key: string, body: EditProjectBody) =>
     body: body,
   });
 
+const deleteProject = (key: string) => APIFetch.delete(`/api/project/${key}`);
+
 const queryProjects = (query: string) => {
   const queryString = new URLSearchParams({ query }).toString();
   return APIFetch.get<Project[]>(`/api/project?${queryString}`);
@@ -164,6 +169,7 @@ export default {
   createProject,
   getProject,
   editProject,
+  deleteProject,
   queryProjects,
   getProjectTickets,
   createTicket,

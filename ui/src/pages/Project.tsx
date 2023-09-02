@@ -21,8 +21,9 @@ import Markdown from "../components/Markdown";
 
 const ProjectPage = () => {
   const { key, slug } = useParams();
-  const navigate = useNavigate();
   useTitle(slug ? `Project ${key} - ${slug}` : `Project ${key}`);
+
+  const navigate = useNavigate();
   const [project, setProject] = React.useState<Project | null>(null);
   const [tickets, setTickets] = React.useState<Ticket[]>([]);
   const [activeTicket, setActiveTicket] = React.useState<Ticket | null>(null);
@@ -92,6 +93,15 @@ const ProjectPage = () => {
     [key]
   );
 
+  const handleDeleteProject = () => {
+    if (!project) return;
+    API.deleteProject(project.key).then((response) => {
+      if (response.ok) {
+        navigate("/projects");
+      }
+    });
+  };
+
   React.useEffect(refreshProject, [key, refreshProject]);
 
   return (
@@ -126,6 +136,7 @@ const ProjectPage = () => {
             confirmClasses="text-rose-50"
             icon={<TrashIcon />}
             requireConfirmation
+            onClick={handleDeleteProject}
           >
             Delete Project
           </Button>
