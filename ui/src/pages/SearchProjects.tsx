@@ -1,4 +1,8 @@
-import { MagnifyingGlassIcon, TicketIcon } from "@heroicons/react/20/solid";
+import {
+  MagnifyingGlassIcon,
+  PlusIcon,
+  TicketIcon,
+} from "@heroicons/react/20/solid";
 import { Project } from "../types";
 import { Link } from "react-router-dom";
 import React from "react";
@@ -6,6 +10,7 @@ import API from "../api";
 import useTitle from "../hooks/useTitle";
 import Username from "../components/Username";
 import Input from "../components/Input";
+import LinkButton from "../components/LinkButton";
 
 interface ProjectTabProps {
   project: Project;
@@ -25,7 +30,7 @@ const ProjectTab = ({ project }: ProjectTabProps) => {
           {project.title}
         </span>
         <div className="flex items-center gap-1">
-          <TicketIcon className="h-6 w-6 text-gray-600" />
+          <TicketIcon className="h-5 w-5 text-gray-600" />
           <div className="font-semibold text-gray-600">
             {project.ticket_count} Tickets
           </div>
@@ -55,13 +60,22 @@ const SearchProjects = () => {
 
   return (
     <div className="mx-auto max-w-[1200px] px-2 py-4">
-      <Input
-        id="project_query"
-        onChange={(event) => setQuery(event.target.value)}
-        icon={<MagnifyingGlassIcon className="h-6 w-6" />}
-        className="mx-auto sm:max-w-[500px]"
-        placeholder="Project Name or Key"
-      />
+      <div className="mx-auto flex justify-center gap-2">
+        <Input
+          id="project_query"
+          onChange={(event) => setQuery(event.target.value)}
+          icon={<MagnifyingGlassIcon className="h-6 w-6" />}
+          className="flex-grow sm:max-w-[400px]"
+          placeholder="Project Name or Key"
+        />
+        <LinkButton
+          className="right-0 bg-emerald-400 hover:bg-emerald-500 sm:self-end"
+          icon={<PlusIcon />}
+          to="/create-project"
+        >
+          Create Project
+        </LinkButton>
+      </div>
       <div className="grid grid-cols-1 gap-2 py-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <div className="py-0-2" key={project.key}>

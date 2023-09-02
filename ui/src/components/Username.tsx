@@ -8,9 +8,9 @@ interface UsernameProps extends React.ComponentPropsWithoutRef<"div"> {
 
 const Username = ({ user, icons = true, ...divProps }: UsernameProps) => {
   return icons ? (
-    <div className="flex gap-1 text-gray-600" {...divProps}>
-      <UserCircleIcon className="h-6 w-6" />
-      {user.is_admin && <BoltIcon className="h-6 w-6 text-amber-400" />}
+    <div className="flex items-center gap-1 text-gray-600" {...divProps}>
+      <UserCircleIcon className="h-5 w-5" />
+      {user.is_admin && <BoltIcon className="h-5 w-5 text-amber-400" />}
 
       <span className="font-semibold text-gray-600">{user.username}</span>
     </div>

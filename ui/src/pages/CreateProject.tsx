@@ -7,6 +7,7 @@ import MarkdownEditor from "../components/MarkdownEditor";
 import Button from "../components/Button";
 import API from "../api";
 import { useNavigate } from "react-router-dom";
+import { PlusIcon } from "@heroicons/react/20/solid";
 
 const CreateProject = () => {
   useTitle("Create Project");
@@ -39,7 +40,7 @@ const CreateProject = () => {
   };
 
   return (
-    <div className="">
+    <div className="mx-auto max-w-[1000px]">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <h2 className="my-4 text-4xl font-semibold">Create Project</h2>
         {formError && (
@@ -47,7 +48,7 @@ const CreateProject = () => {
             {formError}
           </div>
         )}
-        <div className="flex gap-2">
+        <div className="flex gap-4">
           <Input
             {...register("key", {
               required: {
@@ -88,7 +89,7 @@ const CreateProject = () => {
         <div>
           <label
             htmlFor={`${id}_description`}
-            className="text-sm text-gray-600"
+            className="text-sm font-semibold text-gray-600"
           >
             Project Description
           </label>
@@ -107,7 +108,7 @@ const CreateProject = () => {
           </span>
         </div>
 
-        <Button type="submit" className="self-end">
+        <Button type="submit" className="self-end" icon={<PlusIcon />}>
           Create Project
         </Button>
       </form>
