@@ -13,10 +13,10 @@ class Ticket(db.Model):
         db.VARCHAR(3), db.ForeignKey("project.key"), primary_key=True, nullable=False
     )
     title = db.Column(db.VARCHAR(length=64), unique=False, nullable=False)
-    description = db.Column(db.VARCHAR(length=512), default="", nullable=False)
+    description = db.Column(db.VARCHAR(length=2000), default="", nullable=False)
     author = db.Column(db.VARCHAR(32), db.ForeignKey("user.username"), nullable=False)
     status = db.Column(
-        db.VARCHAR(length=16), unique=False, nullable=False, default="OPEN"
+        db.VARCHAR(length=16), unique=False, nullable=False, default="WAITING"
     )
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 

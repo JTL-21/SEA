@@ -19,8 +19,8 @@ create_project_schema = {
         "description": {
             "type": "string",
             "minLength": 0,
-            "maxLength": 512,
-            "error_message": "Description must be a string no longer than 512 characters.",
+            "maxLength": 2000,
+            "error_message": "Description must be a string no longer than 2000 characters.",
         },
     },
     "required": ["key", "title"],
