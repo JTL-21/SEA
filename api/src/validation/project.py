@@ -1,4 +1,4 @@
-from .user import create_user_schema
+from src.validation.user import create_user_schema
 
 create_project_schema = {
     "type": "object",

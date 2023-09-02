@@ -1,15 +1,17 @@
-from flask import request, abort, make_response
+import logging
+from flask import Blueprint, request, abort, make_response
 from flask_login import login_required, login_user, logout_user, current_user
 from sqlalchemy import func
-from .. import app
-from ..db import db
-from ..models import User
-from ..validation.user import create_user_schema, login_schema
-from ..validation.utils import item_getter, validate_body
-from ..utils.list import model_list_as_dict
+from src.extensions import db
+from src.models import User
+from src.validation.user import create_user_schema, login_schema
+from src.validation.utils import item_getter, validate_body
+from src.utils.list import model_list_as_dict
+
+user_bp = Blueprint("user", __name__)
 
 
-@app.get("/api/user")
+@user_bp.get("/api/user")
 @login_required
 def query_users():
     """
@@ -32,7 +34,7 @@ def query_users():
     return user_dicts
 
 
-@app.get("/api/user/<username>")
+@user_bp.get("/api/user/<username>")
 @login_required
 def get_user(username):
     """
@@ -49,7 +51,7 @@ def get_user(username):
     return user.as_dict()
 
 
-@app.post("/api/user")
+@user_bp.post("/api/user")
 @validate_body(create_user_schema)
 def create_user():
     """
@@ -78,7 +80,7 @@ def create_user():
     return new_user.as_dict()
 
 
-@app.post("/api/login")
+@user_bp.post("/api/login")
 @validate_body(login_schema)
 def login():
     """
@@ -102,11 +104,12 @@ def login():
         abort(401, "Incorrect password")
 
     login_user(user, remember=bool(stay_signed_in))
+    logging.info(f"Successfully logged in as {user.username}")
 
     return user.as_dict()
 
 
-@app.post("/api/logout")
+@user_bp.post("/api/logout")
 @login_required
 def logout():
     """
@@ -117,7 +120,7 @@ def logout():
     return make_response("{}", 204)
 
 
-@app.get("/api/whoami")
+@user_bp.get("/api/whoami")
 @login_required
 def whoami():
     """

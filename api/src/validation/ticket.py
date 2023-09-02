@@ -1,4 +1,4 @@
-from .project import create_project_schema
+from src.validation.project import create_project_schema
 
 create_ticket_schema = {
     "type": "object",

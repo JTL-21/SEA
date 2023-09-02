@@ -1,14 +1,16 @@
-from flask import request, abort, make_response
+from flask import Blueprint, request, abort, make_response
 from flask_login import login_required, current_user
-from .. import app
-from ..db import db
-from ..models import Ticket, Comment, User
-from ..validation.comment import create_comment_schema
-from ..validation.utils import item_getter, validate_body
-from ..utils.list import model_list_as_dict
+from src.extensions import db
+from src.models import Ticket, Comment, User
+from src.validation.comment import create_comment_schema
+from src.validation.utils import item_getter, validate_body
+from src.utils.list import model_list_as_dict
 
 
-@app.get("/api/ticket/<slug>/comments")
+comment_bp = Blueprint("comment", __name__)
+
+
+@comment_bp.get("/api/ticket/<slug>/comments")
 @login_required
 def get_ticket_comments(slug):
     """
@@ -26,7 +28,7 @@ def get_ticket_comments(slug):
     return comment_dicts
 
 
-@app.post("/api/ticket/<slug>/comment")
+@comment_bp.post("/api/ticket/<slug>/comment")
 @login_required
 @validate_body(create_comment_schema)
 def create_ticket_comment(slug):
@@ -54,7 +56,7 @@ def create_ticket_comment(slug):
     return new_comment.as_dict()
 
 
-@app.delete("/api/comment/<id>")
+@comment_bp.delete("/api/comment/<id>")
 @login_required
 def delete_comment(id):
     """

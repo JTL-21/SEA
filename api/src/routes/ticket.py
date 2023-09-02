@@ -1,14 +1,15 @@
-from flask import request, abort, make_response
+from flask import Blueprint, request, abort, make_response
 from flask_login import login_required, current_user
-from .. import app
-from ..db import db
-from ..models import Ticket, Project, User, Comment
-from ..validation.ticket import create_ticket_schema, edit_ticket_schema
-from ..validation.utils import item_getter, validate_body
-from ..utils.list import model_list_as_dict
+from src.extensions import db
+from src.models import Ticket, Project, User, Comment
+from src.validation.ticket import create_ticket_schema, edit_ticket_schema
+from src.validation.utils import item_getter, validate_body
+from src.utils.list import model_list_as_dict
+
+ticket_bp = Blueprint("ticket", __name__)
 
 
-@app.get("/api/ticket/<slug>")
+@ticket_bp.get("/api/ticket/<slug>")
 @login_required
 def get_ticket(slug):
     """
@@ -22,7 +23,7 @@ def get_ticket(slug):
     return {**ticket.as_dict(), "comments": comment_dicts}
 
 
-@app.patch("/api/ticket/<slug>")
+@ticket_bp.patch("/api/ticket/<slug>")
 @login_required
 @validate_body(edit_ticket_schema)
 def edit_ticket(slug):
@@ -58,7 +59,7 @@ def edit_ticket(slug):
     return ticket.as_dict()
 
 
-@app.delete("/api/ticket/<slug>")
+@ticket_bp.delete("/api/ticket/<slug>")
 @login_required
 def delete_ticket(slug):
     """
@@ -75,7 +76,7 @@ def delete_ticket(slug):
     return make_response("{}", 204)
 
 
-@app.post("/api/ticket")
+@ticket_bp.post("/api/ticket")
 @login_required
 @validate_body(create_ticket_schema)
 def create_ticket():
@@ -115,7 +116,7 @@ def create_ticket():
     return new_ticket.as_dict()
 
 
-@app.get("/api/project/<project_key>/tickets")
+@ticket_bp.get("/api/project/<project_key>/tickets")
 @login_required
 def get_project_tickets(project_key):
     """

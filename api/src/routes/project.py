@@ -1,15 +1,16 @@
-from flask import request, abort, make_response
+from flask import Blueprint, request, abort, make_response
 from flask_login import login_required, current_user
 from sqlalchemy import or_
-from .. import app
-from ..db import db
-from ..models import Project, User
-from ..validation.project import create_project_schema, edit_project_schema
-from ..validation.utils import item_getter, validate_body
-from ..utils.list import model_list_as_dict
+from src.extensions import db
+from src.models import Project, User
+from src.validation.project import create_project_schema, edit_project_schema
+from src.validation.utils import item_getter, validate_body
+from src.utils.list import model_list_as_dict
+
+project_bp = Blueprint("project", __name__)
 
 
-@app.get("/api/project")
+@project_bp.get("/api/project")
 @login_required
 def query_projects():
     """
@@ -31,7 +32,7 @@ def query_projects():
     return project_dicts
 
 
-@app.get("/api/project/<key>")
+@project_bp.get("/api/project/<key>")
 @login_required
 def get_project(key):
     """
@@ -48,7 +49,7 @@ def get_project(key):
     return project.as_dict()
 
 
-@app.patch("/api/project/<key>")
+@project_bp.patch("/api/project/<key>")
 @login_required
 @validate_body(edit_project_schema)
 def edit_project(key):
@@ -77,7 +78,7 @@ def edit_project(key):
     return project.as_dict()
 
 
-@app.delete("/api/project/<key>")
+@project_bp.delete("/api/project/<key>")
 @login_required
 def delete_project(key):
     """
@@ -100,7 +101,7 @@ def delete_project(key):
     return make_response("{}", 204)
 
 
-@app.post("/api/project")
+@project_bp.post("/api/project")
 @login_required
 @validate_body(create_project_schema)
 def create_project():
