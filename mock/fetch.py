@@ -2,7 +2,7 @@ import openai
 import json
 from random import random
 
-openai.api_key = "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"
+openai.api_key = ""
 
 # "A project has a name, a description and a 3 letter key derrived from the title. The description is no more than 300 words and is valid markdown, including headings and lists. Write a JSON object that is an array of up to 6 real world example projects."
 
