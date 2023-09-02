@@ -1,5 +1,5 @@
-import { Navigate, Outlet } from "react-router-dom";
 import useUser from "../hooks/useUser";
+import { Navigate, Outlet } from "react-router-dom";
 
 interface ProtectedRouteProps {
   inverse?: boolean;

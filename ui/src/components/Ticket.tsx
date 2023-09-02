@@ -1,9 +1,9 @@
+import cn from "clsx";
+import Priority from "./icons/Priority";
 import { Ticket } from "../types";
 import { useDraggable } from "@dnd-kit/core";
-import cn from "clsx";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { Bars3BottomRightIcon } from "@heroicons/react/20/solid";
-import Priority from "./icons/Priority";
 
 interface TicketComponentProps {
   ticket: Ticket;

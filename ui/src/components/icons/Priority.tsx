@@ -1,10 +1,10 @@
-import { Ticket } from "../../types";
 import PriorityVeryLow from "./PriorityVeryLow";
 import PriorityLow from "./PriorityLow";
 import PriorityMedium from "./PriorityMedium";
 import PriorityHigh from "./PriorityHigh";
 import PriorityVeryHigh from "./PriorityVeryHigh";
 import React, { JSXElementConstructor } from "react";
+import { Ticket } from "../../types";
 
 interface PriorityProps extends React.SVGProps<SVGSVGElement> {
   priority: Ticket["priority"];

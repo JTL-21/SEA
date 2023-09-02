@@ -1,9 +1,9 @@
 import React from "react";
-import { Comment, CreateCommentBody, Ticket } from "../types";
-import CommentComponent from "./CommentComponent";
-import { useForm } from "react-hook-form";
 import API from "../api";
 import Button from "./Button";
+import CommentComponent from "./CommentComponent";
+import { Comment, CreateCommentBody, Ticket } from "../types";
+import { useForm } from "react-hook-form";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 
 interface Props {

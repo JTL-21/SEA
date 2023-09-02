@@ -1,7 +1,7 @@
 import logo from "../assets/kong.png";
+import useUser from "../hooks/useUser";
 import { Link } from "react-router-dom";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
-import useUser from "../hooks/useUser";
 
 const topBarLinkClasses = "text-gray-500 hover:underline";
 

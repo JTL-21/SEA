@@ -1,9 +1,9 @@
 import React from "react";
+import cn from "clsx";
+import API from "../api";
 import { User } from "../types";
 import { Combobox } from "@headlessui/react";
-import API from "../api";
 import { MagnifyingGlassIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import cn from "clsx";
 
 interface UserSearchProps {
   onChange: (user: User) => void;

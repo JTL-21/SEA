@@ -1,6 +1,6 @@
+import TicketComponent from "./Ticket";
 import { Ticket } from "../types";
 import { useDroppable } from "@dnd-kit/core";
-import TicketComponent from "./Ticket";
 
 interface TicketColumnProps {
   status: Ticket["status"];

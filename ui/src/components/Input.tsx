@@ -1,6 +1,6 @@
 import React from "react";
-import { FieldError } from "react-hook-form";
 import cn from "clsx";
+import { FieldError } from "react-hook-form";
 
 interface Props extends Omit<React.ComponentPropsWithoutRef<"input">, "id"> {
   error?: FieldError;

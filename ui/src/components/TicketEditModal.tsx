@@ -1,11 +1,11 @@
-import { XMarkIcon, WrenchIcon } from "@heroicons/react/20/solid";
-import { TICKET_PRIORITIES, Ticket } from "../types";
-import { useForm, useWatch } from "react-hook-form";
 import API from "../api";
 import React from "react";
 import Input from "./Input";
 import MarkdownEditor from "./MarkdownEditor";
 import Button from "./Button";
+import { XMarkIcon, WrenchIcon } from "@heroicons/react/20/solid";
+import { TICKET_PRIORITIES, Ticket } from "../types";
+import { useForm, useWatch } from "react-hook-form";
 import { priorityNameMap } from "./Ticket";
 
 interface TicketEditModalProps {

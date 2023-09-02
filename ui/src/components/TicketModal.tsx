@@ -1,7 +1,14 @@
-import { useNavigate } from "react-router-dom";
-import { Ticket, User } from "../types";
 import Markdown from "./Markdown";
-import { priorityNameMap } from "./Ticket";
+import React from "react";
+import cn from "clsx";
+import Button from "./Button";
+import API from "../api";
+import CommentColumn from "./CommentColumn";
+import UserSearch from "./UserSearch";
+import Priority from "./icons/Priority";
+import ModalOverlay from "./ModelOverlay";
+import Username from "./Username";
+import TicketEditModal from "./TicketEditModal";
 import {
   XMarkIcon,
   TrashIcon,
@@ -10,18 +17,11 @@ import {
   ClockIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
-import React from "react";
-import cn from "clsx";
-import Button from "./Button";
-import API from "../api";
+import { useNavigate } from "react-router-dom";
+import { Ticket, User } from "../types";
+import { priorityNameMap } from "./Ticket";
 import { formatDateTime } from "../utils/time";
 import { Dialog, Popover } from "@headlessui/react";
-import CommentColumn from "./CommentColumn";
-import UserSearch from "./UserSearch";
-import Priority from "./icons/Priority";
-import ModalOverlay from "./ModelOverlay";
-import Username from "./Username";
-import TicketEditModal from "./TicketEditModal";
 
 interface TicketModalProps {
   ticket: Ticket;

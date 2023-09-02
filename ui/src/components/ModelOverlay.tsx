@@ -1,5 +1,5 @@
-import { Dialog } from "@headlessui/react";
 import cn from "clsx";
+import { Dialog } from "@headlessui/react";
 
 interface ModalOverlayProps {
   opaque?: boolean;
