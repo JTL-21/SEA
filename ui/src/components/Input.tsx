@@ -11,7 +11,13 @@ interface Props extends Omit<React.ComponentPropsWithoutRef<"input">, "id"> {
 const Input = React.forwardRef<HTMLInputElement, Props>(
   ({ error, id, label, className, ...inputProps }, ref) => {
     return (
-      <div className={cn(className, "relative mt-2")}>
+      <div className={className}>
+        <label
+          htmlFor={id}
+          className="text-sm font-semibold leading-6 text-gray-700"
+        >
+          {label}
+        </label>
         <input
           {...inputProps}
           ref={ref}
@@ -19,20 +25,10 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
           name={inputProps.name ?? id}
           placeholder={label}
           className={cn(
-            "peer w-full placeholder-transparent",
-            error && "!border-b-rose-500"
+            "block w-full rounded-md border-[1px] border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm ring-0 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-400 focus:ring-offset-1",
+            error && "ring-2 ring-rose-400 ring-offset-2"
           )}
         />
-        <label
-          htmlFor={id}
-          className={cn(
-            "absolute -top-4 left-0 text-xs text-gray-700 transition-all duration-100",
-            "peer-placeholder-shown:top-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400",
-            "peer-focus:-top-4 peer-focus:left-0 peer-focus:text-xs peer-focus:text-gray-700"
-          )}
-        >
-          {label}
-        </label>
         <div className="text-sm text-rose-500">{error?.message}</div>
       </div>
     );
