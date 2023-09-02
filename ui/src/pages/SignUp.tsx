@@ -12,6 +12,7 @@ import {
   UserPlusIcon,
 } from "@heroicons/react/24/solid";
 import FullscreenForm from "../components/FullscreenForm";
+import useUser from "../hooks/useUser";
 
 interface FormData {
   username: string;
@@ -25,6 +26,13 @@ const SignUp = () => {
   const [formError, setFormError] = React.useState<string | undefined>(
     undefined
   );
+  const { user } = useUser();
+
+  React.useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const {
     register,
