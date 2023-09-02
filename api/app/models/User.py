@@ -8,6 +8,12 @@ ph = PasswordHasher()
 
 
 class User(UserMixin, db.Model):
+    """
+    User model for Kong API.
+
+    Defines the User model for the Kong API. A User can be an admin or normal user.
+    """
+
     username = db.Column(db.VARCHAR(length=32), primary_key=True)
     password = db.Column(db.VARCHAR(length=100), unique=False, nullable=False)
     is_admin = db.Column(db.Boolean, default=False)

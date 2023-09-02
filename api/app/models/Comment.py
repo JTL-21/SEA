@@ -4,6 +4,13 @@ from app.extensions import db
 
 
 class Comment(db.Model):
+    """
+    Comment model for Kong API.
+
+    Defines the Comment model for the Kong API. A Comment is authored by a user and
+    belongs to a Ticket.
+    """
+
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.VARCHAR(length=512), unique=False, nullable=False)
     author = db.Column(db.VARCHAR(32), db.ForeignKey("user.username"), nullable=False)

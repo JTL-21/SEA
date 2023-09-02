@@ -3,10 +3,18 @@ from typing import Union, Tuple, Dict, Any
 
 def item_getter(*keys: Union[str, Tuple[str, ...]]) -> callable:
     """
-    Returns a function that pulls keys from a dictionary
-    Missing keys are returned as None
+    Create a function that extracts values from a dictionary based on specified keys.
 
-    If only getting one key, the value is returned individually not as a tuple
+    This function returns a function that takes a dictionary as input and extracts values
+    from the dictionary using the provided keys. If a key is missing in the dictionary,
+    its corresponding value in the returned result will be None. If only a single key is
+    provided, the extracted value is returned individually; otherwise, a tuple of values is returned.
+
+    Args:
+        *keys (Union[str, Tuple[str, ...]]): One or more keys to extract from the dictionary.
+
+    Returns:
+        callable: A function that extracts values from a dictionary based on the provided keys.
     """
 
     def getter(data_dict: Dict[str, Any]) -> Union[Any, None, Tuple[Any, ...]]:
@@ -28,7 +36,16 @@ def item_getter(*keys: Union[str, Tuple[str, ...]]) -> callable:
 
 def normalize_strings(input_dict: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Recursively strip leading and trailing spaces from strings in a dict
+    Recursively remove leading and trailing spaces from string values in a dictionary.
+
+    This function traverses a dictionary recursively and strips leading and trailing spaces
+    from string values. It returns the updated dictionary.
+
+    Args:
+        input_dict (Dict[str, Any]): The dictionary to be normalized.
+
+    Returns:
+        Dict[str, Any]: The dictionary with normalized string values.
     """
 
     for key, value in input_dict.items():

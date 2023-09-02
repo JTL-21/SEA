@@ -11,6 +11,18 @@ from app.config import Config
 
 
 def create_app(config: Config = Config()):
+    """
+    Flask app factory to create a Kong API application.
+
+    This function initializes and configures a Flask application for the Kong API,
+    registering blueprints, setting up the database, login manager, and handling errors.
+
+    Args:
+        config (Config, optional): Configuration object for the Flask app.
+
+    Returns:
+        Flask: The configured Flask application for the Kong API.
+    """
     app = Flask(__name__)
 
     app.config.from_object(config)
@@ -54,4 +66,18 @@ def create_app(config: Config = Config()):
 
 @login_manager.user_loader
 def load_user(username: str) -> User:
+    """
+    User loader function for Flask-Login.
+
+    This function is used by Flask-Login to load a user object based on the provided username.
+    It queries the database for a user with the given username and returns the corresponding
+    User object.
+
+    Args:
+        username (str): The username of the user to be loaded.
+
+    Returns:
+        User: The User object representing the user with the specified username.
+    """
+
     return User.query.filter_by(username=username).first()

@@ -5,6 +5,13 @@ from app.extensions import db
 
 
 class Project(db.Model):
+    """
+    Project model for Kong API.
+
+    Defines the Project model for the Kong API. A Project contains many tickets
+    and is owned by a User.
+    """
+
     key = db.Column(db.VARCHAR(length=3), primary_key=True)
     title = db.Column(db.VARCHAR(length=64), unique=False, nullable=False)
     description = db.Column(db.VARCHAR(length=2000), default="", nullable=False)

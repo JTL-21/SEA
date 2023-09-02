@@ -6,8 +6,16 @@ from app.utils.input import normalize_strings
 
 def validate_body(schema):
     """
-    Validate a flask request body with a jsonschema
-    Errors are sent to the client with a 400 HTTP code
+    Decorator for validating a Flask request body using a JSON schema.
+
+    This decorator is used to validate the JSON request body of a Flask route using a provided JSON schema.
+    If the validation fails, an HTTP 400 error is raised, and the error message is sent to the client.
+
+    Args:
+        schema (dict): The JSON schema to be used for validation.
+
+    Returns:
+        function: A decorated version of the original function, with JSON validation.
     """
 
     def decorator(func):

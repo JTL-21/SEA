@@ -10,6 +10,13 @@ from app.utils.list import model_list_as_dict
 
 
 class Ticket(db.Model):
+    """
+    Ticket model for Kong API.
+
+    Defines the Ticket model for the Kong API. A Ticket contains many comments and
+    is authored by a User.
+    """
+
     id = db.Column(db.Integer, primary_key=True)
     project = db.Column(
         db.VARCHAR(3),
