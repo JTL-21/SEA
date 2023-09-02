@@ -3,7 +3,6 @@ from flask_login import login_required, current_user
 from sqlalchemy import or_
 from app.extensions import db
 from app.models.Project import Project
-from app.models.User import User
 from app.validation.project import create_project_schema, edit_project_schema
 from app.validation.utils import validate_body
 from app.utils.input import item_getter

@@ -15,12 +15,12 @@ def validate_body(schema):
         def wrapper(*args, **kwargs):
             try:
                 validate(normalize_strings(request.get_json()), schema)
-            except ValidationError as e:
+            except ValidationError as error:
                 # Return preset error message if exists, else return jsonschema message
                 message = (
-                    e.schema["error_message"]
-                    if "error_message" in e.schema
-                    else e.message
+                    error.schema["error_message"]
+                    if "error_message" in error.schema
+                    else error.message
                 )
 
                 abort(

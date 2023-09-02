@@ -1,17 +1,16 @@
 import os
 import logging
-from typing import Type, Tuple
-from flask import Flask, send_from_directory
+from typing import Tuple
+from flask import Flask
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
 from werkzeug.exceptions import HTTPException
-from app.models import User, Project, Ticket, Comment
+from app.models import *
 from app.routes import comment_bp, project_bp, ticket_bp, user_bp, system_bp
 from app.extensions import db, login_manager
 from app.config import Config
 
 
-def create_app(config: Config = Config):
+def create_app(config: Config = Config()):
     app = Flask(__name__)
 
     app.config.from_object(config)
