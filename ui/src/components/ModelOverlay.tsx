@@ -1,4 +1,4 @@
-import cn from "clsx";
+import cn from "../utils/cn";
 import { Dialog } from "@headlessui/react";
 
 interface ModalOverlayProps {

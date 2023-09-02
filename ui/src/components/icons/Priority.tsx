@@ -1,5 +1,5 @@
 import React from "react";
-import cn from "clsx";
+import cn from "../../utils/cn";
 import { Ticket } from "../../types";
 
 interface PriorityProps extends React.SVGProps<SVGSVGElement> {

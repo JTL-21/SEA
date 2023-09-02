@@ -1,6 +1,6 @@
 import Markdown from "./Markdown";
 import React from "react";
-import cn from "clsx";
+import cn from "../utils/cn";
 import Button from "./Button";
 import CommentColumn from "./CommentColumn";
 import UserSearch from "./UserSearch";

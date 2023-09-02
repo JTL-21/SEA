@@ -2,7 +2,7 @@ import {
   ArrowLeftOnRectangleIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
-import cn from "clsx";
+import cn from "../utils/cn";
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/kong.png";
@@ -26,8 +26,8 @@ const LabeledIcon = ({
     <div
       title={text}
       className={cn(
-        className,
-        "flex flex-col items-center text-xs text-gray-600"
+        "flex flex-col items-center text-xs text-gray-600",
+        className
       )}
       {...divProps}
     >

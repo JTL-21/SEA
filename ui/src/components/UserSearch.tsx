@@ -1,5 +1,5 @@
 import React from "react";
-import cn from "clsx";
+import cn from "../utils/cn";
 import API from "../api";
 import { User } from "../types";
 import { Combobox } from "@headlessui/react";

@@ -1,4 +1,4 @@
-import cn from "clsx";
+import cn from "../utils/cn";
 import Priority from "./icons/Priority";
 import { Ticket } from "../types";
 import { useDraggable } from "@dnd-kit/core";

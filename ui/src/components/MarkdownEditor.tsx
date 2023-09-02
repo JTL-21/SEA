@@ -1,6 +1,6 @@
 import React from "react";
 import Markdown from "./Markdown";
-import cn from "clsx";
+import cn from "../utils/cn";
 
 interface MarkdownEditorProps
   extends Omit<

@@ -1,5 +1,5 @@
 import React from "react";
-import cn from "clsx";
+import cn from "../utils/cn";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
 interface Props extends React.ComponentPropsWithoutRef<"button"> {

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import cn from "clsx";
+import cn from "../utils/cn";
 
 interface Props
   extends Omit<React.ComponentPropsWithoutRef<"div">, "children"> {
