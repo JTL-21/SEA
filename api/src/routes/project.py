@@ -1,8 +1,8 @@
-from flask import request, abort
+from flask import request, abort, make_response
 from .. import app
 from ..models import Project, User
 from ..db import db
-from ..validation.project import create_project_schema
+from ..validation.project import create_project_schema, edit_project_schema
 from ..validation.utils import item_getter, validate_body
 
 
@@ -35,6 +35,50 @@ def get_project(key):
         return abort(404, "No project with the given key exists")
 
     return project.as_dict()
+
+
+@app.patch("/api/project/<key>")
+@validate_body(edit_project_schema)
+def edit_project(key):
+    """
+    Update a project from its key
+
+    path: key
+    body: title? description?
+    """
+
+    project = Project.query.filter_by(key=key).first()
+
+    if not project:
+        return abort(404, "No project with the given key exists")
+
+    title, description = item_getter("title", "description")(request.json)
+
+    project.title = title or ticket.title
+    project.description = description or project.description
+
+    db.session.commit()
+
+    return project.as_dict()
+
+
+@app.delete("/api/project/<key>")
+def delete_project(key):
+    """
+    Delete a project from its key
+
+    path: key
+    """
+
+    project = Project.query.filter_by(key=key).first()
+
+    if not project:
+        return abort(404, "No project with the given key exists")
+
+    db.session.delete(project)
+    db.session.commit()
+
+    return make_response("", 204)
 
 
 @app.post("/api/project")

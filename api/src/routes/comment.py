@@ -76,6 +76,7 @@ def delete_comment(id):
 
     path: id
     """
+
     comment = Comment.query.filter_by(id=id).first()
 
     if not comment:

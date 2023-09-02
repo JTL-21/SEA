@@ -31,6 +31,7 @@ def edit_ticket(slug):
     path: slug
     body: title? description?
     """
+
     (is_valid_slug, response) = Ticket.from_slug(slug)
 
     if not is_valid_slug:
@@ -50,6 +51,12 @@ def edit_ticket(slug):
 
 @app.delete("/api/ticket/<slug>")
 def delete_ticket(slug):
+    """
+    Delete a ticket from its slug
+
+    path: slug
+    """
+
     (is_valid_slug, response) = Ticket.from_slug(slug)
 
     if not is_valid_slug:
@@ -107,6 +114,7 @@ def get_project_tickets(project_key):
 
     path: project_key
     """
+
     project = Project.query.filter_by(key=project_key).first()
     if not project:
         return abort(404, "No project with the given key exists")

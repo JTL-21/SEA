@@ -25,3 +25,13 @@ create_project_schema = {
     },
     "required": ["key", "title"],
 }
+
+edit_project_schema = {
+    "type": "object",
+    "properties": {
+        "title": create_project_schema["properties"]["title"],
+        "description": create_project_schema["properties"]["description"],
+    },
+    "anyOf": [{"required": ["title"]}, {"required": ["description"]}],
+    "error_message": "At least one property must be provided (title, description).",
+}
