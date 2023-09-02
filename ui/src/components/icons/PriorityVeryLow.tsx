@@ -9,7 +9,7 @@ const PriorityVeryLow = ({
     width="32"
     height="32"
     viewBox="0 0 24 24"
-    className={cn("-rotate-45 text-gray-300", className)}
+    className={cn("text-gray-300", className)}
     {...props}
   >
     <path
