@@ -17,8 +17,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <UserProvider>
         <Layout>
           <Routes>
-            <Route path="/sign-up" Component={SignUp} />
-            <Route path="/sign-in" Component={SignIn} />
+            <Route element={<ProtectedRoute inverse={true} />}>
+              <Route path="/sign-up" Component={SignUp} />
+              <Route path="/sign-in" Component={SignIn} />
+            </Route>
             <Route element={<ProtectedRoute />}>
               <Route path="/" element={<Navigate to="/projects" />} />
               <Route path="/create-project" Component={CreateProject} />

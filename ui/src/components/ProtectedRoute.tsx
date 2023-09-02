@@ -1,10 +1,22 @@
 import { Navigate, Outlet } from "react-router-dom";
 import useUser from "../hooks/useUser";
 
-const ProtectedRoute = () => {
+interface ProtectedRouteProps {
+  inverse?: boolean;
+}
+
+const ProtectedRoute = ({ inverse = false }: ProtectedRouteProps) => {
   const { user, loaded } = useUser();
 
-  return user || !loaded ? <Outlet /> : <Navigate to="/sign-in" />;
+  const renderPage = !loaded || (!user && inverse) || (user && !inverse);
+
+  return renderPage ? (
+    <Outlet />
+  ) : user ? (
+    <Navigate to="/" />
+  ) : (
+    <Navigate to="/sign-in" />
+  );
 };
 
 export default ProtectedRoute;

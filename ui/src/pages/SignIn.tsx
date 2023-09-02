@@ -29,12 +29,6 @@ const SignIn = () => {
     undefined
   );
 
-  React.useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, [user, navigate]);
-
   const {
     register,
     handleSubmit,

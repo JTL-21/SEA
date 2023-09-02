@@ -28,12 +28,6 @@ const SignUp = () => {
   );
   const { user } = useUser();
 
-  React.useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, [user, navigate]);
-
   const {
     register,
     handleSubmit,
