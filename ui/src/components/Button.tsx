@@ -1,6 +1,6 @@
 import React, { JSXElementConstructor } from "react";
 import cn from "clsx";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 interface Props extends React.ComponentPropsWithoutRef<"button"> {
   children?: React.ReactNode;
@@ -8,6 +8,7 @@ interface Props extends React.ComponentPropsWithoutRef<"button"> {
   styled?: boolean;
   centered?: boolean;
   requireConfirmation?: boolean;
+  confirmClasses?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   as?: keyof JSX.IntrinsicElements | JSXElementConstructor<any>;
 }
@@ -22,6 +23,7 @@ const Button = React.forwardRef<HTMLElement, Props>(
       children,
       type,
       className,
+      confirmClasses = "text-rose-600",
       onClick,
       onMouseLeave,
       as: Element = "button",
@@ -35,6 +37,7 @@ const Button = React.forwardRef<HTMLElement, Props>(
       if (requireConfirmation) {
         if (waiting) {
           onClick && onClick(event);
+          setWaiting(false);
         } else {
           setWaiting(true);
         }
@@ -66,8 +69,8 @@ const Button = React.forwardRef<HTMLElement, Props>(
       >
         {requireConfirmation && waiting ? (
           <>
-            <XMarkIcon className="text-rose-600" />
-            <span className="font-semibold text-rose-600">
+            <XMarkIcon className={confirmClasses} />
+            <span className={cn("font-semibold", confirmClasses)}>
               Confirm {children}
             </span>
           </>
