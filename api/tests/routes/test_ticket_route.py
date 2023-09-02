@@ -90,15 +90,34 @@ def test_create_ticket_nonexistent_project(authenticated_client):
 
 
 @pytest.mark.usefixtures("load_mock_data")
-def test_get_project_tickets(client):
-    response = client.get("/api/project/EXO/tickets")
+def test_query_tickets_assignee(client):
+    response = client.get("/api/ticket", query_string={"assignee": "Emma"})
 
     assert response.status_code == 200
-    assert type(response.json) == list
+    assert len(response.json) == 3
 
 
 @pytest.mark.usefixtures("load_mock_data")
-def test_get_project_tickets_nonexistent_project(client):
-    response = client.get("/api/project/MOO/tickets")
+def test_query_tickets_project(client):
+    response = client.get("/api/ticket", query_string={"project": "EXO"})
 
-    assert response.status_code == 404
+    assert response.status_code == 200
+    assert isinstance(response.json, list)
+
+
+@pytest.mark.usefixtures("load_mock_data")
+def test_query_tickets_nonexistent_project(client):
+    response = client.get("/api/ticket", query_string={"project": "MOO"})
+
+    assert response.status_code == 200
+    assert len(response.json) == 0
+
+
+@pytest.mark.usefixtures("load_mock_data")
+def test_query_tickets_assignee_and_project(client):
+    response = client.get(
+        "/api/ticket", query_string={"project": "GSK", "assignee": "Emma"}
+    )
+
+    assert response.status_code == 200
+    assert len(response.json) == 1

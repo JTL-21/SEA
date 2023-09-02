@@ -47,3 +47,17 @@ edit_ticket_schema = {
     },
     "error_message": "At least one property must be provided (title, description).",
 }
+
+query_ticket_schema = {
+    "type": "object",
+    "properties": {
+        "assignee": {
+            "type": "string",
+            "error_message": "Assignee must be of type string.",
+        },
+        "project": {
+            "type": "string",
+            "error_message": "Project key must be of type string.",
+        },
+    },
+}

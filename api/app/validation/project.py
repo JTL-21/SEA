@@ -32,3 +32,15 @@ edit_project_schema = {
     },
     "error_message": "At least one property must be provided (title, description).",
 }
+
+query_project_schema = {
+    "type": "object",
+    "properties": {
+        "query": {
+            "type": "string",
+            "minLength": 1,
+            "error_message": "Query must be a string of length 1 or greater.",
+        }
+    },
+    "required": ["query"],
+}

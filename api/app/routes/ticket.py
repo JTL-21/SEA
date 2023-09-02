@@ -1,16 +1,49 @@
 from flask import Blueprint, request, abort, make_response
 from flask_login import login_required, current_user
 from app.extensions import db
-from app.models import Ticket, Project, User
 from app.models.Ticket import Ticket
 from app.models.User import User
 from app.models.Project import Project
-from app.validation.ticket import create_ticket_schema, edit_ticket_schema
-from app.validation.utils import validate_body
+from app.validation.ticket import (
+    create_ticket_schema,
+    edit_ticket_schema,
+    query_ticket_schema,
+)
+from app.validation.utils import validate_request
 from app.utils.input import item_getter
 from app.utils.list import model_list_as_dict
 
 ticket_bp = Blueprint("ticket", __name__)
+
+
+@ticket_bp.get("/api/ticket")
+@login_required
+@validate_request(query_schema=query_ticket_schema)
+def query_tickets():
+    """
+    Find tickets based on their assignee or project
+
+    query: assignee? project?
+    """
+
+    assignee, project = item_getter("assignee", "project")(request.args.to_dict())
+
+    if not assignee and not project:
+        abort(400, "Assignee or Project must be supplied")
+
+    query = Ticket.query
+
+    if assignee:
+        query = query.filter_by(assignee=assignee)
+
+    if project:
+        query = query.filter_by(project=project)
+
+    tickets = query.all()
+
+    ticket_dicts = model_list_as_dict(tickets)
+
+    return ticket_dicts
 
 
 @ticket_bp.get("/api/ticket/<slug>")
@@ -32,7 +65,7 @@ def get_ticket(slug):
 
 @ticket_bp.patch("/api/ticket/<slug>")
 @login_required
-@validate_body(edit_ticket_schema)
+@validate_request(body_schema=edit_ticket_schema)
 def edit_ticket(slug):
     """
     Edit a ticket from its slug
@@ -50,9 +83,7 @@ def edit_ticket(slug):
     if assignee:
         user = User.query.filter_by(username=assignee).first()
         if not user:
-            abort(
-                404,
-            )
+            abort(404, "No user with the given username exists")
         ticket.assignee = user.username
 
     ticket.title = title or ticket.title
@@ -85,7 +116,7 @@ def delete_ticket(slug):
 
 @ticket_bp.post("/api/ticket")
 @login_required
-@validate_body(create_ticket_schema)
+@validate_request(body_schema=create_ticket_schema)
 def create_ticket():
     """
     Create a new ticket in a given project
@@ -121,23 +152,3 @@ def create_ticket():
     db.session.commit()
 
     return new_ticket.as_dict()
-
-
-@ticket_bp.get("/api/project/<project_key>/tickets")
-@login_required
-def get_project_tickets(project_key):
-    """
-    Get all tickets within a given project
-
-    path: project_key
-    """
-
-    project = Project.query.filter_by(key=project_key).first()
-    if not project:
-        abort(404, "No project with the given key exists")
-
-    tickets = project.get_tickets()
-
-    ticket_dicts = model_list_as_dict(tickets)
-
-    return ticket_dicts

@@ -3,8 +3,12 @@ from flask_login import login_required, current_user
 from sqlalchemy import or_
 from app.extensions import db
 from app.models.Project import Project
-from app.validation.project import create_project_schema, edit_project_schema
-from app.validation.utils import validate_body
+from app.validation.project import (
+    create_project_schema,
+    edit_project_schema,
+    query_project_schema,
+)
+from app.validation.utils import validate_request
 from app.utils.input import item_getter
 from app.utils.list import model_list_as_dict
 
@@ -13,6 +17,7 @@ project_bp = Blueprint("project", __name__)
 
 @project_bp.get("/api/project")
 @login_required
+@validate_request(query_schema=query_project_schema)
 def query_projects():
     """
     Find projects based on their name or key similarity to a query passed from a query parameter
@@ -52,7 +57,7 @@ def get_project(key):
 
 @project_bp.patch("/api/project/<key>")
 @login_required
-@validate_body(edit_project_schema)
+@validate_request(body_schema=edit_project_schema)
 def edit_project(key):
     """
     Update a project from its key
@@ -104,7 +109,7 @@ def delete_project(key):
 
 @project_bp.post("/api/project")
 @login_required
-@validate_body(create_project_schema)
+@validate_request(body_schema=create_project_schema)
 def create_project():
     """
     Create a new project

@@ -5,7 +5,7 @@ from sqlalchemy import func
 from app.extensions import db
 from app.models.User import User
 from app.validation.user import create_user_schema, login_schema
-from app.validation.utils import validate_body
+from app.validation.utils import validate_request
 from app.utils.input import item_getter
 from app.utils.list import model_list_as_dict
 
@@ -53,7 +53,7 @@ def get_user(username):
 
 
 @user_bp.post("/api/user")
-@validate_body(create_user_schema)
+@validate_request(body_schema=create_user_schema)
 def create_user():
     """
     Create a user with a given username and password
@@ -82,7 +82,7 @@ def create_user():
 
 
 @user_bp.post("/api/login")
-@validate_body(login_schema)
+@validate_request(body_schema=login_schema)
 def login():
     """
     Log a user in via username and password

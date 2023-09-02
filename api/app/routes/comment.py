@@ -4,7 +4,7 @@ from app.extensions import db
 from app.models.Ticket import Ticket
 from app.models.Comment import Comment
 from app.validation.comment import create_comment_schema
-from app.validation.utils import validate_body
+from app.validation.utils import validate_request
 from app.utils.input import item_getter
 from app.utils.list import model_list_as_dict
 
@@ -32,7 +32,7 @@ def get_ticket_comments(slug):
 
 @comment_bp.post("/api/ticket/<slug>/comment")
 @login_required
-@validate_body(create_comment_schema)
+@validate_request(body_schema=create_comment_schema)
 def create_ticket_comment(slug):
     """
     Create a comment on a given ticket from its slug
