@@ -20,7 +20,7 @@ const TopBar = () => {
         </Link>
         <div className="flex-grow"></div>
         <Link
-          to={user.user ? "/account" : "/sign-in"}
+          to={user.user ? `/account/${user.user.username}` : "/sign-in"}
           title={user.user ? "Account" : "Sign In"}
           className="flex flex-col items-center text-xs text-gray-600"
         >

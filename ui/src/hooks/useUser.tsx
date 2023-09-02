@@ -5,6 +5,7 @@ import API from "../api";
 interface UserContext {
   user: User | null;
   setUser: (user: User) => void;
+  logout: () => void;
 }
 
 interface UserProviderProps {
@@ -24,8 +25,16 @@ const UserProvider = ({ children }: UserProviderProps) => {
     });
   }, []);
 
+  const logout = () => {
+    API.logout().then((response) => {
+      if (response.ok) {
+        setUser(null);
+      }
+    });
+  };
+
   return (
-    <userContext.Provider value={{ user, setUser }}>
+    <userContext.Provider value={{ user, setUser, logout }}>
       {children}
     </userContext.Provider>
   );
