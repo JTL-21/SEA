@@ -4,7 +4,7 @@ from typing import Tuple
 from flask import Flask
 from flask_cors import CORS
 from werkzeug.exceptions import HTTPException
-from app.models import *
+from app.models import User
 from app.routes import comment_bp, project_bp, ticket_bp, user_bp, system_bp
 from app.extensions import db, login_manager
 from app.config import Config
@@ -36,7 +36,7 @@ def create_app(config: Config = Config()):
 
         if not isinstance(error, HTTPException):
             # Only log actual errors
-            logging.error(f"HTTP Error {code}: {str(error)}")
+            logging.error("HTTP Error %s: %s", str(code), str(error))
 
         return {"message": desc}, code
 
