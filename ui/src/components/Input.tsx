@@ -25,6 +25,7 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
       errorClasses,
       focusClasses,
       labelClasses,
+      placeholder,
       ...inputProps
     },
     ref
@@ -45,7 +46,7 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
           ref={ref}
           id={id}
           name={inputProps.name ?? id}
-          placeholder={label}
+          placeholder={label ?? placeholder}
           className={cn(
             styled &&
               "block w-full rounded-md border-[1px] border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm ring-0 placeholder:text-gray-400",
