@@ -16,8 +16,19 @@ create_ticket_schema = {
             "error_message": "Description must be a string no longer than 2000 characters.",
         },
         "project": create_project_schema["properties"]["key"],
+        "priority": {
+            "type": "string",
+            "enum": ["VERY_LOW", "LOW", "MEDIUM", "HIGH", "VERY_HIGH"],
+            "error_message": "Priority must be VERY_LOW, LOW, MEDIUM, HIGH or VERY_HIGH.",
+        },
+        "points": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9,
+            "error_message": "Points must be a value between 0 and 9",
+        },
     },
-    "required": ["title"],
+    "required": ["title", "project"],
 }
 
 edit_ticket_schema = {
@@ -30,11 +41,8 @@ edit_ticket_schema = {
             "enum": ["WAITING", "IN_PROGRESS", "IN_TEST", "DONE"],
             "error_message": "Ticket status must be WAITING, IN_PROGRESS, IN_TEST or DONE.",
         },
+        "priority": create_ticket_schema["properties"]["priority"],
+        "points": create_ticket_schema["properties"]["points"],
     },
-    "anyOf": [
-        {"required": ["title"]},
-        {"required": ["description"]},
-        {"required": ["status"]},
-    ],
     "error_message": "At least one property must be provided (title, description).",
 }

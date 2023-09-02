@@ -21,6 +21,8 @@ interface Ticket {
   author: User;
   slug: string;
   created_at: string;
+  points: number;
+  priority: "VERY_LOW" | "LOW" | "MEDIUM" | "HIGH" | "VERY_HIGH";
 }
 
 interface Comment {

@@ -39,13 +39,15 @@ def edit_ticket(slug):
 
     ticket = response
 
-    title, description, status = item_getter("title", "description", "status")(
-        request.json
-    )
+    title, description, status, priority, points = item_getter(
+        "title", "description", "status", "priority", "points"
+    )(request.json)
 
     ticket.title = title or ticket.title
     ticket.description = description or ticket.description
     ticket.status = status or ticket.status
+    ticket.priority = priority or ticket.priority
+    ticket.points = points or ticket.points
 
     db.session.commit()
 
@@ -82,8 +84,8 @@ def create_ticket():
     body: project, title, author, description?
     """
 
-    project, title, author, description = item_getter(
-        "project", "title", "author", "description"
+    project, title, author, description, priority, points = item_getter(
+        "project", "title", "author", "description", "priority", "points"
     )(request.json)
 
     stripped_title = title.strip()
@@ -103,6 +105,8 @@ def create_ticket():
         author=author.username,
         title=stripped_title,
         description=stripped_description,
+        priority=priority,
+        points=points,
     )
     db.session.add(new_ticket)
     db.session.commit()

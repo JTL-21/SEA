@@ -46,6 +46,7 @@ const ProjectPage = () => {
     const ticketSlug = String(event.active.id);
     const newStatus = event.collisions[0].id as Ticket["status"];
 
+    if (newStatus === activeTicket?.status) return;
     API.editTicket(ticketSlug, { status: newStatus });
 
     setTickets((old) =>

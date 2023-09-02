@@ -19,6 +19,8 @@ class Ticket(db.Model):
         db.VARCHAR(length=16), unique=False, nullable=False, default="WAITING"
     )
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    points = db.Column(db.Integer, default=1, nullable=False)
+    priority = db.Column(db.VARCHAR(9), default="MEDIUM", nullable=False)
 
     comments = db.relationship(
         "Comment",
@@ -66,4 +68,6 @@ class Ticket(db.Model):
             "author": author.as_dict(),
             "slug": f"{project.key}-{self.id}",
             "created_at": self.created_at.isoformat(),
+            "points": self.points,
+            "priority": self.priority,
         }
