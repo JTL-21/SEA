@@ -418,85 +418,85 @@
     "tickets": [
       {
         "title": "Implement user registration and login",
-        "description": "As a user, I want to be able to register and login to the Facetweet platform.\n\n**Tasks**:\n- Create a registration form\n- Implement user authentication\n- Create a login form\n\n**Acceptance Criteria**:\n- Users should be able to register with a unique username and password\n- Users should be able to login with their registered credentials\n- Invalid login attempts should display an error message\n\n**Priority**: 1",
+        "description": "As a user, I want to be able to register and login to the Facetweet platform.\n\n**Tasks**:\n- Create a registration form\n- Implement user authentication\n- Create a login form\n\n**Acceptance Criteria**:\n- Users should be able to register with a unique username and password\n- Users should be able to login with their registered credentials\n- Invalid login attempts should display an error message",
         "priority": 1,
         "points": 1
       },
       {
         "title": "Enable photo uploading and filtering",
-        "description": "As a user, I want to be able to upload photos to the Facetweet platform and apply filters to enhance them.\n\n**Tasks**:\n- Create a photo upload form\n- Implement photo filtering functionality\n\n**Acceptance Criteria**:\n- Users should be able to select and upload photos from their device\n- Uploaded photos should be displayed on the platform\n- Users should be able to apply filters to their uploaded photos\n\n**Priority**: 2",
+        "description": "As a user, I want to be able to upload photos to the Facetweet platform and apply filters to enhance them.\n\n**Tasks**:\n- Create a photo upload form\n- Implement photo filtering functionality\n\n**Acceptance Criteria**:\n- Users should be able to select and upload photos from their device\n- Uploaded photos should be displayed on the platform\n- Users should be able to apply filters to their uploaded photos",
         "priority": 2,
         "points": 2
       },
       {
         "title": "Implement news feed and timeline",
-        "description": "As a user, I want to be able to view a news feed and timeline on the Facetweet platform.\n\n**Tasks**:\n- Design and implement a news feed and timeline layout\n- Fetch and display posts from followed users\n\n**Acceptance Criteria**:\n- Users should be able to see posts from users they follow on their news feed\n- Posts should be displayed in chronological order\n\n**Priority**: 3",
+        "description": "As a user, I want to be able to view a news feed and timeline on the Facetweet platform.\n\n**Tasks**:\n- Design and implement a news feed and timeline layout\n- Fetch and display posts from followed users\n\n**Acceptance Criteria**:\n- Users should be able to see posts from users they follow on their news feed\n- Posts should be displayed in chronological order",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Create user profiles and followers functionality",
-        "description": "As a user, I want to have a profile page on the Facetweet platform and be able to follow other users.\n\n**Tasks**:\n- Design and implement user profile pages\n- Implement follow/unfollow functionality\n\n**Acceptance Criteria**:\n- Users should have a profile page displaying their information and uploaded photos\n- Users should be able to follow/unfollow other users\n\n**Priority**: 4",
+        "description": "As a user, I want to have a profile page on the Facetweet platform and be able to follow other users.\n\n**Tasks**:\n- Design and implement user profile pages\n- Implement follow/unfollow functionality\n\n**Acceptance Criteria**:\n- Users should have a profile page displaying their information and uploaded photos\n- Users should be able to follow/unfollow other users",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Implement direct messaging feature",
-        "description": "As a user, I want to be able to send direct messages to other users on the Facetweet platform.\n\n**Tasks**:\n- Design and implement a direct messaging interface\n- Implement sending and receiving messages\n\n**Acceptance Criteria**:\n- Users should be able to send direct messages to other users\n- Users should be able to view and reply to received messages\n\n**Priority**: 5",
+        "description": "As a user, I want to be able to send direct messages to other users on the Facetweet platform.\n\n**Tasks**:\n- Design and implement a direct messaging interface\n- Implement sending and receiving messages\n\n**Acceptance Criteria**:\n- Users should be able to send direct messages to other users\n- Users should be able to view and reply to received messages",
         "priority": 5,
         "points": 5
       },
       {
         "title": "Set up Ruby on Rails backend",
-        "description": "As a developer, I need to set up the Ruby on Rails backend for the Facetweet platform.\n\n**Tasks**:\n- Install Ruby on Rails\n- Create necessary models and controllers\n\n**Acceptance Criteria**:\n- Ruby on Rails should be successfully installed\n- Models and controllers should be created\n\n**Priority**: 1",
+        "description": "As a developer, I need to set up the Ruby on Rails backend for the Facetweet platform.\n\n**Tasks**:\n- Install Ruby on Rails\n- Create necessary models and controllers\n\n**Acceptance Criteria**:\n- Ruby on Rails should be successfully installed\n- Models and controllers should be created",
         "priority": 1,
         "points": 1
       },
       {
         "title": "Configure PostgreSQL database",
-        "description": "As a developer, I need to configure the PostgreSQL database for the Facetweet platform.\n\n**Tasks**:\n- Install PostgreSQL\n- Set up database configuration\n\n**Acceptance Criteria**:\n- PostgreSQL should be successfully installed\n- Database configuration should be set up\n\n**Priority**: 2",
+        "description": "As a developer, I need to configure the PostgreSQL database for the Facetweet platform.\n\n**Tasks**:\n- Install PostgreSQL\n- Set up database configuration\n\n**Acceptance Criteria**:\n- PostgreSQL should be successfully installed\n- Database configuration should be set up",
         "priority": 2,
         "points": 2
       },
       {
         "title": "Integrate React.js frontend",
-        "description": "As a developer, I need to integrate React.js as the frontend framework for the Facetweet platform.\n\n**Tasks**:\n- Set up React.js project\n- Create necessary components\n\n**Acceptance Criteria**:\n- React.js should be successfully integrated\n- Components should be created and functional\n\n**Priority**: 3",
+        "description": "As a developer, I need to integrate React.js as the frontend framework for the Facetweet platform.\n\n**Tasks**:\n- Set up React.js project\n- Create necessary components\n\n**Acceptance Criteria**:\n- React.js should be successfully integrated\n- Components should be created and functional",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Implement AWS S3 for photo storage",
-        "description": "As a developer, I need to implement AWS S3 for storing uploaded photos on the Facetweet platform.\n\n**Tasks**:\n- Set up AWS S3 account\n- Integrate AWS S3 with the backend\n\n**Acceptance Criteria**:\n- AWS S3 should be successfully set up\n- Uploaded photos should be stored in AWS S3\n\n**Priority**: 4",
+        "description": "As a developer, I need to implement AWS S3 for storing uploaded photos on the Facetweet platform.\n\n**Tasks**:\n- Set up AWS S3 account\n- Integrate AWS S3 with the backend\n\n**Acceptance Criteria**:\n- AWS S3 should be successfully set up\n- Uploaded photos should be stored in AWS S3",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Design and implement registration form UI",
-        "description": "As a designer, I need to design and implement the registration form UI for the Facetweet platform.\n\n**Tasks**:\n- Design the registration form UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The registration form should have an intuitive and user-friendly design\n- The implemented UI should match the design\n\n**Priority**: 1",
+        "description": "As a designer, I need to design and implement the registration form UI for the Facetweet platform.\n\n**Tasks**:\n- Design the registration form UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The registration form should have an intuitive and user-friendly design\n- The implemented UI should match the design",
         "priority": 1,
         "points": 1
       },
       {
         "title": "Design and implement photo upload form UI",
-        "description": "As a designer, I need to design and implement the photo upload form UI for the Facetweet platform.\n\n**Tasks**:\n- Design the photo upload form UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The photo upload form should have an intuitive and user-friendly design\n- The implemented UI should match the design\n\n**Priority**: 2",
+        "description": "As a designer, I need to design and implement the photo upload form UI for the Facetweet platform.\n\n**Tasks**:\n- Design the photo upload form UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The photo upload form should have an intuitive and user-friendly design\n- The implemented UI should match the design",
         "priority": 2,
         "points": 2
       },
       {
         "title": "Design and implement news feed UI",
-        "description": "As a designer, I need to design and implement the news feed UI for the Facetweet platform.\n\n**Tasks**:\n- Design the news feed UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The news feed should have an intuitive and user-friendly design\n- The implemented UI should match the design\n\n**Priority**: 3",
+        "description": "As a designer, I need to design and implement the news feed UI for the Facetweet platform.\n\n**Tasks**:\n- Design the news feed UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The news feed should have an intuitive and user-friendly design\n- The implemented UI should match the design",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Design and implement user profile UI",
-        "description": "As a designer, I need to design and implement the user profile UI for the Facetweet platform.\n\n**Tasks**:\n- Design the user profile UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The user profile should have an intuitive and user-friendly design\n- The implemented UI should match the design\n\n**Priority**: 4",
+        "description": "As a designer, I need to design and implement the user profile UI for the Facetweet platform.\n\n**Tasks**:\n- Design the user profile UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The user profile should have an intuitive and user-friendly design\n- The implemented UI should match the design",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Design and implement direct messaging UI",
-        "description": "As a designer, I need to design and implement the direct messaging UI for the Facetweet platform.\n\n**Tasks**:\n- Design the direct messaging UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The direct messaging interface should have an intuitive and user-friendly design\n- The implemented UI should match the design\n\n**Priority**: 5",
+        "description": "As a designer, I need to design and implement the direct messaging UI for the Facetweet platform.\n\n**Tasks**:\n- Design the direct messaging UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The direct messaging interface should have an intuitive and user-friendly design\n- The implemented UI should match the design",
         "priority": 5,
         "points": 5
       }
