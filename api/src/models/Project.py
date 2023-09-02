@@ -15,8 +15,6 @@ class Project(db.Model):
     ticket_counter = db.Column(db.Integer, nullable=False, default=1)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
-    tickets = db.relationship("Ticket", backref="Project")
-
     def get_tickets(self, operator="all"):
         # Import here to prevent circular import
         from .Ticket import Ticket

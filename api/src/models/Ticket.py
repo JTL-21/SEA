@@ -36,13 +36,6 @@ class Ticket(db.Model):
     points = db.Column(db.Integer, default=1, nullable=False)
     priority = db.Column(db.VARCHAR(9), default="MEDIUM", nullable=False)
 
-    comments = db.relationship(
-        "Comment",
-        backref="Ticket",
-        cascade="all,delete,delete-orphan",
-        primaryjoin="and_(Ticket.project==Comment.ticket_project, Ticket.id==Comment.ticket_id)",
-    )
-
     @staticmethod
     def from_slug(slug: str):
         """
