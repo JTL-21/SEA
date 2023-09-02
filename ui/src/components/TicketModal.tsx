@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Ticket } from "../types";
+import { Ticket, Comment } from "../types";
 import Markdown from "./Markdown";
 import { priorityIconMap, priorityNameMap } from "./Ticket";
 import AccountCircleIcon from "./icons/AccountCircleIcon";
@@ -10,8 +10,10 @@ import Delete from "./icons/Delete";
 import Assign from "./icons/Assign";
 import React from "react";
 import cn from "clsx";
-import API from "../api";
 import Button from "./Button";
+import API from "../api";
+import CommentComponent from "./CommentComponent";
+import formatDateTime from "../utils/time";
 
 interface TicketModalProps {
   ticket: Ticket;
@@ -84,6 +86,7 @@ const ModalGroupDivider = () => (
 
 const TicketModal = ({ ticket }: TicketModalProps) => {
   const navigate = useNavigate();
+  const [comments, setComments] = React.useState<Comment[]>([]);
 
   const handleModalClose = () => navigate(`/project/${ticket.project.key}`);
 
@@ -95,6 +98,14 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
     });
   };
 
+  React.useEffect(() => {
+    API.getTicketComments(ticket.slug).then((response) => {
+      if (response.ok) {
+        setComments(response.data);
+      }
+    });
+  }, [ticket]);
+
   const date = new Date(ticket.created_at);
 
   return (
@@ -103,15 +114,15 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
       onClick={handleModalClose}
     >
       <div
-        className="flex w-[800px] flex-col overflow-hidden rounded-md bg-white text-gray-600 shadow"
+        className="flex w-[1500px] flex-col overflow-hidden rounded-md bg-white text-gray-600 shadow"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="flex items-stretch gap-2 border-b-[1px]">
-          <div className="flex items-center pl-4 text-xl">
-            <span className="font-semibold text-gray-400">{ticket.slug}</span>
+        <div className="flex items-stretch gap-2 border-b-[1px] text-2xl">
+          <div className="flex items-center pl-4 ">
+            <span className="font-semibold text-gray-500">{ticket.slug}</span>
           </div>
           <div className="flex flex-grow items-center">
-            <h3 className="text-xl">{ticket.title}</h3>
+            <h3>{ticket.title}</h3>
           </div>
           <div className="aspect-square border-l-[1px]">
             <button
@@ -124,11 +135,25 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
         </div>
 
         <div className="flex flex-grow">
-          <div className="flex max-h-[450px] flex-grow basis-2/3 flex-col overflow-y-scroll px-4 py-2 ">
+          <div className="flex max-h-[600px] flex-grow basis-2/4 flex-col overflow-y-scroll px-4 py-2">
             <h4 className="text-xl font-semibold">Description</h4>
             <Markdown>{ticket.description}</Markdown>
           </div>
-          <div className="basis-1/3 flex-col border-l-[1px] text-sm">
+
+          <div className="flex max-h-[600px] flex-grow basis-1/4 flex-col overflow-y-scroll border-l-[1px] px-4 py-2">
+            <h4 className="text-xl font-semibold">Comments</h4>
+            <div className="mt-1 flex flex-col gap-2">
+              {comments.map((comment) => (
+                <CommentComponent comment={comment} key={comment.id} />
+              ))}
+            </div>
+            {comments.length === 0 && (
+              <span className="text-sm text-gray-400">
+                No comments to show...
+              </span>
+            )}
+          </div>
+          <div className="max-w-[250px] basis-1/4 flex-col border-l-[1px] text-sm">
             <ModalGroup>
               <ModalData icon={priorityIconMap[ticket.priority]}>
                 {priorityNameMap[ticket.priority]} Priority
@@ -167,9 +192,7 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
             </ModalGroup>
             <ModalGroupDivider />
             <ModalGroup>
-              <ModalData icon={<Time />}>
-                {date.toLocaleDateString()} {date.toLocaleTimeString()}
-              </ModalData>
+              <ModalData icon={<Time />}>{formatDateTime(date)}</ModalData>
               <ModalData icon={<AccountCircleIcon />}>
                 <span>
                   Created by <UserLink>{ticket.author.username}</UserLink>

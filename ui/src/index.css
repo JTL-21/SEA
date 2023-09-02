@@ -38,10 +38,27 @@
   ul {
     @apply list-disc;
   }
+
+  .prose h1,
+  h1.prose {
+    @apply text-3xl;
+  }
+  .prose h2,
+  h2.prose {
+    @apply text-2xl;
+  }
+  .prose h3,
+  h3.prose {
+    @apply text-xl;
+  }
+  .prose h4,
+  h4.prose {
+    @apply text-lg;
+  }
 }
 
 html,
 body,
 #root {
-  @apply h-full;
+  @apply h-full font-normal;
 }
