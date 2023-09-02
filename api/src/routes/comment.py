@@ -1,10 +1,11 @@
 from flask import request, abort, make_response
+from flask_login import login_required, current_user
 from .. import app
-from ..models import Ticket, Comment, User
 from ..db import db
+from ..models import Ticket, Comment, User
 from ..validation.comment import create_comment_schema
 from ..validation.utils import item_getter, validate_body
-from flask_login import login_required, current_user
+from ..utils.list import model_list_as_dict
 
 
 @app.get("/api/ticket/<slug>/comments")
@@ -18,7 +19,7 @@ def get_ticket_comments(slug):
 
     ticket = Ticket.from_slug(slug)
 
-    comment_dicts = list(map(lambda comment: comment.as_dict(), ticket.comments))
+    comment_dicts = model_list_as_dict(ticket.comments)
 
     return comment_dicts
 

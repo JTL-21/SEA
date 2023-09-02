@@ -1,6 +1,6 @@
-from ..db import db
-from .User import User
 from datetime import datetime
+from .User import User
+from ..db import db
 
 
 class Project(db.Model):
@@ -15,6 +15,14 @@ class Project(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
     tickets = db.relationship("Ticket", backref="Project")
+
+    def get_tickets(self, operator="all"):
+        # Import here to prevent circular import
+        from .Ticket import Ticket
+
+        tickets = Ticket.query.filter_by(project=self.key)[operator]()
+
+        return tickets
 
     def as_dict(self):
         owner = User.query.filter_by(username=self.owner).first()

@@ -5,8 +5,8 @@ from flask import Flask, send_from_directory
 from flask_cors import CORS
 from flask_login import LoginManager
 from werkzeug.exceptions import HTTPException
-from .models import User, Project, Ticket, Comment
 from .db import db
+from .models import User, Project, Ticket, Comment
 
 
 load_dotenv()

@@ -1,6 +1,6 @@
-from ..db import db
-from .User import User
 from datetime import datetime
+from .User import User
+from ..db import db
 
 
 class Comment(db.Model):

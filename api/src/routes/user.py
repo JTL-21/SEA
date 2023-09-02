@@ -1,11 +1,11 @@
 from flask import request, abort, make_response
-from .. import app
-from ..models import User
-from ..db import db
-from ..validation.user import create_user_schema, login_schema
-from ..validation.utils import item_getter, validate_body
 from flask_login import login_required, login_user, logout_user, current_user
 from sqlalchemy import func
+from .. import app
+from ..db import db
+from ..models import User
+from ..validation.user import create_user_schema, login_schema
+from ..validation.utils import item_getter, validate_body
 
 
 @app.get("/api/user")
@@ -26,7 +26,7 @@ def query_users():
         func.lower(User.username).ilike(f"%{username.lower()}%")
     ).all()
 
-    user_dicts = list(map(lambda user: user.as_dict(), similar_users))
+    user_dicts = model_list_as_dict(similar_users)
 
     return user_dicts
 

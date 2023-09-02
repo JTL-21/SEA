@@ -1,7 +1,7 @@
-from ..db import db
-from argon2 import PasswordHasher, exceptions
 from datetime import datetime
 from flask_login import UserMixin
+from argon2 import PasswordHasher, exceptions
+from ..db import db
 
 
 ph = PasswordHasher()

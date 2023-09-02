@@ -1,11 +1,12 @@
-from ..db import db
+import re
+from flask import abort
+from datetime import datetime
 from .Project import Project
 from .User import User
 from .Comment import Comment
-from flask import abort
-from datetime import datetime
+from ..db import db
 from ..validation.ticket import create_ticket_schema
-import re
+from ..utils.list import model_list_as_dict
 
 
 class Ticket(db.Model):
@@ -93,5 +94,5 @@ class Ticket(db.Model):
             "points": self.points,
             "priority": self.priority,
             "assignee": assignee.as_dict() if assignee else None,
-            "comments": list(map(lambda comment: comment.as_dict(), comments)),
+            "comments": model_list_as_dict(comments),
         }

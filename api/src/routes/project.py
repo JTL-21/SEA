@@ -1,11 +1,12 @@
 from flask import request, abort, make_response
-from .. import app
-from ..models import Project, User
-from ..db import db
-from ..validation.project import create_project_schema, edit_project_schema
-from ..validation.utils import item_getter, validate_body
 from flask_login import login_required, current_user
 from sqlalchemy import or_
+from .. import app
+from ..db import db
+from ..models import Project, User
+from ..validation.project import create_project_schema, edit_project_schema
+from ..validation.utils import item_getter, validate_body
+from ..utils.list import model_list_as_dict
 
 
 @app.get("/api/project")
@@ -28,7 +29,7 @@ def query_projects():
         or_(Project.key.ilike(search_term), Project.title.ilike(search_term))
     ).all()
 
-    project_dicts = list(map(lambda project: project.as_dict(), similar_projects))
+    project_dicts = model_list_as_dict(similar_projects)
 
     return project_dicts
 

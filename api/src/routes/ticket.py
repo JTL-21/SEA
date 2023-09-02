@@ -1,10 +1,11 @@
 from flask import request, abort, make_response
+from flask_login import login_required, current_user
 from .. import app
-from ..models import Ticket, Project, User, Comment
 from ..db import db
+from ..models import Ticket, Project, User, Comment
 from ..validation.ticket import create_ticket_schema, edit_ticket_schema
 from ..validation.utils import item_getter, validate_body
-from flask_login import login_required, current_user
+from ..utils.list import model_list_as_dict
 
 
 @app.get("/api/ticket/<slug>")
@@ -124,8 +125,8 @@ def get_project_tickets(project_key):
     if not project:
         abort(404, "No project with the given key exists")
 
-    tickets = Ticket.query.filter_by(project=project.key).all()
+    tickets = project.get_tickets()
 
-    ticket_dicts = list(map(lambda ticket: ticket.as_dict(), tickets))
+    ticket_dicts = model_list_as_dict(tickets)
 
     return ticket_dicts

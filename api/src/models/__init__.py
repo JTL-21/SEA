@@ -1,4 +1,4 @@
 from .User import User
-from .Ticket import Ticket
 from .Project import Project
+from .Ticket import Ticket
 from .Comment import Comment
