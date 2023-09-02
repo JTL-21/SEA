@@ -62,3 +62,7 @@ body,
 #root {
   @apply h-full font-normal;
 }
+
+.ring-border {
+  @apply ring-1 ring-black ring-opacity-5;
+}

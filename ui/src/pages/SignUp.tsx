@@ -103,16 +103,16 @@ const SignUp = () => {
           autoComplete="password"
           autoCapitalize="off"
         />
+        <Button type="submit" icon={<UserPlusIcon />}>
+          Sign Up
+        </Button>
         <Link
           to="/sign-in"
-          className="cursor-pointer space-x-1 text-center text-gray-700"
+          className="mt-4 cursor-pointer space-x-1 text-center text-gray-700"
         >
           <span>Already have an account?</span>
           <span className="text-amber-900 underline">Sign In</span>
         </Link>
-        <Button type="submit" icon={<UserPlusIcon />}>
-          Sign Up
-        </Button>
       </form>
     </FullscreenForm>
   );

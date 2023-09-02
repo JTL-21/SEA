@@ -93,16 +93,16 @@ const SignIn = () => {
           />
           <label htmlFor={`${id}_stay-signed-in`}>Stay Signed In</label>
         </div>
+        <Button type="submit" icon={<ArrowRightOnRectangleIcon />}>
+          Sign In
+        </Button>
         <Link
           to="/sign-up"
-          className="cursor-pointer space-x-1 text-center text-gray-700"
+          className="mt-4 cursor-pointer space-x-1 text-center text-gray-700"
         >
           <span>Don't have an account?</span>
           <span className="text-amber-900 underline">Sign Up</span>
         </Link>
-        <Button type="submit" icon={<ArrowRightOnRectangleIcon />}>
-          Sign In
-        </Button>
       </form>
     </FullscreenForm>
   );
