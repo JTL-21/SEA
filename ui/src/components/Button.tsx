@@ -86,4 +86,3 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
 );
 
 export default Button;
-export type { Props };

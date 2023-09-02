@@ -10,13 +10,6 @@ interface TicketComponentProps {
   onClick?: (slug: string) => void;
 }
 
-const statusNameMap: Record<Ticket["status"], string> = {
-  WAITING: "Waiting",
-  IN_PROGRESS: "In Progress",
-  IN_TEST: "In Test",
-  DONE: "Done",
-};
-
 const priorityNameMap: Record<Ticket["priority"], string> = {
   VERY_LOW: "Very Low",
   LOW: "Low",
@@ -73,4 +66,4 @@ const TicketComponent = ({ ticket, onClick }: TicketComponentProps) => {
 };
 
 export default TicketComponent;
-export { priorityNameMap, statusNameMap };
+export { priorityNameMap };
