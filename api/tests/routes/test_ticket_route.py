@@ -121,3 +121,10 @@ def test_query_tickets_assignee_and_project(client):
 
     assert response.status_code == 200
     assert len(response.json) == 1
+
+
+@pytest.mark.usefixtures("load_mock_data")
+def test_query_tickets_invalid(client):
+    response = client.get("/api/ticket")
+
+    assert response.status_code == 400
