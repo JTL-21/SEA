@@ -90,6 +90,8 @@ const SignUp = () => {
           label="Username"
           error={errors.username}
           icon={<IdentificationIcon />}
+          autoComplete="given-name"
+          autoCapitalize="off"
         />
         <Input
           type="password"
@@ -98,6 +100,8 @@ const SignUp = () => {
           label="Password"
           error={errors.password}
           icon={<KeyIcon />}
+          autoComplete="password"
+          autoCapitalize="off"
         />
         <Link
           to="/sign-in"

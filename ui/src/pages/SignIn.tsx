@@ -62,6 +62,7 @@ const SignIn = () => {
               message: "Username is required",
             },
           })}
+          autoComplete="given-name"
           id={`${id}_username`}
           label="Username"
           error={errors.username}
@@ -79,6 +80,8 @@ const SignIn = () => {
           label="Password"
           error={errors.password}
           icon={<KeyIcon />}
+          autoComplete="password"
+          autoCapitalize="off"
         />
         <div className="flex items-center gap-2">
           <input
