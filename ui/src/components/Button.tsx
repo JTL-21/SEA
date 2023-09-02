@@ -8,6 +8,7 @@ interface Props extends React.ComponentPropsWithoutRef<"button"> {
   styled?: boolean;
   centered?: boolean;
   requireConfirmation?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   as?: keyof JSX.IntrinsicElements | JSXElementConstructor<any>;
 }
 

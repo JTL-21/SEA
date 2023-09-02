@@ -2,7 +2,6 @@ import React from "react";
 import Markdown from "./Markdown";
 import cn from "clsx";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface MarkdownEditorProps
   extends Omit<
     React.ComponentPropsWithoutRef<"textarea">,
