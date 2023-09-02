@@ -42,9 +42,17 @@ def edit_ticket(slug):
 
     ticket = response
 
-    title, description, status, priority, points = item_getter(
-        "title", "description", "status", "priority", "points"
+    title, description, status, priority, points, assignee = item_getter(
+        "title", "description", "status", "priority", "points", "assignee"
     )(request.json)
+
+    if assignee:
+        user = User.query.filter_by(username=assignee).first()
+        if not user:
+            return abort(
+                404,
+            )
+        ticket.assignee = user.username
 
     ticket.title = title or ticket.title
     ticket.description = description or ticket.description
@@ -99,7 +107,7 @@ def create_ticket():
     project = Project.query.filter_by(key=project).first()
 
     if not project:
-        return abort(404, "No project with the given key exists")
+        return abort(404, "No user with the given username exists")
 
     new_ticket = Ticket(
         project=project.key,

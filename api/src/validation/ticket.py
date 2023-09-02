@@ -43,6 +43,7 @@ edit_ticket_schema = {
         },
         "priority": create_ticket_schema["properties"]["priority"],
         "points": create_ticket_schema["properties"]["points"],
+        "assignee": {"type": "string", "error_message": "Assignee must be a string."},
     },
     "error_message": "At least one property must be provided (title, description).",
 }
