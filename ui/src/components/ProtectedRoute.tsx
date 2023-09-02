@@ -2,9 +2,9 @@ import { Navigate, Outlet } from "react-router-dom";
 import useUser from "../hooks/useUser";
 
 const ProtectedRoute = () => {
-  const { user } = useUser();
+  const { user, loaded } = useUser();
 
-  return user ? <Outlet /> : <Navigate to="/sign-in" />;
+  return user || !loaded ? <Outlet /> : <Navigate to="/sign-in" />;
 };
 
 export default ProtectedRoute;

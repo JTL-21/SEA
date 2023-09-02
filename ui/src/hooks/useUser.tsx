@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 interface UserContext {
   user: User | null;
+  loaded: boolean;
   setUser: (user: User) => void;
   logout: () => void;
 }
@@ -17,6 +18,7 @@ const userContext = React.createContext({} as UserContext);
 
 const UserProvider = ({ children }: UserProviderProps) => {
   const [user, setUser] = React.useState<User | null>(null);
+  const [loaded, setLoaded] = React.useState(false);
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -24,8 +26,9 @@ const UserProvider = ({ children }: UserProviderProps) => {
       if (response.ok) {
         setUser(response.data);
       }
+      setLoaded(true);
     });
-  }, [navigate]);
+  }, []);
 
   const logout = () => {
     API.logout().then((response) => {
@@ -37,7 +40,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
   };
 
   return (
-    <userContext.Provider value={{ user, setUser, logout }}>
+    <userContext.Provider value={{ user, loaded, setUser, logout }}>
       {children}
     </userContext.Provider>
   );
