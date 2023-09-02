@@ -4,6 +4,7 @@ from .db import db
 from dotenv import load_dotenv
 from .models import *
 import logging
+from werkzeug.exceptions import HTTPException
 
 load_dotenv()
 
@@ -21,7 +22,9 @@ def handle_error(error):
     code = getattr(error, "code", 500)
     desc = getattr(error, "description", "Unexpected error")
 
-    logging.error(f"HTTP Error ${code}", str(error))
+    if not isinstance(error, HTTPException):
+        # Only log actual errors
+        logging.error(f"HTTP Error ${code}", str(error))
 
     return {"code": code, "message": desc}, code
 

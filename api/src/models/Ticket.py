@@ -3,6 +3,8 @@ from .Project import Project
 from .User import User
 from flask import abort
 from datetime import datetime
+from ..validation.ticket import create_ticket_schema
+import re
 
 
 class Ticket(db.Model):
@@ -18,11 +20,21 @@ class Ticket(db.Model):
     )
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
+    comments = db.relationship(
+        "Comment",
+        backref="Ticket",
+        cascade="all, delete-orphan",
+        primaryjoin="and_(Ticket.project==Comment.ticket_project, Ticket.id==Comment.ticket_id)",
+    )
+
     @staticmethod
     def from_slug(slug: str):
         """
         Take a ticket slug like ABC-123 and return the corresponding ticket
         """
+
+        if not re.match(r"^[A-Za-z]{3}-[0-9]+$", slug):
+            return (False, abort(400, "Ticket slug did not match the expected format."))
 
         # Split ABC and 123
         [project, key] = slug.split("-")

@@ -2,8 +2,8 @@ from flask import request, abort
 from .. import app
 from ..models import Project, User
 from ..db import db
-from ..validation.project import validate_create_project
-from ..utils.json import item_getter
+from ..validation.project import create_project_schema
+from ..validation.utils import item_getter, validate_body
 
 
 @app.get("/api/project")
@@ -38,6 +38,7 @@ def get_project(key):
 
 
 @app.post("/api/project")
+@validate_body(create_project_schema)
 def create_project():
     """
     Create a new project
@@ -45,24 +46,13 @@ def create_project():
     body: key, title, owner, description?
     """
 
-    is_valid, data_or_error = item_getter(["key", "title", "owner"], ["description"])(
-        request.json
-    )
-
-    if not is_valid:
-        return data_or_error
-
-    key, title, owner, description = data_or_error
+    key, title, description, owner = item_getter(
+        "key", "title", "description", "owner"
+    )(request.json)
 
     upper_key = key.upper().strip()
     stripped_title = title.strip()
     stripped_description = (description or "").strip()
-
-    validation_pass, validation_fail_reason = validate_create_project(
-        upper_key, stripped_title, stripped_description
-    )
-    if not validation_pass:
-        return abort(400, validation_fail_reason)
 
     existing_project = Project.query.filter_by(key=upper_key).first()
     if existing_project:

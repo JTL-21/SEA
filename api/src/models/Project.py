@@ -10,6 +10,8 @@ class Project(db.Model):
     owner = db.Column(db.VARCHAR(32), db.ForeignKey("user.username"), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
+    tickets = db.relationship("Ticket", backref="Project", cascade="all, delete-orphan")
+
     def as_dict(self):
         owner = User.query.filter_by(username=self.owner).first()
 

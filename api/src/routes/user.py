@@ -2,8 +2,8 @@ from flask import request, abort
 from .. import app
 from ..models import User
 from ..db import db
-from ..validation.user import validate_user_username
-from ..utils.json import item_getter
+from ..validation.user import create_user_schema
+from ..validation.utils import item_getter, validate_body
 
 
 @app.get("/api/user")
@@ -45,6 +45,7 @@ def get_user(username):
 
 
 @app.post("/api/user")
+@validate_body(create_user_schema)
 def create_user():
     """
     Create a user with a given username and password
@@ -52,18 +53,9 @@ def create_user():
     body: username, password
     """
 
-    is_valid, data_or_error = item_getter(["username", "password"])(request.json)
-
-    if not is_valid:
-        return data_or_error
-
-    username, password = data_or_error
+    username, password = item_getter("username", "password")(request.json)
 
     stripped_username = username.strip()
-
-    username_valid, username_fail_reason = validate_user_username(stripped_username)
-    if not username_valid:
-        return abort(400, username_fail_reason)
 
     existing_user = User.query.filter_by(username=stripped_username).first()
     if existing_user:

@@ -1,9 +1,9 @@
-from flask import request, abort
+from flask import request, abort, make_response
 from .. import app
 from ..models import Ticket, Comment, User
 from ..db import db
-from ..validation.comment import validate_comment_text
-from ..utils.json import item_getter
+from ..validation.comment import create_comment_schema
+from ..validation.utils import item_getter, validate_body
 
 
 @app.get("/api/ticket/<slug>/comments")
@@ -32,6 +32,7 @@ def get_ticket_comments(slug):
 
 
 @app.post("/api/ticket/<slug>/comment")
+@validate_body(create_comment_schema)
 def create_ticket_comment(slug):
     """
     Create a comment on a given ticket from its slug
@@ -47,18 +48,9 @@ def create_ticket_comment(slug):
 
     ticket = ticket_or_error
 
-    is_valid, data_or_error = item_getter(["text", "author"])(request.json)
-
-    if not is_valid:
-        return data_or_error
-
-    text, author = data_or_error
+    text, author = item_getter("text", "author")(request.json)
 
     stripped_text = text.strip()
-
-    is_text_valid, text_fail_reason = validate_comment_text(stripped_text)
-    if not is_text_valid:
-        return abort(400, text_fail_reason)
 
     user = User.query.filter_by(username=author).first()
     if not user:
@@ -75,3 +67,21 @@ def create_ticket_comment(slug):
     db.session.commit()
 
     return new_comment.as_dict()
+
+
+@app.delete("/api/comment/<id>")
+def delete_comment(id):
+    """
+    Delete a comment on a ticket by its id
+
+    path: id
+    """
+    comment = Comment.query.filter_by(id=id).first()
+
+    if not comment:
+        return abort(404, "No comment with the given id exists")
+
+    db.session.delete(comment)
+    db.session.commit()
+
+    return make_response("", 204)

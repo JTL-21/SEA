@@ -12,6 +12,9 @@ class User(db.Model):
     is_admin = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
+    tickets = db.relationship("Ticket", backref="User", cascade="all, delete-orphan")
+    comments = db.relationship("Comment", backref="User", cascade="all, delete-orphan")
+
     @staticmethod
     def hash_password(password: str) -> str:
         return ph.hash(password)
