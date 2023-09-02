@@ -2,6 +2,7 @@
   {
     "key": "EXO",
     "title": "Exo Task Manager",
+    "owner": "James",
     "description": "This project aims to develop a mobile application for task management. It will allow users to create, organize, and prioritize their tasks efficiently. The app will have features like task categorization, due date reminders, and task sharing with other users. The project will be implemented using React Native framework.\n\n## Features\n\n- User authentication and registration\n- Task creation and editing\n- Task categorization and prioritization\n- Due date reminders\n- Task sharing with other users\n\n## Technologies\n\n- React Native\n- Firebase Authentication\n- Firebase Realtime Database\n- Redux",
     "tickets": [
       {
@@ -105,6 +106,7 @@
   {
     "key": "SHP",
     "title": "Shopbook",
+    "owner": "Emma",
     "description": "This project aims to build an e-commerce website for selling handmade crafts. The website will provide a platform for artisans to showcase and sell their unique creations. Users will be able to browse through various categories, add items to their cart, and make secure online payments. The project will be developed using the MERN stack.\n\n## Features\n\n- User registration and login\n- Product browsing and filtering\n- Shopping cart functionality\n- Secure online payments\n- Order tracking\n\n## Technologies\n\n- MongoDB\n- Express.js\n- React.js\n- Node.js",
     "tickets": [
       {

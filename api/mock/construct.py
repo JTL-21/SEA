@@ -36,7 +36,7 @@ def generate_random():
                 "key": project["key"],
                 "title": project["title"],
                 "description": project["description"],
-                "owner": choice(users),
+                "owner": project.get("owner", choice(users)),
             }
         )
 

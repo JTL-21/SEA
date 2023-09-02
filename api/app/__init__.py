@@ -5,7 +5,7 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.exceptions import HTTPException
 from app.models import User, Project, Ticket, Comment
-from app.routes import comment_bp, project_bp, ticket_bp, user_bp
+from app.routes import comment_bp, project_bp, ticket_bp, user_bp, system_bp
 from app.extensions import db, login_manager
 from app.config import Config
 
@@ -15,6 +15,7 @@ def create_app(config=Config):
 
     app.config.from_object(config)
 
+    app.register_blueprint(system_bp)
     app.register_blueprint(comment_bp)
     app.register_blueprint(project_bp)
     app.register_blueprint(ticket_bp)
@@ -38,10 +39,6 @@ def create_app(config=Config):
             logging.error(f"HTTP Error {code}: {str(error)}")
 
         return {"message": desc}, code
-
-    @app.route("/static/<path:path>")
-    def static_route(path):
-        return send_from_directory("static", path)
 
     logging.basicConfig(
         level=os.environ.get("LOG_LEVEL", "INFO").upper(),

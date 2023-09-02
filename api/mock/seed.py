@@ -30,6 +30,15 @@ def seed_db(db):
             title=project["title"],
             description=project["description"],
             owner=project["owner"],
+            ticket_counter=len(
+                list(
+                    filter(
+                        lambda ticket: ticket["project"] == project["key"],
+                        data["tickets"],
+                    )
+                )
+            )
+            + 1,
         )
         db.session.add(new_project)
 

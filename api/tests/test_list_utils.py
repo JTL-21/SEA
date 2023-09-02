@@ -1,11 +1,8 @@
-from datetime import datetime
 from app.utils.list import model_list_as_dict
 from app.models.User import User
 
 
-def test_model_list_as_dict():
-    now = datetime.now()
-
+def test_model_list_as_dict(now):
     new_user1 = User(username="bob", password="password123", created_at=now)
     new_user2 = User(username="sally", password="password123", created_at=now)
 

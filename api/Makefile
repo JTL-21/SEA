@@ -9,12 +9,12 @@ venv:
 	python3 -m venv ./api/.venv
 
 test:
-	PYTHONPATH=$(pwd):$PYTHONPATH python3 -m pytest
+	PYTHONPATH=$(pwd):$PYTHONPATH python3 -m pytest $(ARGS)
 
 seed:
 	PYTHONPATH=$(pwd):$PYTHONPATH python3 mock/seed.py
 
 coverage:
-	PYTHONPATH=$(pwd):$PYTHONPATH python3 -m coverage run --source=app -m pytest
+	PYTHONPATH=$(pwd):$PYTHONPATH python3 -m coverage run --source=app -m pytest $(ARGS)
 	coverage report -m
 	coverage html

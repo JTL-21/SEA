@@ -46,7 +46,7 @@
       "key": "EXO",
       "title": "Exo Task Manager",
       "description": "This project aims to develop a mobile application for task management. It will allow users to create, organize, and prioritize their tasks efficiently. The app will have features like task categorization, due date reminders, and task sharing with other users. The project will be implemented using React Native framework.\n\n## Features\n\n- User authentication and registration\n- Task creation and editing\n- Task categorization and prioritization\n- Due date reminders\n- Task sharing with other users\n\n## Technologies\n\n- React Native\n- Firebase Authentication\n- Firebase Realtime Database\n- Redux",
-      "owner": "Sophia"
+      "owner": "James"
     },
     {
       "key": "SHP",

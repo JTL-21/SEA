@@ -43,10 +43,13 @@ def authenticated_client(request, app, client, now):
     else:
         data = {}
 
-    username, password = item_getter("username", "password")(data)
+    username, password, is_admin = item_getter("username", "password", "is_admin")(data)
 
     test_user = User(
-        username=username or "James", password=password or "password123", created_at=now
+        username=username or "James",
+        password=password or "password123",
+        is_admin=is_admin or False,
+        created_at=now,
     )
 
     with app.test_request_context():

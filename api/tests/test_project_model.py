@@ -1,6 +1,8 @@
+import pytest
 from app.models.Project import Project
 
 
+@pytest.mark.usefixtures("load_mock_data")
 def test_as_dict():
     project = Project.query.first()
 
@@ -9,6 +11,7 @@ def test_as_dict():
     assert type(project_dict) == dict
 
 
+@pytest.mark.usefixtures("load_mock_data")
 def test_count_project_tickets():
     project = Project.query.filter_by(key="EXO").first()
 
@@ -17,6 +20,7 @@ def test_count_project_tickets():
     assert ticket_count == 16
 
 
+@pytest.mark.usefixtures("load_mock_data")
 def test_get_project_tickets():
     project = Project.query.filter_by(key="EXO").first()
 
