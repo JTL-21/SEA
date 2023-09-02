@@ -1,20 +1,20 @@
 import os
 import logging
-from flask import Flask, send_from_directory
-from .db import db
 from dotenv import load_dotenv
-from .models import User, Project, Ticket, Comment
-from werkzeug.exceptions import HTTPException
+from flask import Flask, send_from_directory
 from flask_cors import CORS
 from flask_login import LoginManager
+from werkzeug.exceptions import HTTPException
+from .models import User, Project, Ticket, Comment
+from .db import db
 
 
 load_dotenv()
 
 app = Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["SQLALCHEMY_DATABASE_URI"]
-app.config["SECRET_KEY"] = os.environ["SECRET_KEY"]
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("SQLALCHEMY_DATABASE_URI")
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -44,8 +44,21 @@ def handle_error(error):
 
 
 @app.route("/static/<path:path>")
-def send_report(path):
+def static_route(path):
     return send_from_directory("static", path)
 
 
+def setup() -> None:
+    logging.basicConfig(
+        level=os.environ.get("LOG_LEVEL", "INFO").upper(),
+        format="%(asctime)s %(levelname)s %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+        handlers=[logging.FileHandler("app.log"), logging.StreamHandler()],
+    )
+
+    logging.info("API Started")
+
+
 from .routes import *
+
+setup()
