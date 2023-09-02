@@ -43,11 +43,10 @@ const MarkdownEditor = React.forwardRef<
           Preview
         </button>
       </div>
-      <div className="flex h-64 [&>*]:basis-full">
+      <div className="flex min-h-[300px] [&>*]:basis-full">
         <textarea
           name={id}
           id={id}
-          // value={value}
           {...textAreaProps}
           className={cn(
             "block h-auto resize-none border-none bg-transparent focus:outline-0 focus:ring-0",

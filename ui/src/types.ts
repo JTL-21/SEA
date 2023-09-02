@@ -71,6 +71,7 @@ interface EditTicketBody {
   description?: Ticket["description"];
   status?: Ticket["status"];
   assignee?: User["username"];
+  points?: Ticket["points"];
 }
 
 interface CreateCommentBody {

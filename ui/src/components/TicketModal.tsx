@@ -21,6 +21,7 @@ import UserSearch from "./UserSearch";
 import Priority from "./icons/Priority";
 import ModalOverlay from "./ModelOverlay";
 import Username from "./Username";
+import TicketEditModal from "./TicketEditModal";
 
 interface TicketModalProps {
   ticket: Ticket;
@@ -108,6 +109,7 @@ const ModalGroupDivider = () => (
 
 const TicketModal = ({ ticket, refreshProject }: TicketModalProps) => {
   const navigate = useNavigate();
+  const [editing, setEditing] = React.useState(false);
 
   const handleModalClose = () => navigate(`/project/${ticket.project.key}`);
   const assignUserButtonRef = React.useRef<HTMLButtonElement>(null);
@@ -139,6 +141,103 @@ const TicketModal = ({ ticket, refreshProject }: TicketModalProps) => {
 
   const date = new Date(ticket.created_at);
 
+  const view = (
+    <>
+      <div className="flex items-stretch gap-2 border-b-[1px] text-2xl">
+        <div className="flex items-center pl-4 ">
+          <span className="font-semibold text-gray-500">{ticket.slug}</span>
+        </div>
+        <div className="flex flex-grow items-center">
+          <h3>{ticket.title}</h3>
+        </div>
+        <div className="aspect-square border-l-[1px]">
+          <button
+            className="grid h-full w-full place-content-center rounded-tr-md bg-white p-2 hover:bg-gray-100"
+            onClick={handleModalClose}
+          >
+            <XMarkIcon className="h-10 w-10" />
+          </button>
+        </div>
+      </div>
+      <div className="flex flex-grow">
+        <div className="flex max-h-[600px] flex-grow basis-2/4 flex-col overflow-y-scroll px-4 py-2">
+          <h4 className="text-xl font-semibold">Description</h4>
+          <Markdown>{ticket.description}</Markdown>
+        </div>
+        <div className="flex max-h-[600px] flex-grow basis-1/4 flex-col border-l-[1px] pt-2">
+          <h4 className="ml-4 text-xl font-semibold">Comments</h4>
+          <CommentColumn ticket={ticket} />
+        </div>
+        <div className="max-w-[250px] basis-1/4 flex-col border-l-[1px] text-sm">
+          <ModalGroup>
+            <ModalData icon={<Priority priority={ticket.priority} />}>
+              {priorityNameMap[ticket.priority]} Priority
+            </ModalData>
+            <ModalData
+              icon={
+                <div className="grid h-6 w-6 place-content-center rounded-full bg-stone-100 font-semibold text-stone-600 shadow">
+                  {ticket.points}
+                </div>
+              }
+            >
+              Story Points
+            </ModalData>
+            <ModalData icon={<UserCircleIcon />} className="relative">
+              <div className="flex space-x-1">
+                Assigned to{" "}
+                {ticket.assignee ? (
+                  <Username user={ticket.assignee} icons={false} />
+                ) : (
+                  "Nobody"
+                )}
+              </div>
+            </ModalData>
+          </ModalGroup>
+          <ModalGroupDivider />
+          <ModalGroup>
+            <ModalButton icon={<PencilIcon />} onClick={() => setEditing(true)}>
+              Edit
+            </ModalButton>
+            <ModalButton
+              icon={<TrashIcon />}
+              onClick={handleDeleteTicket}
+              requireConfirmation={true}
+            >
+              Delete
+            </ModalButton>
+            <Popover className="relative">
+              <ModalButton
+                icon={<TagIcon />}
+                isPopoverButton={true}
+                className="w-full"
+                ref={assignUserButtonRef}
+              >
+                Assign
+              </ModalButton>
+              <Popover.Panel className="absolute top-full z-10">
+                <UserSearch onChange={handleAssignUser} />
+              </Popover.Panel>
+            </Popover>
+          </ModalGroup>
+          <ModalGroupDivider />
+          <ModalGroup>
+            <ModalData icon={<ClockIcon />}>{formatDateTime(date)}</ModalData>
+            <ModalData icon={<UserCircleIcon />}>
+              <div className="flex space-x-1">
+                Added by <Username user={ticket.author} icons={false} />
+              </div>
+            </ModalData>
+          </ModalGroup>
+        </div>
+      </div>
+    </>
+  );
+
+  const handleFinishEditing = () => {
+    setEditing(false);
+    refreshProject("tickets");
+  };
+
   return (
     <Dialog
       open={true}
@@ -149,93 +248,17 @@ const TicketModal = ({ ticket, refreshProject }: TicketModalProps) => {
 
       <Dialog.Panel
         as="div"
-        className="relative flex min-h-[550px] w-[90vw] max-w-[1200px] flex-col rounded-md bg-white text-gray-600 shadow-2xl ring-1 ring-black ring-opacity-5"
+        className="relative flex min-h-[500px] w-[90vw] max-w-[1200px] flex-col rounded-md bg-white text-gray-600 shadow-2xl ring-1 ring-black ring-opacity-5"
       >
-        <div className="flex items-stretch gap-2 border-b-[1px] text-2xl">
-          <div className="flex items-center pl-4 ">
-            <span className="font-semibold text-gray-500">{ticket.slug}</span>
-          </div>
-          <div className="flex flex-grow items-center">
-            <h3>{ticket.title}</h3>
-          </div>
-          <div className="aspect-square border-l-[1px]">
-            <button
-              className="grid h-full w-full place-content-center rounded-tr-md bg-white p-2 hover:bg-gray-100"
-              onClick={handleModalClose}
-            >
-              <XMarkIcon className="h-10 w-10" />
-            </button>
-          </div>
-        </div>
-        <div className="flex flex-grow">
-          <div className="flex max-h-[600px] flex-grow basis-2/4 flex-col overflow-y-scroll px-4 py-2">
-            <h4 className="text-xl font-semibold">Description</h4>
-            <Markdown>{ticket.description}</Markdown>
-          </div>
-          <div className="flex max-h-[600px] flex-grow basis-1/4 flex-col border-l-[1px] pt-2">
-            <h4 className="ml-4 text-xl font-semibold">Comments</h4>
-            <CommentColumn ticket={ticket} />
-          </div>
-          <div className="max-w-[250px] basis-1/4 flex-col border-l-[1px] text-sm">
-            <ModalGroup>
-              <ModalData icon={<Priority priority={ticket.priority} />}>
-                {priorityNameMap[ticket.priority]} Priority
-              </ModalData>
-              <ModalData
-                icon={
-                  <div className="grid h-6 w-6 place-content-center rounded-full bg-stone-100 font-semibold text-stone-600 shadow">
-                    {ticket.points}
-                  </div>
-                }
-              >
-                Story Points
-              </ModalData>
-              <ModalData icon={<UserCircleIcon />} className="relative">
-                <div className="flex space-x-1">
-                  Assigned to{" "}
-                  {ticket.assignee ? (
-                    <Username user={ticket.assignee} icons={false} />
-                  ) : (
-                    "Nobody"
-                  )}
-                </div>
-              </ModalData>
-            </ModalGroup>
-            <ModalGroupDivider />
-            <ModalGroup>
-              <ModalButton icon={<PencilIcon />}>Edit</ModalButton>
-              <ModalButton
-                icon={<TrashIcon />}
-                onClick={handleDeleteTicket}
-                requireConfirmation={true}
-              >
-                Delete
-              </ModalButton>
-              <Popover className="relative">
-                <ModalButton
-                  icon={<TagIcon />}
-                  isPopoverButton={true}
-                  className="w-full"
-                  ref={assignUserButtonRef}
-                >
-                  Assign
-                </ModalButton>
-                <Popover.Panel className="absolute top-full z-10">
-                  <UserSearch onChange={handleAssignUser} />
-                </Popover.Panel>
-              </Popover>
-            </ModalGroup>
-            <ModalGroupDivider />
-            <ModalGroup>
-              <ModalData icon={<ClockIcon />}>{formatDateTime(date)}</ModalData>
-              <ModalData icon={<UserCircleIcon />}>
-                <div className="flex space-x-1">
-                  Added by <Username user={ticket.author} icons={false} />
-                </div>
-              </ModalData>
-            </ModalGroup>
-          </div>
-        </div>
+        {editing ? (
+          <TicketEditModal
+            ticket={ticket}
+            close={handleModalClose}
+            finish={handleFinishEditing}
+          />
+        ) : (
+          view
+        )}
       </Dialog.Panel>
     </Dialog>
   );
