@@ -20,7 +20,7 @@ def query_users():
     username = request.args.get("username", "")
 
     if not username:
-        return abort(400, "Username not provided")
+        abort(400, "Username not provided")
 
     similar_users = User.query.filter(
         func.lower(User.username).ilike(f"%{username.lower()}%")
@@ -45,7 +45,7 @@ def get_user(username):
     user = User.query.filter_by(username=username).first()
 
     if not user:
-        return abort(404, "No user with the given username exists")
+        abort(404, "No user with the given username exists")
 
     return user.as_dict()
 
@@ -60,7 +60,7 @@ def create_user():
     """
 
     if current_user.is_authenticated:
-        return abort(400, "You must logout before you can create a new user")
+        abort(400, "You must logout before you can create a new user")
 
     username, password = item_getter("username", "password")(request.json)
 
@@ -68,7 +68,7 @@ def create_user():
 
     existing_user = User.query.filter_by(username=stripped_username).first()
     if existing_user:
-        return abort(409, "Username taken")
+        abort(409, "Username taken")
 
     password_hash = User.hash_password(password)
 
@@ -95,12 +95,12 @@ def login():
     user = User.query.filter_by(username=username).first()
 
     if not user:
-        return abort(404, "No user with the given username exists")
+        abort(404, "No user with the given username exists")
 
     password_match = user.verify_password(password)
 
     if not password_match:
-        return abort(401, "Incorrect password")
+        abort(401, "Incorrect password")
 
     login_user(user, remember=bool(stay_signed_in))
 
@@ -115,7 +115,7 @@ def logout():
     """
 
     logout_user()
-    return make_response("", 204)
+    return make_response("{}", 204)
 
 
 @app.get("/api/whoami")

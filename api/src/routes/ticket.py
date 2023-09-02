@@ -16,10 +16,7 @@ def get_ticket(slug):
     path: slug
     """
 
-    (is_valid_slug, response) = Ticket.from_slug(slug)
-
-    if not is_valid_slug:
-        return response
+    ticket = Ticket.from_slug(slug)
 
     return response.as_dict()
 
@@ -35,10 +32,7 @@ def edit_ticket(slug):
     body: title? description?
     """
 
-    (is_valid_slug, response) = Ticket.from_slug(slug)
-
-    if not is_valid_slug:
-        return response
+    ticket = Ticket.from_slug(slug)
 
     ticket = response
 
@@ -49,7 +43,7 @@ def edit_ticket(slug):
     if assignee:
         user = User.query.filter_by(username=assignee).first()
         if not user:
-            return abort(
+            abort(
                 404,
             )
         ticket.assignee = user.username
@@ -74,17 +68,12 @@ def delete_ticket(slug):
     path: slug
     """
 
-    (is_valid_slug, response) = Ticket.from_slug(slug)
-
-    if not is_valid_slug:
-        return response
-
-    ticket = response
+    ticket = Ticket.from_slug(slug)
 
     db.session.delete(ticket)
     db.session.commit()
 
-    return make_response("", 204)
+    return make_response("{}", 204)
 
 
 @app.post("/api/ticket")
@@ -107,7 +96,7 @@ def create_ticket():
     project = Project.query.filter_by(key=project).first()
 
     if not project:
-        return abort(404, "No user with the given username exists")
+        abort(404, "No user with the given username exists")
 
     new_ticket = Ticket(
         project=project.key,
@@ -135,7 +124,7 @@ def get_project_tickets(project_key):
 
     project = Project.query.filter_by(key=project_key).first()
     if not project:
-        return abort(404, "No project with the given key exists")
+        abort(404, "No project with the given key exists")
 
     tickets = Ticket.query.filter_by(project=project.key).all()
 

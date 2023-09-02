@@ -35,7 +35,7 @@ def get_project(key):
     project = Project.query.filter_by(key=key).first()
 
     if not project:
-        return abort(404, "No project with the given key exists")
+        abort(404, "No project with the given key exists")
 
     return project.as_dict()
 
@@ -54,10 +54,10 @@ def edit_project(key):
     project = Project.query.filter_by(key=key).first()
 
     if not project:
-        return abort(404, "No project with the given key exists")
+        abort(404, "No project with the given key exists")
 
     if current_user.username != project.owner and not current_user.is_admin:
-        return abort(403, "You do not have permission to edit this project")
+        abort(403, "You do not have permission to edit this project")
 
     title, description = item_getter("title", "description")(request.json)
 
@@ -81,15 +81,15 @@ def delete_project(key):
     project = Project.query.filter_by(key=key).first()
 
     if not project:
-        return abort(404, "No project with the given key exists")
+        abort(404, "No project with the given key exists")
 
     if current_user.username != project.owner and not current_user.is_admin:
-        return abort(403, "You do not have permission to delete this project")
+        abort(403, "You do not have permission to delete this project")
 
     db.session.delete(project)
     db.session.commit()
 
-    return make_response("", 204)
+    return make_response("{}", 204)
 
 
 @app.post("/api/project")
@@ -111,7 +111,7 @@ def create_project():
     existing_project = Project.query.filter_by(key=upper_key).first()
 
     if existing_project:
-        return abort(409, f"Project key {upper_key} is already in use")
+        abort(409, f"Project key {upper_key} is already in use")
 
     new_project = Project(
         key=upper_key,

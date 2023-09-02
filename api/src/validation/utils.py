@@ -62,7 +62,7 @@ def validate_body(schema):
                     else e.message
                 )
 
-                return abort(
+                abort(
                     400,
                     message,
                 )

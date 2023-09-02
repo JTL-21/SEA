@@ -16,12 +16,8 @@ def get_ticket_comments(slug):
     path: slug
     """
 
-    (is_valid_slug, ticket_or_error) = Ticket.from_slug(slug)
+    ticket = Ticket.from_slug(slug)
 
-    if not is_valid_slug:
-        return ticket_or_error
-
-    ticket = ticket_or_error
     comments = Comment.query.filter_by(
         ticket_project=ticket.project, ticket_id=ticket.id
     ).all()
@@ -44,12 +40,7 @@ def create_ticket_comment(slug):
     body: text, author
     """
 
-    (is_valid_slug, ticket_or_error) = Ticket.from_slug(slug)
-
-    if not is_valid_slug:
-        return ticket_or_error
-
-    ticket = ticket_or_error
+    ticket = Ticket.from_slug(slug)
 
     text = item_getter("text")(request.json)
 
@@ -78,12 +69,12 @@ def delete_comment(id):
     comment = Comment.query.filter_by(id=id).first()
 
     if not comment:
-        return abort(404, "No comment with the given id exists")
+        abort(404, "No comment with the given id exists")
 
     if current_user.username != comment.author and not current_user.is_admin:
-        return abort(403, "You do not have permission to delete this comment")
+        abort(403, "You do not have permission to delete this comment")
 
     db.session.delete(comment)
     db.session.commit()
 
-    return make_response("", 204)
+    return make_response("{}", 204)

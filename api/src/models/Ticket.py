@@ -48,7 +48,7 @@ class Ticket(db.Model):
         """
 
         if not re.match(r"^[A-Za-z]{3}-[0-9]+$", slug):
-            return (False, abort(400, "Ticket slug did not match the expected format."))
+            abort(400, "Ticket slug did not match the expected format.")
 
         # Split ABC and 123
         [project, key] = slug.split("-")
@@ -59,13 +59,13 @@ class Ticket(db.Model):
         project = Project.query.filter_by(key=upper_project_key).first()
 
         if not project:
-            return (False, abort(404, "No project with the given key exists"))
+            abort(404, "No project with the given key exists")
 
         ticket = Ticket.query.filter_by(project=project.key, id=format_key).first()
         if not ticket:
-            return (False, abort(404, "No ticket with the given slug exists"))
+            abort(404, "No ticket with the given slug exists")
 
-        return (True, ticket)
+        return ticket
 
     def as_dict(self):
         project = Project.query.filter_by(key=self.project).first()
