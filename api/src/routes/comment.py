@@ -19,7 +19,9 @@ def get_ticket_comments(slug):
 
     ticket = Ticket.from_slug(slug)
 
-    comment_dicts = model_list_as_dict(ticket.comments)
+    comments = ticket.get_comments()
+
+    comment_dicts = model_list_as_dict(comments)
 
     return comment_dicts
 
