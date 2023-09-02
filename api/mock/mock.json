@@ -1,0 +1,2464 @@
+{
+  "users": [
+    {
+      "username": "John",
+      "password": "$argon2id$v=19$m=65536,t=3,p=4$3jTah+NKnD1w+Op5SYHvhw$6pe0OSn34EEPouzx82ggsmZq5mapesFkbPQyJgOmS8g"
+    },
+    {
+      "username": "Emma",
+      "password": "$argon2id$v=19$m=65536,t=3,p=4$3jTah+NKnD1w+Op5SYHvhw$6pe0OSn34EEPouzx82ggsmZq5mapesFkbPQyJgOmS8g"
+    },
+    {
+      "username": "Michael",
+      "password": "$argon2id$v=19$m=65536,t=3,p=4$3jTah+NKnD1w+Op5SYHvhw$6pe0OSn34EEPouzx82ggsmZq5mapesFkbPQyJgOmS8g"
+    },
+    {
+      "username": "Sophia",
+      "password": "$argon2id$v=19$m=65536,t=3,p=4$3jTah+NKnD1w+Op5SYHvhw$6pe0OSn34EEPouzx82ggsmZq5mapesFkbPQyJgOmS8g"
+    },
+    {
+      "username": "David",
+      "password": "$argon2id$v=19$m=65536,t=3,p=4$3jTah+NKnD1w+Op5SYHvhw$6pe0OSn34EEPouzx82ggsmZq5mapesFkbPQyJgOmS8g"
+    },
+    {
+      "username": "Olivia",
+      "password": "$argon2id$v=19$m=65536,t=3,p=4$3jTah+NKnD1w+Op5SYHvhw$6pe0OSn34EEPouzx82ggsmZq5mapesFkbPQyJgOmS8g"
+    },
+    {
+      "username": "Daniel",
+      "password": "$argon2id$v=19$m=65536,t=3,p=4$3jTah+NKnD1w+Op5SYHvhw$6pe0OSn34EEPouzx82ggsmZq5mapesFkbPQyJgOmS8g"
+    },
+    {
+      "username": "Isabella",
+      "password": "$argon2id$v=19$m=65536,t=3,p=4$3jTah+NKnD1w+Op5SYHvhw$6pe0OSn34EEPouzx82ggsmZq5mapesFkbPQyJgOmS8g"
+    },
+    {
+      "username": "James",
+      "password": "$argon2id$v=19$m=65536,t=3,p=4$3jTah+NKnD1w+Op5SYHvhw$6pe0OSn34EEPouzx82ggsmZq5mapesFkbPQyJgOmS8g"
+    },
+    {
+      "username": "Ava",
+      "password": "$argon2id$v=19$m=65536,t=3,p=4$3jTah+NKnD1w+Op5SYHvhw$6pe0OSn34EEPouzx82ggsmZq5mapesFkbPQyJgOmS8g"
+    }
+  ],
+  "projects": [
+    {
+      "key": "EXO",
+      "title": "Exo Task Manager",
+      "description": "This project aims to develop a mobile application for task management. It will allow users to create, organize, and prioritize their tasks efficiently. The app will have features like task categorization, due date reminders, and task sharing with other users. The project will be implemented using React Native framework.\n\n## Features\n\n- User authentication and registration\n- Task creation and editing\n- Task categorization and prioritization\n- Due date reminders\n- Task sharing with other users\n\n## Technologies\n\n- React Native\n- Firebase Authentication\n- Firebase Realtime Database\n- Redux",
+      "owner": "Sophia"
+    },
+    {
+      "key": "SHP",
+      "title": "Shopbook",
+      "description": "This project aims to build an e-commerce website for selling handmade crafts. The website will provide a platform for artisans to showcase and sell their unique creations. Users will be able to browse through various categories, add items to their cart, and make secure online payments. The project will be developed using the MERN stack.\n\n## Features\n\n- User registration and login\n- Product browsing and filtering\n- Shopping cart functionality\n- Secure online payments\n- Order tracking\n\n## Technologies\n\n- MongoDB\n- Express.js\n- React.js\n- Node.js",
+      "owner": "Isabella"
+    },
+    {
+      "key": "GSK",
+      "title": "Grey Skies",
+      "description": "This project aims to create a weather forecasting application that provides accurate and real-time weather information. Users will be able to search for weather conditions of any location worldwide. The app will display current weather, hourly forecasts, and a 7-day forecast. The project will utilize APIs to fetch weather data.\n\n## Features\n\n- Location-based weather search\n- Current weather display\n- Hourly forecasts\n- 7-day forecast\n- Weather alerts\n\n## Technologies\n\n- HTML\n- CSS\n- JavaScript\n- OpenWeatherMap API",
+      "owner": "Daniel"
+    },
+    {
+      "key": "JFD",
+      "title": "JustFood",
+      "description": "This project aims to develop a food delivery mobile application that connects users with local restaurants. Users will be able to browse menus, place orders, and track their deliveries in real-time. The app will also include features like user reviews, restaurant ratings, and payment integration.\n\n## Features\n\n- User registration and login\n- Restaurant browsing and menu display\n- Order placement and tracking\n- User reviews and ratings\n- Payment integration\n\n## Technologies\n\n- React Native\n- Node.js\n- Express.js\n- MongoDB",
+      "owner": "David"
+    },
+    {
+      "key": "FBT",
+      "title": "Facetweet",
+      "description": "This project aims to create a social media platform for sharing photos and connecting with friends. Users will be able to upload photos, apply filters, and share them with their followers. The platform will also include features like user profiles, news feed, and direct messaging.\n\n## Features\n\n- User registration and login\n- Photo uploading and filtering\n- News feed and timeline\n- User profiles and followers\n- Direct messaging\n\n## Technologies\n\n- Ruby on Rails\n- PostgreSQL\n- React.js\n- AWS S3",
+      "owner": "John"
+    },
+    {
+      "key": "MVM",
+      "title": "Move Meter",
+      "description": "This project aims to develop a fitness tracking mobile application that helps users monitor their exercise routines and progress. The app will allow users to set fitness goals, track their workouts, and provide insights on their performance. It will also include features like calorie tracking and workout reminders.\n\n## Features\n\n- User registration and login\n- Fitness goal setting\n- Workout tracking\n- Performance insights\n- Calorie tracking\n\n## Technologies\n\n- Flutter\n- Firebase Authentication\n- Firebase Firestore\n- Google Fit API",
+      "owner": "Daniel"
+    }
+  ],
+  "tickets": [
+    {
+      "id": 1,
+      "project": "EXO",
+      "title": "User authentication and registration",
+      "description": "Implement user authentication and registration functionality using Firebase Authentication.\n\n### Acceptance Criteria\n- Users should be able to create an account with a valid email and password.\n- Users should be able to log in with their registered credentials.\n- Passwords must be securely hashed and stored.\n- Provide error messages for invalid login attempts.\n- Implement 'Forgot Password' functionality with password reset capability.\n- Ensure proper error handling for any potential authentication issues.",
+      "priority": "LOW",
+      "points": 3,
+      "author": "Ava",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 2,
+      "project": "EXO",
+      "title": "Task creation and editing",
+      "description": "Allow users to create and edit tasks in the mobile application.\n\n### Acceptance Criteria\n- Users should be able to create a new task with a title and description.\n- Users should be able to edit the title and description of existing tasks.\n- Each task should have a unique identifier.\n- Provide a 'Save' button to save changes to the task.\n- Validate and handle edge cases, such as empty task title or description.\n- Implement data synchronization to ensure changes are reflected across devices if the user is logged in from multiple devices.",
+      "priority": "HIGH",
+      "points": 3,
+      "author": "Sophia",
+      "assignee": "Olivia",
+      "status": "IN_TEST"
+    },
+    {
+      "id": 3,
+      "project": "EXO",
+      "title": "Task categorization and prioritization",
+      "description": "Implement the ability for users to categorize and prioritize their tasks.\n\n### Acceptance Criteria\n- Users should be able to assign categories to tasks (e.g., Personal, Work, Shopping).\n- Users should be able to set priorities for tasks (e.g., High, Medium, Low).\n- Provide a visually appealing way to display task categories and priorities.\n- Ensure that tasks can be filtered and sorted based on categories and priorities.\n- Users should be able to easily update the category and priority of existing tasks.",
+      "priority": "MEDIUM",
+      "points": 6,
+      "author": "Ava",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 4,
+      "project": "EXO",
+      "title": "Due date reminders",
+      "description": "Add functionality to send due date reminders to users for their tasks.\n\n### Acceptance Criteria\n- Users should be able to set a due date for each task.\n- Implement a notification system to remind users of upcoming and overdue tasks.\n- Allow users to choose their preferred notification settings (e.g., notification time, frequency).\n- Test the reminder system thoroughly to ensure reliability and accuracy of reminders.",
+      "priority": "VERY_LOW",
+      "points": 4,
+      "author": "Olivia",
+      "assignee": "Ava",
+      "status": "DONE"
+    },
+    {
+      "id": 5,
+      "project": "EXO",
+      "title": "Task sharing with other users",
+      "description": "Enable users to share their tasks with other users of the application.\n\n### Acceptance Criteria\n- Users should be able to invite other users to collaborate on specific tasks.\n- Implement user permissions to control what collaborators can do (e.g., edit, view-only).\n- Collaborators should receive real-time updates when changes are made to a shared task.\n- Allow task owners to revoke sharing access from specific collaborators.\n- Ensure data security and privacy when sharing tasks among users.",
+      "priority": "VERY_HIGH",
+      "points": 9,
+      "author": "John",
+      "assignee": "Isabella",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 6,
+      "project": "EXO",
+      "title": "Implement user interface design",
+      "description": "Design and implement the user interface for the Exo Task Manager mobile application.\n\n### Acceptance Criteria\n- Create a visually appealing and intuitive UI design for all screens.\n- Ensure the app is responsive and works well on different screen sizes and orientations.\n- Implement smooth transitions and animations to enhance user experience.\n- Use appropriate color schemes and typography for a cohesive design.\n- Test the UI on various devices to identify and resolve layout issues.",
+      "priority": "HIGH",
+      "points": 7,
+      "author": "Emma",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 7,
+      "project": "EXO",
+      "title": "Integrate Firebase Realtime Database",
+      "description": "Integrate Firebase Realtime Database to store and retrieve task data.\n\n### Acceptance Criteria\n- Data from the app should be synchronized with the Firebase Realtime Database.\n- Ensure proper data structuring for efficient querying and retrieval.\n- Implement data caching for offline access to tasks.\n- Test data synchronization in various scenarios to verify accuracy and reliability.",
+      "priority": "HIGH",
+      "points": 7,
+      "author": "Emma",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 8,
+      "project": "EXO",
+      "title": "Implement Redux for state management",
+      "description": "Use Redux to manage the state of the Exo Task Manager application.\n\n### Acceptance Criteria\n- Set up Redux and related middleware for state management.\n- Ensure the entire app's state is handled through Redux.\n- Implement Redux actions and reducers to manage tasks, authentication, and other app data.\n- Test state management to verify data consistency and correct behavior across components.",
+      "priority": "HIGH",
+      "points": 8,
+      "author": "Daniel",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 9,
+      "project": "EXO",
+      "title": "Add task search functionality",
+      "description": "Implement a search feature to allow users to search for specific tasks.\n\n### Acceptance Criteria\n- Add a search bar to the app's UI for entering search queries.\n- Implement search functionality to filter tasks based on keywords.\n- Display search results in real-time as users type in the search bar.\n- Test the search feature with various search queries and verify accurate results.",
+      "priority": "LOW",
+      "points": 1,
+      "author": "Ava",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 10,
+      "project": "EXO",
+      "title": "Implement task filtering",
+      "description": "Add the ability for users to filter tasks based on categories or priorities.\n\n### Acceptance Criteria\n- Implement filter options for task categories and priorities.\n- Allow users to select multiple filters simultaneously.\n- Ensure the app updates the task list in real-time based on selected filters.\n- Test filtering with various combinations of categories and priorities.",
+      "priority": "VERY_LOW",
+      "points": 7,
+      "author": "Isabella",
+      "assignee": "Michael",
+      "status": "IN_TEST"
+    },
+    {
+      "id": 11,
+      "project": "EXO",
+      "title": "Implement task sorting",
+      "description": "Allow users to sort their tasks based on due dates or priorities.\n\n### Acceptance Criteria\n- Implement sorting options for task due dates and priorities.\n- Allow users to choose between ascending and descending order for sorting.\n- Ensure the app updates the task list in real-time based on the selected sorting criteria.\n- Test sorting functionality with tasks having different due dates and priorities.",
+      "priority": "VERY_LOW",
+      "points": 4,
+      "author": "Ava",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 12,
+      "project": "EXO",
+      "title": "Add task completion status",
+      "description": "Implement a feature to mark tasks as completed or incomplete.\n\n### Acceptance Criteria\n- Add a checkbox or toggle to mark a task as completed.\n- Completed tasks should be visually distinguishable from incomplete tasks.\n- Ensure that completed tasks are persisted and remain marked as completed even after app restarts.\n- Provide an option to view only completed tasks or only incomplete tasks.\n- Test marking tasks as completed and verify the status is retained correctly.",
+      "priority": "VERY_HIGH",
+      "points": 6,
+      "author": "Ava",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 13,
+      "project": "EXO",
+      "title": "Implement task deletion",
+      "description": "Allow users to delete tasks from the Exo Task Manager application.\n\n### Acceptance Criteria\n- Implement a delete button or swipe gesture for deleting tasks.\n- Add a confirmation prompt before permanently deleting a task.\n- Ensure that deleted tasks are removed from the database and not visible to the user anymore.\n- Test task deletion thoroughly to prevent accidental deletions or data corruption.",
+      "priority": "VERY_HIGH",
+      "points": 8,
+      "author": "John",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 14,
+      "project": "EXO",
+      "title": "Add task notes functionality",
+      "description": "Implement the ability for users to add notes to their tasks.\n\n### Acceptance Criteria\n- Add a section for entering and viewing notes within each task.\n- Allow users to add, edit, and delete notes for a task.\n- Ensure notes are saved and associated with the correct task.\n- Test adding and editing notes to verify proper functionality and data integrity.",
+      "priority": "VERY_LOW",
+      "points": 9,
+      "author": "Isabella",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 15,
+      "project": "EXO",
+      "title": "Implement task reminders",
+      "description": "Add functionality to set reminders for specific tasks.\n\n### Acceptance Criteria\n- Users should be able to set a reminder date and time for a task.\n- Implement a notification system to remind users of upcoming task reminders.\n- Allow users to choose their preferred reminder settings (e.g., notification time, sound).\n- Test task reminders with different reminder configurations to ensure accurate and timely notifications.",
+      "priority": "HIGH",
+      "points": 9,
+      "author": "James",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 16,
+      "project": "EXO",
+      "title": "Perform testing and bug fixing",
+      "description": "Test the Exo Task Manager application and fix any bugs or issues that arise.\n\n### Acceptance Criteria\n- Create a comprehensive test plan covering all aspects of the application.\n- Perform unit testing, integration testing, and end-to-end testing.\n- Identify and fix any bugs, crashes, or unexpected behaviors.\n- Ensure the app is stable, performs well, and handles errors gracefully.\n- Conduct usability testing to gather user feedback for further improvements.",
+      "priority": "LOW",
+      "points": 6,
+      "author": "James",
+      "assignee": "Michael",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 1,
+      "project": "SHP",
+      "title": "Implement user registration and login",
+      "description": "As a user, I want to be able to register and login to the website so that I can access my account and make purchases.\n\n**Tasks:**\n- Create a registration form with fields for username, email, and password.\n- Implement server-side validation for the registration form.\n- Create a login form with fields for email and password.\n- Implement server-side validation for the login form.\n- Store user information securely in the database.",
+      "priority": "VERY_HIGH",
+      "points": 6,
+      "author": "Isabella",
+      "assignee": "Daniel",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 2,
+      "project": "SHP",
+      "title": "Implement product browsing and filtering",
+      "description": "As a user, I want to be able to browse through various categories of products and filter them based on my preferences.\n\n**Tasks:**\n- Create a page to display all products.\n- Implement filtering options such as category, price range, and rating.\n- Fetch product data from the database.",
+      "priority": "HIGH",
+      "points": 5,
+      "author": "David",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 3,
+      "project": "SHP",
+      "title": "Implement shopping cart functionality",
+      "description": "As a user, I want to be able to add items to my cart and view the items in my cart.\n\n**Tasks:**\n- Create a cart page to display the items in the cart.\n- Implement the ability to add items to the cart.\n- Implement the ability to remove items from the cart.\n- Update the cart total when items are added or removed.",
+      "priority": "VERY_HIGH",
+      "points": 2,
+      "author": "David",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 4,
+      "project": "SHP",
+      "title": "Implement secure online payments",
+      "description": "As a user, I want to be able to make secure online payments for the items in my cart.\n\n**Tasks:**\n- Integrate a secure payment gateway such as PayPal or Stripe.\n- Implement the ability to enter payment details.\n- Handle payment processing and confirmation.",
+      "priority": "MEDIUM",
+      "points": 6,
+      "author": "Olivia",
+      "assignee": "Ava",
+      "status": "DONE"
+    },
+    {
+      "id": 5,
+      "project": "SHP",
+      "title": "Implement order tracking",
+      "description": "As a user, I want to be able to track the status of my orders.\n\n**Tasks:**\n- Create an order tracking page.\n- Implement the ability to view the status of each order.\n- Update the order status based on order processing.",
+      "priority": "LOW",
+      "points": 2,
+      "author": "John",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 6,
+      "project": "SHP",
+      "title": "Design and implement the database schema",
+      "description": "As a developer, I need to design and implement the database schema for the project.\n\n**Tasks:**\n- Design the schema to store user information, product details, and order information.\n- Implement the schema using MongoDB.",
+      "priority": "MEDIUM",
+      "points": 7,
+      "author": "Sophia",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 7,
+      "project": "SHP",
+      "title": "Create user interface wireframes",
+      "description": "As a designer, I need to create wireframes for the user interface of the website.\n\n**Tasks:**\n- Create wireframes for the registration and login pages.\n- Create wireframes for the product browsing and filtering pages.\n- Create wireframes for the shopping cart and payment pages.\n- Create wireframes for the order tracking page.",
+      "priority": "MEDIUM",
+      "points": 4,
+      "author": "Isabella",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 8,
+      "project": "SHP",
+      "title": "Implement user interface using React.js",
+      "description": "As a developer, I need to implement the user interface of the website using React.js.\n\n**Tasks:**\n- Create React components for the registration and login pages.\n- Create React components for the product browsing and filtering pages.\n- Create React components for the shopping cart and payment pages.\n- Create a React component for the order tracking page.",
+      "priority": "VERY_HIGH",
+      "points": 4,
+      "author": "Olivia",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 9,
+      "project": "SHP",
+      "title": "Implement server-side API using Express.js",
+      "description": "As a developer, I need to implement the server-side API of the website using Express.js.\n\n**Tasks:**\n- Create API endpoints for user registration and login.\n- Create API endpoints for fetching product data.\n- Create API endpoints for managing the shopping cart.\n- Create API endpoints for processing payments.\n- Create API endpoints for order tracking.",
+      "priority": "LOW",
+      "points": 7,
+      "author": "Emma",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 10,
+      "project": "SHP",
+      "title": "Set up MongoDB database",
+      "description": "As a developer, I need to set up the MongoDB database for the project.\n\n**Tasks:**\n- Install and configure MongoDB.\n- Create a database for the project.\n- Set up collections for user information, product details, and order information.",
+      "priority": "VERY_HIGH",
+      "points": 6,
+      "author": "Ava",
+      "assignee": "Emma",
+      "status": "IN_TEST"
+    },
+    {
+      "id": 11,
+      "project": "SHP",
+      "title": "Set up Express.js server",
+      "description": "As a developer, I need to set up the Express.js server for the project.\n\n**Tasks:**\n- Install and configure Express.js.\n- Set up routes for handling API requests.\n- Set up middleware for handling authentication and error handling.",
+      "priority": "LOW",
+      "points": 2,
+      "author": "Emma",
+      "assignee": "Sophia",
+      "status": "WAITING"
+    },
+    {
+      "id": 12,
+      "project": "SHP",
+      "title": "Set up React.js project",
+      "description": "As a developer, I need to set up the React.js project for the website.\n\n**Tasks:**\n- Install and configure React.js.\n- Set up the project structure.\n- Set up routing for different pages.",
+      "priority": "MEDIUM",
+      "points": 6,
+      "author": "Daniel",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 13,
+      "project": "SHP",
+      "title": "Implement user authentication and authorization",
+      "description": "As a developer, I need to implement user authentication and authorization for the website.\n\n**Tasks:**\n- Implement authentication middleware to verify user credentials.\n- Implement authorization middleware to restrict access to certain routes.",
+      "priority": "LOW",
+      "points": 7,
+      "author": "Daniel",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 14,
+      "project": "SHP",
+      "title": "Implement responsive design",
+      "description": "As a designer, I need to implement responsive design for the website.\n\n**Tasks:**\n- Design and implement responsive layouts for different screen sizes.\n- Test the website on different devices and screen sizes.",
+      "priority": "LOW",
+      "points": 3,
+      "author": "John",
+      "assignee": "David",
+      "status": "WAITING"
+    },
+    {
+      "id": 15,
+      "project": "SHP",
+      "title": "Implement unit tests",
+      "description": "As a developer, I need to implement unit tests for the project to ensure code quality and reliability.\n\n**Tasks:**\n- Write unit tests for server-side API endpoints.\n- Write unit tests for React components.\n- Set up a testing framework such as Jest or Mocha.",
+      "priority": "HIGH",
+      "points": 4,
+      "author": "Daniel",
+      "assignee": "Ava",
+      "status": "IN_TEST"
+    },
+    {
+      "id": 16,
+      "project": "SHP",
+      "title": "Deploy the website to a hosting platform",
+      "description": "As a developer, I need to deploy the website to a hosting platform so that it can be accessed by users.\n\n**Tasks:**\n- Choose a hosting platform such as Heroku or AWS.\n- Set up the necessary configurations for deployment.\n- Deploy the website to the hosting platform.",
+      "priority": "VERY_LOW",
+      "points": 8,
+      "author": "Sophia",
+      "assignee": "Daniel",
+      "status": "DONE"
+    },
+    {
+      "id": 1,
+      "project": "GSK",
+      "title": "Implement location-based weather search",
+      "description": "As a user, I want to be able to search for weather conditions of any location worldwide.\n\n**Acceptance Criteria:**\n- Create a search bar where users can enter a location\n- Fetch weather data for the entered location using the OpenWeatherMap API\n- Display the weather information on the screen",
+      "priority": "MEDIUM",
+      "points": 6,
+      "author": "Isabella",
+      "assignee": "Emma",
+      "status": "DONE"
+    },
+    {
+      "id": 2,
+      "project": "GSK",
+      "title": "Display current weather",
+      "description": "As a user, I want to see the current weather conditions of a location.\n\n**Acceptance Criteria:**\n- Retrieve the current weather data from the OpenWeatherMap API\n- Display the temperature, humidity, wind speed, and weather description on the screen",
+      "priority": "VERY_HIGH",
+      "points": 5,
+      "author": "Ava",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 3,
+      "project": "GSK",
+      "title": "Implement hourly forecasts",
+      "description": "As a user, I want to see the weather forecast for the next few hours.\n\n**Acceptance Criteria:**\n- Fetch the hourly weather data from the OpenWeatherMap API\n- Display the temperature, weather description, and time for each hour on the screen",
+      "priority": "MEDIUM",
+      "points": 2,
+      "author": "John",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 4,
+      "project": "GSK",
+      "title": "Implement 7-day forecast",
+      "description": "As a user, I want to see the weather forecast for the next 7 days.\n\n**Acceptance Criteria:**\n- Retrieve the 7-day weather forecast data from the OpenWeatherMap API\n- Display the temperature, weather description, and date for each day on the screen",
+      "priority": "LOW",
+      "points": 2,
+      "author": "Isabella",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 5,
+      "project": "GSK",
+      "title": "Display weather alerts",
+      "description": "As a user, I want to be notified of any weather alerts for a specific location.\n\n**Acceptance Criteria:**\n- Fetch the weather alert data from the OpenWeatherMap API\n- Display the alert message and severity level on the screen if there are any alerts",
+      "priority": "VERY_LOW",
+      "points": 9,
+      "author": "James",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 6,
+      "project": "GSK",
+      "title": "Create HTML structure",
+      "description": "As a developer, I need to create the HTML structure for the Grey Skies application.\n\n**Acceptance Criteria:**\n- Create a header section\n- Create a search bar\n- Create a section for displaying current weather\n- Create a section for displaying hourly forecasts\n- Create a section for displaying the 7-day forecast\n- Create a section for displaying weather alerts",
+      "priority": "LOW",
+      "points": 6,
+      "author": "Emma",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 7,
+      "project": "GSK",
+      "title": "Apply CSS styling",
+      "description": "As a developer, I need to apply CSS styling to the Grey Skies application.\n\n**Acceptance Criteria:**\n- Style the header section\n- Style the search bar\n- Style the sections for displaying weather information\n- Style the weather alert section\n- Ensure the application is responsive and visually appealing",
+      "priority": "LOW",
+      "points": 7,
+      "author": "Sophia",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 8,
+      "project": "GSK",
+      "title": "Fetch weather data from OpenWeatherMap API",
+      "description": "As a developer, I need to fetch weather data from the OpenWeatherMap API.\n\n**Acceptance Criteria:**\n- Implement a function to make API requests\n- Use the API key provided by OpenWeatherMap\n- Handle API errors and display appropriate error messages",
+      "priority": "VERY_HIGH",
+      "points": 2,
+      "author": "Michael",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 9,
+      "project": "GSK",
+      "title": "Parse and format weather data",
+      "description": "As a developer, I need to parse and format the weather data received from the OpenWeatherMap API.\n\n**Acceptance Criteria:**\n- Extract relevant information from the API response\n- Format the temperature, humidity, wind speed, and dates\n- Handle any data inconsistencies or missing values",
+      "priority": "MEDIUM",
+      "points": 2,
+      "author": "David",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 10,
+      "project": "GSK",
+      "title": "Handle location search errors",
+      "description": "As a developer, I need to handle errors that may occur during location search.\n\n**Acceptance Criteria:**\n- Display an error message if the entered location is not found\n- Handle network errors or API failures gracefully\n- Provide suggestions or alternative options if the search fails",
+      "priority": "HIGH",
+      "points": 8,
+      "author": "Daniel",
+      "assignee": "Olivia",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 11,
+      "project": "GSK",
+      "title": "Optimize API requests",
+      "description": "As a developer, I need to optimize the API requests to minimize unnecessary calls.\n\n**Acceptance Criteria:**\n- Implement caching mechanism to store previously fetched data\n- Only make API requests if the data is not available in the cache or if it has expired\n- Set appropriate cache expiration time",
+      "priority": "MEDIUM",
+      "points": 1,
+      "author": "Isabella",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 12,
+      "project": "GSK",
+      "title": "Add loading indicators",
+      "description": "As a developer, I need to add loading indicators to provide feedback to the user during data fetching.\n\n**Acceptance Criteria:**\n- Display a loading spinner or progress bar while waiting for API responses\n- Disable user interactions during loading to prevent accidental actions",
+      "priority": "VERY_LOW",
+      "points": 2,
+      "author": "Ava",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 13,
+      "project": "GSK",
+      "title": "Implement unit tests",
+      "description": "As a developer, I need to write unit tests to ensure the functionality of the Grey Skies application.\n\n**Acceptance Criteria:**\n- Write test cases for each component and function\n- Test API requests and responses\n- Test error handling and edge cases\n- Aim for high test coverage",
+      "priority": "LOW",
+      "points": 6,
+      "author": "James",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 14,
+      "project": "GSK",
+      "title": "Perform cross-browser testing",
+      "description": "As a tester, I need to perform cross-browser testing to ensure the Grey Skies application works correctly on different browsers.\n\n**Acceptance Criteria:**\n- Test the application on popular browsers such as Chrome, Firefox, Safari, and Edge\n- Verify that all features and functionalities work as expected\n- Report any compatibility issues or bugs",
+      "priority": "VERY_LOW",
+      "points": 1,
+      "author": "Emma",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 15,
+      "project": "GSK",
+      "title": "Perform usability testing",
+      "description": "As a tester, I need to perform usability testing to evaluate the user experience of the Grey Skies application.\n\n**Acceptance Criteria:**\n- Recruit a group of users to test the application\n- Observe and collect feedback on the ease of use, navigation, and overall satisfaction\n- Identify any usability issues or areas for improvement",
+      "priority": "VERY_LOW",
+      "points": 6,
+      "author": "Olivia",
+      "assignee": "Ava",
+      "status": "WAITING"
+    },
+    {
+      "id": 16,
+      "project": "GSK",
+      "title": "Document project setup and usage",
+      "description": "As a developer, I need to document the project setup and usage instructions for future reference.\n\n**Acceptance Criteria:**\n- Create a README file with detailed instructions on how to set up the project\n- Include information on installing dependencies, running the application, and configuring API keys\n- Provide examples and code snippets if necessary",
+      "priority": "HIGH",
+      "points": 2,
+      "author": "Ava",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 1,
+      "project": "JFD",
+      "title": "Implement user registration and login",
+      "description": "As a user, I want to be able to register and login to the JustFood app so that I can access all its features.\n\n**Tasks:**\n- Create a registration form with fields for name, email, and password.\n- Implement server-side validation for the registration form.\n- Create a login form with fields for email and password.\n- Implement server-side validation for the login form.",
+      "priority": "HIGH",
+      "points": 7,
+      "author": "Emma",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 2,
+      "project": "JFD",
+      "title": "Develop restaurant browsing and menu display",
+      "description": "As a user, I want to be able to browse local restaurants and view their menus.\n\n**Tasks:**\n- Fetch a list of restaurants from the server.\n- Display the list of restaurants with their names and ratings.\n- Implement a search feature to filter restaurants by name or cuisine.\n- Fetch and display the menu of a selected restaurant.",
+      "priority": "VERY_LOW",
+      "points": 1,
+      "author": "James",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 3,
+      "project": "JFD",
+      "title": "Implement order placement and tracking",
+      "description": "As a user, I want to be able to place orders and track their status in real-time.\n\n**Tasks:**\n- Create an order form with fields for selecting items, quantities, and delivery address.\n- Implement server-side validation for the order form.\n- Store the order details in the database.\n- Implement real-time tracking of order status using websockets.",
+      "priority": "HIGH",
+      "points": 9,
+      "author": "Emma",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 4,
+      "project": "JFD",
+      "title": "Enable user reviews and ratings",
+      "description": "As a user, I want to be able to leave reviews and ratings for restaurants.\n\n**Tasks:**\n- Add a review form to the restaurant page.\n- Implement server-side validation for the review form.\n- Store the review details in the database.\n- Display the average rating and all reviews for each restaurant.",
+      "priority": "HIGH",
+      "points": 2,
+      "author": "Olivia",
+      "assignee": "Michael",
+      "status": "IN_TEST"
+    },
+    {
+      "id": 5,
+      "project": "JFD",
+      "title": "Integrate payment gateway",
+      "description": "As a user, I want to be able to make payments for my orders.\n\n**Tasks:**\n- Research and select a suitable payment gateway.\n- Implement the payment gateway integration on the server-side.\n- Create a payment form with fields for card details.\n- Implement server-side validation for the payment form.",
+      "priority": "HIGH",
+      "points": 8,
+      "author": "John",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 6,
+      "project": "JFD",
+      "title": "Design and implement user interface",
+      "description": "As a user, I want the JustFood app to have an intuitive and visually appealing user interface.\n\n**Tasks:**\n- Create wireframes and design mockups for all screens.\n- Implement the user interface using React Native components.\n- Apply appropriate styling and layout to enhance the user experience.",
+      "priority": "HIGH",
+      "points": 9,
+      "author": "Ava",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 7,
+      "project": "JFD",
+      "title": "Implement user authentication",
+      "description": "As a user, I want my account to be secure and protected from unauthorized access.\n\n**Tasks:**\n- Implement password hashing and salting for user accounts.\n- Create a forgot password feature with email verification.\n- Implement session management and token-based authentication.",
+      "priority": "HIGH",
+      "points": 3,
+      "author": "Sophia",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 8,
+      "project": "JFD",
+      "title": "Implement restaurant rating algorithm",
+      "description": "As a user, I want the restaurant ratings to be accurate and reflect the quality of their services.\n\n**Tasks:**\n- Research and select a suitable rating algorithm.\n- Implement the rating algorithm on the server-side.\n- Update restaurant ratings based on user reviews and ratings.",
+      "priority": "HIGH",
+      "points": 8,
+      "author": "Daniel",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 9,
+      "project": "JFD",
+      "title": "Implement push notifications",
+      "description": "As a user, I want to receive push notifications for order updates and promotions.\n\n**Tasks:**\n- Research and select a suitable push notification service.\n- Implement push notification integration on the server-side.\n- Send push notifications for order status updates and promotional offers.",
+      "priority": "MEDIUM",
+      "points": 2,
+      "author": "David",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 10,
+      "project": "JFD",
+      "title": "Implement user profile management",
+      "description": "As a user, I want to be able to manage my profile information and preferences.\n\n**Tasks:**\n- Create a profile page with fields for name, email, and contact information.\n- Implement server-side validation for the profile form.\n- Allow users to update their profile information.",
+      "priority": "LOW",
+      "points": 8,
+      "author": "Isabella",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 11,
+      "project": "JFD",
+      "title": "Implement restaurant management dashboard",
+      "description": "As a restaurant owner, I want to be able to manage my restaurant's information and menu.\n\n**Tasks:**\n- Create a restaurant management dashboard with sections for basic information, menu, and reviews.\n- Implement server-side validation for the restaurant management forms.\n- Allow restaurant owners to update their restaurant's information and menu.",
+      "priority": "LOW",
+      "points": 7,
+      "author": "David",
+      "assignee": "Olivia",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 12,
+      "project": "JFD",
+      "title": "Implement order history and tracking for users",
+      "description": "As a user, I want to be able to view my order history and track the status of my past orders.\n\n**Tasks:**\n- Create an order history page with a list of past orders.\n- Fetch and display the details of a selected past order.\n- Implement real-time tracking of past order status using websockets.",
+      "priority": "VERY_LOW",
+      "points": 1,
+      "author": "Olivia",
+      "assignee": "Isabella",
+      "status": "WAITING"
+    },
+    {
+      "id": 13,
+      "project": "JFD",
+      "title": "Implement restaurant search and filtering",
+      "description": "As a user, I want to be able to search for restaurants based on various criteria.\n\n**Tasks:**\n- Implement a search feature to filter restaurants by name, cuisine, or location.\n- Allow users to sort the search results by rating or distance.\n- Implement pagination for large search result sets.",
+      "priority": "VERY_LOW",
+      "points": 8,
+      "author": "James",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 14,
+      "project": "JFD",
+      "title": "Implement order cancellation and refund",
+      "description": "As a user, I want to be able to cancel my order and receive a refund if necessary.\n\n**Tasks:**\n- Create a cancellation form with fields for order ID and reason.\n- Implement server-side validation for the cancellation form.\n- Process order cancellations and initiate refunds.",
+      "priority": "HIGH",
+      "points": 6,
+      "author": "Ava",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 15,
+      "project": "JFD",
+      "title": "Implement user notifications",
+      "description": "As a user, I want to receive notifications for order updates, promotions, and other important information.\n\n**Tasks:**\n- Implement a notification system on the server-side.\n- Send notifications for order status updates, promotions, and other relevant information.\n- Allow users to manage their notification preferences.",
+      "priority": "VERY_HIGH",
+      "points": 1,
+      "author": "Michael",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 16,
+      "project": "JFD",
+      "title": "Implement user feedback and support",
+      "description": "As a user, I want to be able to provide feedback and get support for any issues or concerns.\n\n**Tasks:**\n- Create a feedback form with fields for name, email, and message.\n- Implement server-side validation for the feedback form.\n- Store the feedback details in the database.\n- Provide a support contact for users to reach out.",
+      "priority": "LOW",
+      "points": 4,
+      "author": "Emma",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 1,
+      "project": "FBT",
+      "title": "Implement user registration and login",
+      "description": "As a user, I want to be able to register and login to the Facetweet platform.\n\n**Tasks**:\n- Create a registration form\n- Implement user authentication\n- Create a login form\n\n**Acceptance Criteria**:\n- Users should be able to register with a unique username and password\n- Users should be able to login with their registered credentials\n- Invalid login attempts should display an error message",
+      "priority": "VERY_HIGH",
+      "points": 4,
+      "author": "Emma",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 2,
+      "project": "FBT",
+      "title": "Enable photo uploading and filtering",
+      "description": "As a user, I want to be able to upload photos to the Facetweet platform and apply filters to enhance them.\n\n**Tasks**:\n- Create a photo upload form\n- Implement photo filtering functionality\n\n**Acceptance Criteria**:\n- Users should be able to select and upload photos from their device\n- Uploaded photos should be displayed on the platform\n- Users should be able to apply filters to their uploaded photos",
+      "priority": "VERY_HIGH",
+      "points": 3,
+      "author": "Emma",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 3,
+      "project": "FBT",
+      "title": "Implement news feed and timeline",
+      "description": "As a user, I want to be able to view a news feed and timeline on the Facetweet platform.\n\n**Tasks**:\n- Design and implement a news feed and timeline layout\n- Fetch and display posts from followed users\n\n**Acceptance Criteria**:\n- Users should be able to see posts from users they follow on their news feed\n- Posts should be displayed in chronological order",
+      "priority": "LOW",
+      "points": 9,
+      "author": "James",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 4,
+      "project": "FBT",
+      "title": "Create user profiles and followers functionality",
+      "description": "As a user, I want to have a profile page on the Facetweet platform and be able to follow other users.\n\n**Tasks**:\n- Design and implement user profile pages\n- Implement follow/unfollow functionality\n\n**Acceptance Criteria**:\n- Users should have a profile page displaying their information and uploaded photos\n- Users should be able to follow/unfollow other users",
+      "priority": "VERY_HIGH",
+      "points": 1,
+      "author": "Sophia",
+      "assignee": "Emma",
+      "status": "IN_TEST"
+    },
+    {
+      "id": 5,
+      "project": "FBT",
+      "title": "Implement direct messaging feature",
+      "description": "As a user, I want to be able to send direct messages to other users on the Facetweet platform.\n\n**Tasks**:\n- Design and implement a direct messaging interface\n- Implement sending and receiving messages\n\n**Acceptance Criteria**:\n- Users should be able to send direct messages to other users\n- Users should be able to view and reply to received messages",
+      "priority": "VERY_LOW",
+      "points": 2,
+      "author": "Isabella",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 6,
+      "project": "FBT",
+      "title": "Set up Ruby on Rails backend",
+      "description": "As a developer, I need to set up the Ruby on Rails backend for the Facetweet platform.\n\n**Tasks**:\n- Install Ruby on Rails\n- Create necessary models and controllers\n\n**Acceptance Criteria**:\n- Ruby on Rails should be successfully installed\n- Models and controllers should be created",
+      "priority": "VERY_LOW",
+      "points": 3,
+      "author": "Sophia",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 7,
+      "project": "FBT",
+      "title": "Configure PostgreSQL database",
+      "description": "As a developer, I need to configure the PostgreSQL database for the Facetweet platform.\n\n**Tasks**:\n- Install PostgreSQL\n- Set up database configuration\n\n**Acceptance Criteria**:\n- PostgreSQL should be successfully installed\n- Database configuration should be set up",
+      "priority": "VERY_HIGH",
+      "points": 2,
+      "author": "James",
+      "assignee": "Sophia",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 8,
+      "project": "FBT",
+      "title": "Integrate React.js frontend",
+      "description": "As a developer, I need to integrate React.js as the frontend framework for the Facetweet platform.\n\n**Tasks**:\n- Set up React.js project\n- Create necessary components\n\n**Acceptance Criteria**:\n- React.js should be successfully integrated\n- Components should be created and functional",
+      "priority": "VERY_HIGH",
+      "points": 2,
+      "author": "Ava",
+      "assignee": "John",
+      "status": "IN_TEST"
+    },
+    {
+      "id": 9,
+      "project": "FBT",
+      "title": "Implement AWS S3 for photo storage",
+      "description": "As a developer, I need to implement AWS S3 for storing uploaded photos on the Facetweet platform.\n\n**Tasks**:\n- Set up AWS S3 account\n- Integrate AWS S3 with the backend\n\n**Acceptance Criteria**:\n- AWS S3 should be successfully set up\n- Uploaded photos should be stored in AWS S3",
+      "priority": "HIGH",
+      "points": 2,
+      "author": "Sophia",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 10,
+      "project": "FBT",
+      "title": "Design and implement registration form UI",
+      "description": "As a designer, I need to design and implement the registration form UI for the Facetweet platform.\n\n**Tasks**:\n- Design the registration form UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The registration form should have an intuitive and user-friendly design\n- The implemented UI should match the design",
+      "priority": "VERY_LOW",
+      "points": 9,
+      "author": "Sophia",
+      "assignee": "Ava",
+      "status": "WAITING"
+    },
+    {
+      "id": 11,
+      "project": "FBT",
+      "title": "Design and implement photo upload form UI",
+      "description": "As a designer, I need to design and implement the photo upload form UI for the Facetweet platform.\n\n**Tasks**:\n- Design the photo upload form UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The photo upload form should have an intuitive and user-friendly design\n- The implemented UI should match the design",
+      "priority": "LOW",
+      "points": 1,
+      "author": "Isabella",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 12,
+      "project": "FBT",
+      "title": "Design and implement news feed UI",
+      "description": "As a designer, I need to design and implement the news feed UI for the Facetweet platform.\n\n**Tasks**:\n- Design the news feed UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The news feed should have an intuitive and user-friendly design\n- The implemented UI should match the design",
+      "priority": "VERY_HIGH",
+      "points": 9,
+      "author": "Emma",
+      "assignee": "Michael",
+      "status": "IN_TEST"
+    },
+    {
+      "id": 13,
+      "project": "FBT",
+      "title": "Design and implement user profile UI",
+      "description": "As a designer, I need to design and implement the user profile UI for the Facetweet platform.\n\n**Tasks**:\n- Design the user profile UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The user profile should have an intuitive and user-friendly design\n- The implemented UI should match the design",
+      "priority": "MEDIUM",
+      "points": 4,
+      "author": "Michael",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 14,
+      "project": "FBT",
+      "title": "Design and implement direct messaging UI",
+      "description": "As a designer, I need to design and implement the direct messaging UI for the Facetweet platform.\n\n**Tasks**:\n- Design the direct messaging UI\n- Implement the designed UI using HTML and CSS\n\n**Acceptance Criteria**:\n- The direct messaging interface should have an intuitive and user-friendly design\n- The implemented UI should match the design",
+      "priority": "LOW",
+      "points": 9,
+      "author": "Emma",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 1,
+      "project": "MVM",
+      "title": "Implement user registration and login",
+      "description": "Create screens and functionality for user registration and login.\n\n- Design and implement user registration screen\n- Design and implement user login screen\n- Integrate Firebase Authentication for user authentication\n- Implement logic for user registration and login\n- Test user registration and login functionality",
+      "priority": "HIGH",
+      "points": 5,
+      "author": "Sophia",
+      "assignee": "Olivia",
+      "status": "DONE"
+    },
+    {
+      "id": 2,
+      "project": "MVM",
+      "title": "Develop fitness goal setting feature",
+      "description": "Allow users to set fitness goals and track their progress.\n\n- Design and implement fitness goal setting screen\n- Implement logic for setting fitness goals\n- Store fitness goals in Firebase Firestore\n- Test fitness goal setting functionality",
+      "priority": "HIGH",
+      "points": 7,
+      "author": "Daniel",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 3,
+      "project": "MVM",
+      "title": "Create workout tracking functionality",
+      "description": "Develop features to track user workouts.\n\n- Design and implement workout tracking screen\n- Implement logic for tracking workouts\n- Store workout data in Firebase Firestore\n- Test workout tracking functionality",
+      "priority": "LOW",
+      "points": 7,
+      "author": "Isabella",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 4,
+      "project": "MVM",
+      "title": "Generate performance insights",
+      "description": "Provide users with insights on their workout performance.\n\n- Design and implement performance insights screen\n- Analyze workout data to generate performance insights\n- Display performance insights to users\n- Test performance insights functionality",
+      "priority": "LOW",
+      "points": 5,
+      "author": "Sophia",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 5,
+      "project": "MVM",
+      "title": "Integrate calorie tracking",
+      "description": "Include functionality to track calorie intake and expenditure.\n\n- Design and implement calorie tracking screen\n- Implement logic for tracking calorie intake and expenditure\n- Store calorie data in Firebase Firestore\n- Test calorie tracking functionality",
+      "priority": "HIGH",
+      "points": 1,
+      "author": "Isabella",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 6,
+      "project": "MVM",
+      "title": "Implement workout reminders",
+      "description": "Develop features to remind users of their scheduled workouts.\n\n- Design and implement workout reminders screen\n- Implement logic for scheduling and sending workout reminders\n- Test workout reminders functionality",
+      "priority": "HIGH",
+      "points": 9,
+      "author": "Emma",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 7,
+      "project": "MVM",
+      "title": "Design user interface",
+      "description": "Create visually appealing and user-friendly screens for the mobile application.\n\n- Design user interface for all screens\n- Implement UI design using Flutter\n- Test user interface for usability and responsiveness",
+      "priority": "MEDIUM",
+      "points": 5,
+      "author": "Ava",
+      "assignee": "Isabella",
+      "status": "DONE"
+    },
+    {
+      "id": 8,
+      "project": "MVM",
+      "title": "Implement Firebase Authentication",
+      "description": "Integrate Firebase Authentication for user authentication and security.\n\n- Set up Firebase project\n- Configure Firebase Authentication\n- Test Firebase Authentication functionality",
+      "priority": "HIGH",
+      "points": 4,
+      "author": "James",
+      "assignee": "David",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 9,
+      "project": "MVM",
+      "title": "Set up Firebase Firestore",
+      "description": "Create and configure Firebase Firestore for storing user data.\n\n- Set up Firestore database\n- Define data structure for user-related data\n- Test Firestore functionality",
+      "priority": "LOW",
+      "points": 6,
+      "author": "Daniel",
+      "assignee": null,
+      "status": "WAITING"
+    },
+    {
+      "id": 10,
+      "project": "MVM",
+      "title": "Integrate Google Fit API",
+      "description": "Connect the mobile application with the Google Fit API for accessing fitness data.\n\n- Set up Google Fit API integration\n- Implement logic for retrieving fitness data from Google Fit\n- Test Google Fit API integration",
+      "priority": "MEDIUM",
+      "points": 3,
+      "author": "David",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 11,
+      "project": "MVM",
+      "title": "Implement data synchronization",
+      "description": "Ensure data synchronization between the mobile application and Firebase Firestore.\n\n- Implement logic for syncing local data with Firestore\n- Handle conflicts and resolve data inconsistencies\n- Test data synchronization functionality",
+      "priority": "VERY_LOW",
+      "points": 1,
+      "author": "Michael",
+      "assignee": null,
+      "status": "DONE"
+    },
+    {
+      "id": 12,
+      "project": "MVM",
+      "title": "Add support for multiple user accounts",
+      "description": "Allow multiple users to create accounts and use the fitness tracking app.\n\n- Implement logic for managing multiple user accounts\n- Test multiple user account functionality",
+      "priority": "VERY_HIGH",
+      "points": 6,
+      "author": "Daniel",
+      "assignee": null,
+      "status": "IN_TEST"
+    },
+    {
+      "id": 13,
+      "project": "MVM",
+      "title": "Implement data backup and restore",
+      "description": "Develop features to allow users to backup and restore their fitness data.\n\n- Design and implement data backup and restore screens\n- Implement logic for backing up and restoring data\n- Test data backup and restore functionality",
+      "priority": "HIGH",
+      "points": 6,
+      "author": "Isabella",
+      "assignee": "David",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 14,
+      "project": "MVM",
+      "title": "Optimize app performance",
+      "description": "Improve the performance and efficiency of the mobile application.\n\n- Identify and optimize performance bottlenecks\n- Implement performance improvements\n- Test app performance after optimizations",
+      "priority": "VERY_HIGH",
+      "points": 4,
+      "author": "James",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 15,
+      "project": "MVM",
+      "title": "Implement user feedback system",
+      "description": "Create a mechanism for users to provide feedback and report issues.\n\n- Design and implement user feedback screen\n- Implement logic for submitting feedback and issue reports\n- Test user feedback functionality",
+      "priority": "MEDIUM",
+      "points": 7,
+      "author": "David",
+      "assignee": null,
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 16,
+      "project": "MVM",
+      "title": "Perform comprehensive testing",
+      "description": "Thoroughly test the entire application to ensure functionality and reliability.\n\n- Create test cases for all features\n- Perform unit testing\n- Perform integration testing\n- Perform system testing\n- Fix any identified bugs or issues",
+      "priority": "LOW",
+      "points": 8,
+      "author": "David",
+      "assignee": null,
+      "status": "DONE"
+    }
+  ],
+  "comments": [
+    {
+      "text": "Could you please provide the hardware specifications of your machine?",
+      "author": "Ava",
+      "ticket_project": "EXO",
+      "ticket_id": 1
+    },
+    {
+      "text": "Could you please provide the network configuration you are using?",
+      "author": "Sophia",
+      "ticket_project": "EXO",
+      "ticket_id": 1
+    },
+    {
+      "text": "Thanks for reporting this issue! We'll look into it right away.",
+      "author": "Ava",
+      "ticket_project": "EXO",
+      "ticket_id": 3
+    },
+    {
+      "text": "Thanks for reporting this. We'll escalate it to the appropriate team.",
+      "author": "Isabella",
+      "ticket_project": "EXO",
+      "ticket_id": 5
+    },
+    {
+      "text": "Working on this now. Expect a resolution soon.",
+      "author": "Olivia",
+      "ticket_project": "EXO",
+      "ticket_id": 5
+    },
+    {
+      "text": "Could you please provide more details about the steps to reproduce?",
+      "author": "Olivia",
+      "ticket_project": "EXO",
+      "ticket_id": 5
+    },
+    {
+      "text": "Thanks for reporting. We'll reach out if we need any additional information.",
+      "author": "Isabella",
+      "ticket_project": "EXO",
+      "ticket_id": 5
+    },
+    {
+      "text": "Working on this as a top priority. Expect a resolution soon.",
+      "author": "Olivia",
+      "ticket_project": "EXO",
+      "ticket_id": 5
+    },
+    {
+      "text": "Working on this now. Expect a resolution soon.",
+      "author": "James",
+      "ticket_project": "EXO",
+      "ticket_id": 7
+    },
+    {
+      "text": "Thanks for reporting this issue! We'll look into it right away.",
+      "author": "Sophia",
+      "ticket_project": "EXO",
+      "ticket_id": 7
+    },
+    {
+      "text": "Could you please provide the version number of the software you are using?",
+      "author": "James",
+      "ticket_project": "EXO",
+      "ticket_id": 8
+    },
+    {
+      "text": "Currently analyzing the code to identify any potential performance issues.",
+      "author": "Michael",
+      "ticket_project": "EXO",
+      "ticket_id": 8
+    },
+    {
+      "text": "Working on this as a high priority. Expect a resolution shortly.",
+      "author": "John",
+      "ticket_project": "EXO",
+      "ticket_id": 9
+    },
+    {
+      "text": "Working on a workaround while we investigate the root cause.",
+      "author": "Olivia",
+      "ticket_project": "EXO",
+      "ticket_id": 10
+    },
+    {
+      "text": "Investigating the server logs to identify any anomalies.",
+      "author": "David",
+      "ticket_project": "EXO",
+      "ticket_id": 10
+    },
+    {
+      "text": "Could you please provide the version number of the software you are using?",
+      "author": "John",
+      "ticket_project": "EXO",
+      "ticket_id": 10
+    },
+    {
+      "text": "Investigating the logs to identify the cause of the issue.",
+      "author": "Daniel",
+      "ticket_project": "EXO",
+      "ticket_id": 10
+    },
+    {
+      "text": "Currently investigating the root cause of the problem.",
+      "author": "David",
+      "ticket_project": "EXO",
+      "ticket_id": 10
+    },
+    {
+      "text": "Working on this urgently. Expect a resolution in the next few hours.",
+      "author": "John",
+      "ticket_project": "EXO",
+      "ticket_id": 11
+    },
+    {
+      "text": "Working on this now. Expect a resolution soon.",
+      "author": "Ava",
+      "ticket_project": "EXO",
+      "ticket_id": 11
+    },
+    {
+      "text": "Thanks for reporting. We'll reach out if we need any additional information.",
+      "author": "James",
+      "ticket_project": "EXO",
+      "ticket_id": 11
+    },
+    {
+      "text": "Could you please provide more details about the steps to reproduce?",
+      "author": "Olivia",
+      "ticket_project": "EXO",
+      "ticket_id": 13
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll assign it to the relevant team.",
+      "author": "Emma",
+      "ticket_project": "EXO",
+      "ticket_id": 13
+    },
+    {
+      "text": "Could you please provide the version number of the software you are using?",
+      "author": "Olivia",
+      "ticket_project": "EXO",
+      "ticket_id": 13
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as quickly as possible.",
+      "author": "David",
+      "ticket_project": "EXO",
+      "ticket_id": 13
+    },
+    {
+      "text": "Working on this urgently. Expect a resolution in the next few hours.",
+      "author": "Emma",
+      "ticket_project": "EXO",
+      "ticket_id": 13
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll assign it to the relevant team.",
+      "author": "Emma",
+      "ticket_project": "EXO",
+      "ticket_id": 15
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll investigate and resolve it.",
+      "author": "John",
+      "ticket_project": "EXO",
+      "ticket_id": 15
+    },
+    {
+      "text": "Investigating the system logs to identify any errors or warnings.",
+      "author": "Daniel",
+      "ticket_project": "EXO",
+      "ticket_id": 15
+    },
+    {
+      "text": "Investigating the server logs to identify any anomalies.",
+      "author": "John",
+      "ticket_project": "EXO",
+      "ticket_id": 15
+    },
+    {
+      "text": "Thanks for your understanding. We're actively working on resolving this.",
+      "author": "Michael",
+      "ticket_project": "EXO",
+      "ticket_id": 15
+    },
+    {
+      "text": "Investigating the database to identify any data inconsistencies.",
+      "author": "Michael",
+      "ticket_project": "SHP",
+      "ticket_id": 1
+    },
+    {
+      "text": "Investigating the database to identify any data inconsistencies.",
+      "author": "Olivia",
+      "ticket_project": "SHP",
+      "ticket_id": 1
+    },
+    {
+      "text": "Working on this with high priority. Expect a resolution shortly.",
+      "author": "Olivia",
+      "ticket_project": "SHP",
+      "ticket_id": 1
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as quickly as possible.",
+      "author": "Sophia",
+      "ticket_project": "SHP",
+      "ticket_id": 2
+    },
+    {
+      "text": "Could you please provide the error message you encountered?",
+      "author": "Ava",
+      "ticket_project": "SHP",
+      "ticket_id": 2
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as quickly as possible.",
+      "author": "Olivia",
+      "ticket_project": "SHP",
+      "ticket_id": 2
+    },
+    {
+      "text": "Investigating the server logs to identify any anomalies.",
+      "author": "Ava",
+      "ticket_project": "SHP",
+      "ticket_id": 4
+    },
+    {
+      "text": "Currently analyzing the code to identify any potential performance issues.",
+      "author": "David",
+      "ticket_project": "SHP",
+      "ticket_id": 4
+    },
+    {
+      "text": "Could you please provide more details about the steps to reproduce?",
+      "author": "David",
+      "ticket_project": "SHP",
+      "ticket_id": 4
+    },
+    {
+      "text": "Thanks for reporting. We'll keep you informed of any progress made on this issue.",
+      "author": "John",
+      "ticket_project": "SHP",
+      "ticket_id": 4
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as quickly as possible.",
+      "author": "Daniel",
+      "ticket_project": "SHP",
+      "ticket_id": 4
+    },
+    {
+      "text": "Thanks for your patience. We're actively working on resolving this.",
+      "author": "John",
+      "ticket_project": "SHP",
+      "ticket_id": 5
+    },
+    {
+      "text": "Thanks for reporting. We'll reach out if we need any additional information.",
+      "author": "Daniel",
+      "ticket_project": "SHP",
+      "ticket_id": 5
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll investigate and resolve it.",
+      "author": "Sophia",
+      "ticket_project": "SHP",
+      "ticket_id": 6
+    },
+    {
+      "text": "Thanks for reporting. We'll keep you informed of any progress made.",
+      "author": "Ava",
+      "ticket_project": "SHP",
+      "ticket_id": 6
+    },
+    {
+      "text": "Currently reviewing the codebase for any potential security vulnerabilities.",
+      "author": "Emma",
+      "ticket_project": "SHP",
+      "ticket_id": 6
+    },
+    {
+      "text": "Thanks for the detailed description. We'll analyze and provide a solution.",
+      "author": "David",
+      "ticket_project": "SHP",
+      "ticket_id": 6
+    },
+    {
+      "text": "Working on this with high priority. Expect a resolution shortly.",
+      "author": "Daniel",
+      "ticket_project": "SHP",
+      "ticket_id": 6
+    },
+    {
+      "text": "Investigating the server logs to identify any anomalies.",
+      "author": "John",
+      "ticket_project": "SHP",
+      "ticket_id": 7
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as quickly as possible.",
+      "author": "Michael",
+      "ticket_project": "SHP",
+      "ticket_id": 7
+    },
+    {
+      "text": "Thanks for reporting. We'll reach out if we need any additional information.",
+      "author": "Isabella",
+      "ticket_project": "SHP",
+      "ticket_id": 8
+    },
+    {
+      "text": "Could you please provide the hardware specifications of your machine?",
+      "author": "Isabella",
+      "ticket_project": "SHP",
+      "ticket_id": 8
+    },
+    {
+      "text": "Thanks for reporting. We'll reach out if we need any additional information.",
+      "author": "John",
+      "ticket_project": "SHP",
+      "ticket_id": 8
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as soon as possible.",
+      "author": "Ava",
+      "ticket_project": "SHP",
+      "ticket_id": 8
+    },
+    {
+      "text": "Investigating the system logs to identify any errors or warnings.",
+      "author": "Olivia",
+      "ticket_project": "SHP",
+      "ticket_id": 8
+    },
+    {
+      "text": "Currently discussing this with the development team for their input.",
+      "author": "Michael",
+      "ticket_project": "SHP",
+      "ticket_id": 10
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll investigate and resolve it.",
+      "author": "Ava",
+      "ticket_project": "SHP",
+      "ticket_id": 10
+    },
+    {
+      "text": "Thanks for reporting. We'll keep you informed of any progress made.",
+      "author": "Isabella",
+      "ticket_project": "SHP",
+      "ticket_id": 10
+    },
+    {
+      "text": "Working on this urgently. Expect a resolution in the next few days.",
+      "author": "Emma",
+      "ticket_project": "SHP",
+      "ticket_id": 11
+    },
+    {
+      "text": "Working on this urgently. Expect a resolution in the next few hours.",
+      "author": "Ava",
+      "ticket_project": "SHP",
+      "ticket_id": 12
+    },
+    {
+      "text": "Working on this urgently. Expect a resolution in the next few days.",
+      "author": "Emma",
+      "ticket_project": "SHP",
+      "ticket_id": 12
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as soon as possible.",
+      "author": "Sophia",
+      "ticket_project": "SHP",
+      "ticket_id": 12
+    },
+    {
+      "text": "Could you please provide the network configuration you are using?",
+      "author": "Sophia",
+      "ticket_project": "SHP",
+      "ticket_id": 13
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll investigate and resolve it.",
+      "author": "James",
+      "ticket_project": "SHP",
+      "ticket_id": 13
+    },
+    {
+      "text": "Investigating the server logs to identify any anomalies.",
+      "author": "Emma",
+      "ticket_project": "SHP",
+      "ticket_id": 13
+    },
+    {
+      "text": "Could you please provide the error message you encountered?",
+      "author": "Ava",
+      "ticket_project": "SHP",
+      "ticket_id": 13
+    },
+    {
+      "text": "Could you please provide the exact inputs you used when encountering the issue?",
+      "author": "Ava",
+      "ticket_project": "SHP",
+      "ticket_id": 13
+    },
+    {
+      "text": "Thanks for reporting. We'll keep you informed of any progress made on this issue.",
+      "author": "David",
+      "ticket_project": "SHP",
+      "ticket_id": 14
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as quickly as possible.",
+      "author": "Olivia",
+      "ticket_project": "SHP",
+      "ticket_id": 14
+    },
+    {
+      "text": "Investigating the logs to identify the cause of the issue.",
+      "author": "Daniel",
+      "ticket_project": "SHP",
+      "ticket_id": 14
+    },
+    {
+      "text": "Could you please provide the exact inputs you used when encountering the issue?",
+      "author": "Sophia",
+      "ticket_project": "SHP",
+      "ticket_id": 16
+    },
+    {
+      "text": "Thanks for reporting. We'll reach out if we need any additional information.",
+      "author": "Isabella",
+      "ticket_project": "SHP",
+      "ticket_id": 16
+    },
+    {
+      "text": "Could you please provide the exact steps you followed before encountering the issue?",
+      "author": "Isabella",
+      "ticket_project": "SHP",
+      "ticket_id": 16
+    },
+    {
+      "text": "Investigating the logs to identify the cause of the issue.",
+      "author": "Isabella",
+      "ticket_project": "SHP",
+      "ticket_id": 16
+    },
+    {
+      "text": "Working on this as a high priority. Expect a resolution shortly.",
+      "author": "Ava",
+      "ticket_project": "SHP",
+      "ticket_id": 16
+    },
+    {
+      "text": "Investigating the codebase to identify any potential bugs.",
+      "author": "Daniel",
+      "ticket_project": "GSK",
+      "ticket_id": 1
+    },
+    {
+      "text": "Thanks for reporting. We'll reach out if we need any additional information.",
+      "author": "Olivia",
+      "ticket_project": "GSK",
+      "ticket_id": 1
+    },
+    {
+      "text": "Thanks for reporting this issue! We'll look into it right away.",
+      "author": "James",
+      "ticket_project": "GSK",
+      "ticket_id": 1
+    },
+    {
+      "text": "Working on setting up a test environment to replicate the issue.",
+      "author": "Ava",
+      "ticket_project": "GSK",
+      "ticket_id": 1
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as soon as possible.",
+      "author": "David",
+      "ticket_project": "GSK",
+      "ticket_id": 1
+    },
+    {
+      "text": "Working on this with utmost priority. Expect a resolution shortly.",
+      "author": "John",
+      "ticket_project": "GSK",
+      "ticket_id": 2
+    },
+    {
+      "text": "Could you please provide the browser and operating system you are using?",
+      "author": "James",
+      "ticket_project": "GSK",
+      "ticket_id": 3
+    },
+    {
+      "text": "Investigating the logs to identify the cause of the issue.",
+      "author": "Michael",
+      "ticket_project": "GSK",
+      "ticket_id": 3
+    },
+    {
+      "text": "Could you please provide the network configuration you are using?",
+      "author": "Olivia",
+      "ticket_project": "GSK",
+      "ticket_id": 3
+    },
+    {
+      "text": "Currently discussing this with our QA team for their insights.",
+      "author": "James",
+      "ticket_project": "GSK",
+      "ticket_id": 4
+    },
+    {
+      "text": "Working on this urgently. Expect a resolution in the next few hours.",
+      "author": "Michael",
+      "ticket_project": "GSK",
+      "ticket_id": 4
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll assign it to the relevant team.",
+      "author": "James",
+      "ticket_project": "GSK",
+      "ticket_id": 4
+    },
+    {
+      "text": "Investigating the application logs to identify any relevant information.",
+      "author": "Sophia",
+      "ticket_project": "GSK",
+      "ticket_id": 4
+    },
+    {
+      "text": "Currently investigating the root cause of the problem.",
+      "author": "David",
+      "ticket_project": "GSK",
+      "ticket_id": 4
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it promptly.",
+      "author": "David",
+      "ticket_project": "GSK",
+      "ticket_id": 6
+    },
+    {
+      "text": "Could you please provide more details about the steps to reproduce?",
+      "author": "David",
+      "ticket_project": "GSK",
+      "ticket_id": 7
+    },
+    {
+      "text": "Working on this with utmost priority. Expect a resolution shortly.",
+      "author": "Michael",
+      "ticket_project": "GSK",
+      "ticket_id": 7
+    },
+    {
+      "text": "Currently analyzing the code to identify any potential performance issues.",
+      "author": "John",
+      "ticket_project": "GSK",
+      "ticket_id": 7
+    },
+    {
+      "text": "Could you please provide the browser and operating system you are using?",
+      "author": "John",
+      "ticket_project": "GSK",
+      "ticket_id": 7
+    },
+    {
+      "text": "Working on this urgently. Expect a resolution in the next few hours.",
+      "author": "Sophia",
+      "ticket_project": "GSK",
+      "ticket_id": 7
+    },
+    {
+      "text": "Thanks for reporting. We'll escalate this to the appropriate team for resolution.",
+      "author": "Olivia",
+      "ticket_project": "GSK",
+      "ticket_id": 8
+    },
+    {
+      "text": "Thanks for reporting. We'll reach out if we need any additional information.",
+      "author": "James",
+      "ticket_project": "GSK",
+      "ticket_id": 8
+    },
+    {
+      "text": "Thanks for reporting. We'll escalate this to the appropriate team for resolution.",
+      "author": "David",
+      "ticket_project": "GSK",
+      "ticket_id": 8
+    },
+    {
+      "text": "Could you please provide the network configuration you are using?",
+      "author": "David",
+      "ticket_project": "GSK",
+      "ticket_id": 8
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as soon as possible.",
+      "author": "Isabella",
+      "ticket_project": "GSK",
+      "ticket_id": 8
+    },
+    {
+      "text": "Thanks for the heads up. We'll investigate and provide an update soon.",
+      "author": "Emma",
+      "ticket_project": "GSK",
+      "ticket_id": 9
+    },
+    {
+      "text": "Investigating the codebase to identify any potential bugs.",
+      "author": "Isabella",
+      "ticket_project": "GSK",
+      "ticket_id": 10
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll investigate further.",
+      "author": "Isabella",
+      "ticket_project": "GSK",
+      "ticket_id": 10
+    },
+    {
+      "text": "Currently discussing this with the development team for their input.",
+      "author": "Olivia",
+      "ticket_project": "GSK",
+      "ticket_id": 10
+    },
+    {
+      "text": "Thanks for reporting. We'll keep you informed of any progress made.",
+      "author": "James",
+      "ticket_project": "GSK",
+      "ticket_id": 12
+    },
+    {
+      "text": "Currently reviewing the codebase for any potential security vulnerabilities.",
+      "author": "Michael",
+      "ticket_project": "GSK",
+      "ticket_id": 12
+    },
+    {
+      "text": "Currently discussing this with the development team for their input.",
+      "author": "Daniel",
+      "ticket_project": "GSK",
+      "ticket_id": 12
+    },
+    {
+      "text": "Investigating the server logs to identify any anomalies.",
+      "author": "Ava",
+      "ticket_project": "GSK",
+      "ticket_id": 12
+    },
+    {
+      "text": "Could you please provide more details about the steps to reproduce?",
+      "author": "Isabella",
+      "ticket_project": "GSK",
+      "ticket_id": 15
+    },
+    {
+      "text": "Investigating the system logs to identify any errors or warnings.",
+      "author": "Olivia",
+      "ticket_project": "GSK",
+      "ticket_id": 15
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as quickly as possible.",
+      "author": "Emma",
+      "ticket_project": "GSK",
+      "ticket_id": 15
+    },
+    {
+      "text": "Could you please provide the network configuration you are using?",
+      "author": "Isabella",
+      "ticket_project": "GSK",
+      "ticket_id": 15
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it promptly.",
+      "author": "Daniel",
+      "ticket_project": "GSK",
+      "ticket_id": 16
+    },
+    {
+      "text": "Thanks for notifying us. We'll investigate and provide an update soon.",
+      "author": "James",
+      "ticket_project": "GSK",
+      "ticket_id": 16
+    },
+    {
+      "text": "Could you please provide the version number of the software you are using?",
+      "author": "Isabella",
+      "ticket_project": "GSK",
+      "ticket_id": 16
+    },
+    {
+      "text": "Currently discussing this with the development team for their input.",
+      "author": "Ava",
+      "ticket_project": "JFD",
+      "ticket_id": 1
+    },
+    {
+      "text": "Thanks for the detailed steps. We'll try to reproduce the issue.",
+      "author": "Michael",
+      "ticket_project": "JFD",
+      "ticket_id": 1
+    },
+    {
+      "text": "Thanks for reporting this. We'll escalate it to the appropriate team.",
+      "author": "Ava",
+      "ticket_project": "JFD",
+      "ticket_id": 1
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as quickly as possible.",
+      "author": "Michael",
+      "ticket_project": "JFD",
+      "ticket_id": 2
+    },
+    {
+      "text": "Investigating the logs to identify the cause of the issue.",
+      "author": "Emma",
+      "ticket_project": "JFD",
+      "ticket_id": 3
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as quickly as possible.",
+      "author": "Olivia",
+      "ticket_project": "JFD",
+      "ticket_id": 3
+    },
+    {
+      "text": "Working on this urgently. Expect a resolution in the next few hours.",
+      "author": "James",
+      "ticket_project": "JFD",
+      "ticket_id": 3
+    },
+    {
+      "text": "Thanks for reporting this. We'll escalate it to the appropriate team.",
+      "author": "Sophia",
+      "ticket_project": "JFD",
+      "ticket_id": 4
+    },
+    {
+      "text": "Could you please provide the exact inputs you used when encountering the issue?",
+      "author": "Isabella",
+      "ticket_project": "JFD",
+      "ticket_id": 5
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll investigate and fix it promptly.",
+      "author": "David",
+      "ticket_project": "JFD",
+      "ticket_id": 6
+    },
+    {
+      "text": "Thanks for the detailed steps. We'll try to reproduce the issue.",
+      "author": "James",
+      "ticket_project": "JFD",
+      "ticket_id": 6
+    },
+    {
+      "text": "Thanks for reporting. We'll keep you informed of any progress made.",
+      "author": "Olivia",
+      "ticket_project": "JFD",
+      "ticket_id": 6
+    },
+    {
+      "text": "Could you please provide the browser and operating system you are using?",
+      "author": "James",
+      "ticket_project": "JFD",
+      "ticket_id": 6
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll investigate and resolve it.",
+      "author": "Daniel",
+      "ticket_project": "JFD",
+      "ticket_id": 8
+    },
+    {
+      "text": "Working on this with utmost priority. Expect a resolution shortly.",
+      "author": "John",
+      "ticket_project": "JFD",
+      "ticket_id": 8
+    },
+    {
+      "text": "Could you please provide the exact time and date when the issue occurred?",
+      "author": "Ava",
+      "ticket_project": "JFD",
+      "ticket_id": 8
+    },
+    {
+      "text": "Working on setting up a test environment to replicate the issue.",
+      "author": "James",
+      "ticket_project": "JFD",
+      "ticket_id": 8
+    },
+    {
+      "text": "Thanks for reporting. We'll keep you informed of any progress made.",
+      "author": "Isabella",
+      "ticket_project": "JFD",
+      "ticket_id": 10
+    },
+    {
+      "text": "Currently reviewing the codebase for any potential security vulnerabilities.",
+      "author": "Michael",
+      "ticket_project": "JFD",
+      "ticket_id": 12
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it promptly.",
+      "author": "David",
+      "ticket_project": "JFD",
+      "ticket_id": 12
+    },
+    {
+      "text": "Thanks for notifying us. We'll investigate and provide an update soon.",
+      "author": "Michael",
+      "ticket_project": "JFD",
+      "ticket_id": 12
+    },
+    {
+      "text": "Investigating the database to identify any data inconsistencies.",
+      "author": "Ava",
+      "ticket_project": "JFD",
+      "ticket_id": 12
+    },
+    {
+      "text": "Currently investigating the root cause of the problem.",
+      "author": "James",
+      "ticket_project": "JFD",
+      "ticket_id": 12
+    },
+    {
+      "text": "Thanks for reporting. We'll keep you informed of any progress made.",
+      "author": "John",
+      "ticket_project": "JFD",
+      "ticket_id": 13
+    },
+    {
+      "text": "Working on a fix for this issue. Will keep you updated.",
+      "author": "Michael",
+      "ticket_project": "JFD",
+      "ticket_id": 13
+    },
+    {
+      "text": "Could you please provide the exact time and date when the issue occurred?",
+      "author": "Michael",
+      "ticket_project": "JFD",
+      "ticket_id": 14
+    },
+    {
+      "text": "Currently discussing this with the development team for their input.",
+      "author": "James",
+      "ticket_project": "JFD",
+      "ticket_id": 14
+    },
+    {
+      "text": "Could you please provide the error message you encountered?",
+      "author": "Daniel",
+      "ticket_project": "JFD",
+      "ticket_id": 14
+    },
+    {
+      "text": "Thanks for reporting. We'll reach out if we need any additional information.",
+      "author": "James",
+      "ticket_project": "JFD",
+      "ticket_id": 14
+    },
+    {
+      "text": "Working on this with utmost priority. Expect a resolution shortly.",
+      "author": "James",
+      "ticket_project": "JFD",
+      "ticket_id": 15
+    },
+    {
+      "text": "Thanks for notifying us. We'll investigate and provide an update soon.",
+      "author": "David",
+      "ticket_project": "JFD",
+      "ticket_id": 15
+    },
+    {
+      "text": "Could you please provide a screenshot of the error message?",
+      "author": "Ava",
+      "ticket_project": "JFD",
+      "ticket_id": 15
+    },
+    {
+      "text": "Investigating the codebase to identify any potential bugs.",
+      "author": "Michael",
+      "ticket_project": "JFD",
+      "ticket_id": 15
+    },
+    {
+      "text": "Working on reproducing the issue in our test environment.",
+      "author": "Emma",
+      "ticket_project": "JFD",
+      "ticket_id": 15
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as quickly as possible.",
+      "author": "Sophia",
+      "ticket_project": "JFD",
+      "ticket_id": 16
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it promptly.",
+      "author": "Sophia",
+      "ticket_project": "JFD",
+      "ticket_id": 16
+    },
+    {
+      "text": "Thanks for the detailed description. We'll analyze and provide a solution.",
+      "author": "Emma",
+      "ticket_project": "JFD",
+      "ticket_id": 16
+    },
+    {
+      "text": "Investigating the application logs to identify any relevant information.",
+      "author": "John",
+      "ticket_project": "JFD",
+      "ticket_id": 16
+    },
+    {
+      "text": "Thanks for reporting this. We'll escalate it to the appropriate team.",
+      "author": "John",
+      "ticket_project": "JFD",
+      "ticket_id": 16
+    },
+    {
+      "text": "Could you please provide the browser and operating system you are using?",
+      "author": "John",
+      "ticket_project": "FBT",
+      "ticket_id": 1
+    },
+    {
+      "text": "Working on this as a high priority. Expect a resolution shortly.",
+      "author": "Sophia",
+      "ticket_project": "FBT",
+      "ticket_id": 1
+    },
+    {
+      "text": "Investigating the application logs to identify any relevant information.",
+      "author": "John",
+      "ticket_project": "FBT",
+      "ticket_id": 1
+    },
+    {
+      "text": "Thanks for notifying us. We'll investigate and provide an update soon.",
+      "author": "James",
+      "ticket_project": "FBT",
+      "ticket_id": 2
+    },
+    {
+      "text": "Could you please provide the exact time and date when the issue occurred?",
+      "author": "James",
+      "ticket_project": "FBT",
+      "ticket_id": 2
+    },
+    {
+      "text": "Could you please provide more details about the steps to reproduce?",
+      "author": "James",
+      "ticket_project": "FBT",
+      "ticket_id": 2
+    },
+    {
+      "text": "Investigating the application logs to identify any relevant information.",
+      "author": "Sophia",
+      "ticket_project": "FBT",
+      "ticket_id": 4
+    },
+    {
+      "text": "Could you please provide the network configuration you are using?",
+      "author": "Ava",
+      "ticket_project": "FBT",
+      "ticket_id": 4
+    },
+    {
+      "text": "Thanks for reporting. We'll escalate this to the appropriate team for resolution.",
+      "author": "Olivia",
+      "ticket_project": "FBT",
+      "ticket_id": 5
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll investigate and fix it promptly.",
+      "author": "Olivia",
+      "ticket_project": "FBT",
+      "ticket_id": 5
+    },
+    {
+      "text": "Could you please provide the network configuration you are using?",
+      "author": "Ava",
+      "ticket_project": "FBT",
+      "ticket_id": 5
+    },
+    {
+      "text": "Could you please provide the browser and operating system you are using?",
+      "author": "Sophia",
+      "ticket_project": "FBT",
+      "ticket_id": 6
+    },
+    {
+      "text": "Working on this urgently. Expect a resolution in the next few days.",
+      "author": "Sophia",
+      "ticket_project": "FBT",
+      "ticket_id": 6
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll investigate and fix it.",
+      "author": "Emma",
+      "ticket_project": "FBT",
+      "ticket_id": 6
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll assign it to the relevant team.",
+      "author": "James",
+      "ticket_project": "FBT",
+      "ticket_id": 6
+    },
+    {
+      "text": "Could you please provide the error message you encountered?",
+      "author": "Daniel",
+      "ticket_project": "FBT",
+      "ticket_id": 7
+    },
+    {
+      "text": "Currently investigating the root cause of the problem.",
+      "author": "Emma",
+      "ticket_project": "FBT",
+      "ticket_id": 7
+    },
+    {
+      "text": "Working on reproducing the issue in our test environment.",
+      "author": "Isabella",
+      "ticket_project": "FBT",
+      "ticket_id": 7
+    },
+    {
+      "text": "Investigating the system logs to identify any errors or warnings.",
+      "author": "John",
+      "ticket_project": "FBT",
+      "ticket_id": 7
+    },
+    {
+      "text": "Working on this with high priority. Expect a resolution shortly.",
+      "author": "John",
+      "ticket_project": "FBT",
+      "ticket_id": 8
+    },
+    {
+      "text": "Investigating the database to identify any data inconsistencies.",
+      "author": "Isabella",
+      "ticket_project": "FBT",
+      "ticket_id": 8
+    },
+    {
+      "text": "Investigating the application logs to identify any relevant information.",
+      "author": "Michael",
+      "ticket_project": "FBT",
+      "ticket_id": 8
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll investigate and fix it.",
+      "author": "Isabella",
+      "ticket_project": "FBT",
+      "ticket_id": 8
+    },
+    {
+      "text": "Working on a fix for this issue. Will keep you updated.",
+      "author": "David",
+      "ticket_project": "FBT",
+      "ticket_id": 9
+    },
+    {
+      "text": "Working on this urgently. Expect a resolution in the next few days.",
+      "author": "Emma",
+      "ticket_project": "FBT",
+      "ticket_id": 9
+    },
+    {
+      "text": "Investigating the database to identify any data inconsistencies.",
+      "author": "John",
+      "ticket_project": "FBT",
+      "ticket_id": 9
+    },
+    {
+      "text": "Currently investigating the root cause of the problem.",
+      "author": "Sophia",
+      "ticket_project": "FBT",
+      "ticket_id": 11
+    },
+    {
+      "text": "Could you please provide the exact time and date when the issue occurred?",
+      "author": "Emma",
+      "ticket_project": "FBT",
+      "ticket_id": 11
+    },
+    {
+      "text": "Thanks for reporting this issue! We'll look into it right away.",
+      "author": "Isabella",
+      "ticket_project": "FBT",
+      "ticket_id": 11
+    },
+    {
+      "text": "Thanks for letting us know. We'll investigate and provide an update soon.",
+      "author": "Olivia",
+      "ticket_project": "FBT",
+      "ticket_id": 11
+    },
+    {
+      "text": "Currently reviewing the codebase for any potential security vulnerabilities.",
+      "author": "Daniel",
+      "ticket_project": "FBT",
+      "ticket_id": 11
+    },
+    {
+      "text": "Currently investigating the root cause of the problem.",
+      "author": "Daniel",
+      "ticket_project": "FBT",
+      "ticket_id": 13
+    },
+    {
+      "text": "Investigating the server logs to identify any anomalies.",
+      "author": "Emma",
+      "ticket_project": "FBT",
+      "ticket_id": 13
+    },
+    {
+      "text": "Working on this as a top priority. Expect a resolution soon.",
+      "author": "David",
+      "ticket_project": "FBT",
+      "ticket_id": 13
+    },
+    {
+      "text": "Thanks for reporting. We'll keep you informed of any progress made on this issue.",
+      "author": "Michael",
+      "ticket_project": "FBT",
+      "ticket_id": 14
+    },
+    {
+      "text": "Thanks for notifying us. We'll investigate and provide an update soon.",
+      "author": "John",
+      "ticket_project": "FBT",
+      "ticket_id": 14
+    },
+    {
+      "text": "Thanks for letting us know. We'll investigate and provide an update soon.",
+      "author": "John",
+      "ticket_project": "MVM",
+      "ticket_id": 1
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll investigate and fix it.",
+      "author": "John",
+      "ticket_project": "MVM",
+      "ticket_id": 1
+    },
+    {
+      "text": "Thanks for reporting. We'll reach out if we need any additional information.",
+      "author": "James",
+      "ticket_project": "MVM",
+      "ticket_id": 1
+    },
+    {
+      "text": "Currently reviewing the codebase for any potential security vulnerabilities.",
+      "author": "Ava",
+      "ticket_project": "MVM",
+      "ticket_id": 1
+    },
+    {
+      "text": "Thanks for reporting. We'll reach out if we need any additional information.",
+      "author": "Michael",
+      "ticket_project": "MVM",
+      "ticket_id": 2
+    },
+    {
+      "text": "Working on this urgently. Expect a resolution in the next few hours.",
+      "author": "David",
+      "ticket_project": "MVM",
+      "ticket_id": 3
+    },
+    {
+      "text": "Thanks for reporting. We'll keep you informed of any progress made.",
+      "author": "Sophia",
+      "ticket_project": "MVM",
+      "ticket_id": 3
+    },
+    {
+      "text": "Thanks for reporting this. We'll escalate it to the appropriate team.",
+      "author": "John",
+      "ticket_project": "MVM",
+      "ticket_id": 4
+    },
+    {
+      "text": "Could you please provide the network configuration you are using?",
+      "author": "David",
+      "ticket_project": "MVM",
+      "ticket_id": 4
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll investigate further.",
+      "author": "Emma",
+      "ticket_project": "MVM",
+      "ticket_id": 4
+    },
+    {
+      "text": "Currently discussing this with the development team for their input.",
+      "author": "John",
+      "ticket_project": "MVM",
+      "ticket_id": 4
+    },
+    {
+      "text": "Currently discussing this with our QA team for their insights.",
+      "author": "Ava",
+      "ticket_project": "MVM",
+      "ticket_id": 5
+    },
+    {
+      "text": "Could you please provide the hardware specifications of your machine?",
+      "author": "Ava",
+      "ticket_project": "MVM",
+      "ticket_id": 5
+    },
+    {
+      "text": "Investigating the database to identify any data inconsistencies.",
+      "author": "Sophia",
+      "ticket_project": "MVM",
+      "ticket_id": 7
+    },
+    {
+      "text": "Thanks for bringing this to our attention. We'll assign it to the relevant team.",
+      "author": "Isabella",
+      "ticket_project": "MVM",
+      "ticket_id": 7
+    },
+    {
+      "text": "Working on this as a high priority. Expect a resolution shortly.",
+      "author": "David",
+      "ticket_project": "MVM",
+      "ticket_id": 8
+    },
+    {
+      "text": "Investigating the database to identify any data inconsistencies.",
+      "author": "Michael",
+      "ticket_project": "MVM",
+      "ticket_id": 8
+    },
+    {
+      "text": "Thanks for the detailed description. We'll analyze and provide a solution.",
+      "author": "David",
+      "ticket_project": "MVM",
+      "ticket_id": 8
+    },
+    {
+      "text": "Could you please provide the network configuration you are using?",
+      "author": "Emma",
+      "ticket_project": "MVM",
+      "ticket_id": 9
+    },
+    {
+      "text": "Currently discussing this with the development team for their input.",
+      "author": "Sophia",
+      "ticket_project": "MVM",
+      "ticket_id": 9
+    },
+    {
+      "text": "Working on this urgently. Expect a resolution in the next few days.",
+      "author": "Daniel",
+      "ticket_project": "MVM",
+      "ticket_id": 10
+    },
+    {
+      "text": "Investigating the database to identify any data inconsistencies.",
+      "author": "James",
+      "ticket_project": "MVM",
+      "ticket_id": 11
+    },
+    {
+      "text": "Currently discussing this with the development team for their input.",
+      "author": "James",
+      "ticket_project": "MVM",
+      "ticket_id": 11
+    },
+    {
+      "text": "Could you please provide the exact steps you followed before encountering the issue?",
+      "author": "John",
+      "ticket_project": "MVM",
+      "ticket_id": 13
+    },
+    {
+      "text": "Could you please provide the version number of the software you are using?",
+      "author": "Isabella",
+      "ticket_project": "MVM",
+      "ticket_id": 13
+    },
+    {
+      "text": "Thanks for reporting this. We'll escalate it to the appropriate team.",
+      "author": "Isabella",
+      "ticket_project": "MVM",
+      "ticket_id": 13
+    },
+    {
+      "text": "Investigating the server logs to identify any anomalies.",
+      "author": "John",
+      "ticket_project": "MVM",
+      "ticket_id": 13
+    },
+    {
+      "text": "Could you please provide the browser and operating system you are using?",
+      "author": "Olivia",
+      "ticket_project": "MVM",
+      "ticket_id": 13
+    },
+    {
+      "text": "Investigating the system logs to identify any errors or warnings.",
+      "author": "Emma",
+      "ticket_project": "MVM",
+      "ticket_id": 15
+    },
+    {
+      "text": "Could you please provide the version number of the software you are using?",
+      "author": "Sophia",
+      "ticket_project": "MVM",
+      "ticket_id": 15
+    },
+    {
+      "text": "Thanks for reporting this. We'll escalate it to the appropriate team.",
+      "author": "Michael",
+      "ticket_project": "MVM",
+      "ticket_id": 15
+    },
+    {
+      "text": "Thanks for reporting. We'll prioritize this and address it as soon as possible.",
+      "author": "John",
+      "ticket_project": "MVM",
+      "ticket_id": 15
+    },
+    {
+      "text": "Currently discussing this with the development team for their input.",
+      "author": "James",
+      "ticket_project": "MVM",
+      "ticket_id": 16
+    }
+  ]
+}

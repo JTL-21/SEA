@@ -1,7 +1,9 @@
 from flask import Blueprint, request, abort, make_response
 from flask_login import login_required, current_user
 from app.extensions import db
-from app.models import Ticket, Comment, User
+from app.models.Ticket import Ticket
+from app.models.User import User
+from app.models.Comment import Comment
 from app.validation.comment import create_comment_schema
 from app.validation.utils import item_getter, validate_body
 from app.utils.list import model_list_as_dict

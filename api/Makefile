@@ -7,3 +7,9 @@ start:
 
 venv:
 	python3 -m venv ./api/.venv
+
+test:
+	PYTHONPATH=$(pwd):$PYTHONPATH python3 -m pytest
+
+seed:
+	PYTHONPATH=$(pwd):$PYTHONPATH python3 mock/seed.py

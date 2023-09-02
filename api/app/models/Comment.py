@@ -1,5 +1,5 @@
 from datetime import datetime
-from app.models import User
+from app.models.User import User
 from app.extensions import db
 
 

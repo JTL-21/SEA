@@ -1,22 +1,19 @@
 import os
 import logging
-from dotenv import load_dotenv
 from flask import Flask, send_from_directory
 from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
 from werkzeug.exceptions import HTTPException
 from app.models import User, Project, Ticket, Comment
-from flask_sqlalchemy import SQLAlchemy
 from app.routes import comment_bp, project_bp, ticket_bp, user_bp
 from app.extensions import db, login_manager
+from app.config import Config
 
-load_dotenv()
 
-
-def create_app():
+def create_app(config=Config):
     app = Flask(__name__)
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("SQLALCHEMY_DATABASE_URI")
-    app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+    app.config.from_object(config)
 
     app.register_blueprint(comment_bp)
     app.register_blueprint(project_bp)

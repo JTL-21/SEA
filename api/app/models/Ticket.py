@@ -1,7 +1,9 @@
 import re
 from flask import abort
 from datetime import datetime
-from app.models import Project, User, Comment
+from app.models.Project import Project
+from app.models.User import User
+from app.models.Comment import Comment
 from app.extensions import db
 from app.validation.ticket import create_ticket_schema
 from app.utils.list import model_list_as_dict
