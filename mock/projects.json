@@ -6,97 +6,97 @@
     "tickets": [
       {
         "title": "User authentication and registration",
-        "description": "Implement user authentication and registration functionality using Firebase Authentication.",
+        "description": "Implement user authentication and registration functionality using Firebase Authentication.\n\n### Acceptance Criteria\n- Users should be able to create an account with a valid email and password.\n- Users should be able to log in with their registered credentials.\n- Passwords must be securely hashed and stored.\n- Provide error messages for invalid login attempts.\n- Implement 'Forgot Password' functionality with password reset capability.\n- Ensure proper error handling for any potential authentication issues.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Task creation and editing",
-        "description": "Allow users to create and edit tasks in the mobile application.",
+        "description": "Allow users to create and edit tasks in the mobile application.\n\n### Acceptance Criteria\n- Users should be able to create a new task with a title and description.\n- Users should be able to edit the title and description of existing tasks.\n- Each task should have a unique identifier.\n- Provide a 'Save' button to save changes to the task.\n- Validate and handle edge cases, such as empty task title or description.\n- Implement data synchronization to ensure changes are reflected across devices if the user is logged in from multiple devices.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Task categorization and prioritization",
-        "description": "Implement the ability for users to categorize and prioritize their tasks.",
+        "description": "Implement the ability for users to categorize and prioritize their tasks.\n\n### Acceptance Criteria\n- Users should be able to assign categories to tasks (e.g., Personal, Work, Shopping).\n- Users should be able to set priorities for tasks (e.g., High, Medium, Low).\n- Provide a visually appealing way to display task categories and priorities.\n- Ensure that tasks can be filtered and sorted based on categories and priorities.\n- Users should be able to easily update the category and priority of existing tasks.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Due date reminders",
-        "description": "Add functionality to send due date reminders to users for their tasks.",
+        "description": "Add functionality to send due date reminders to users for their tasks.\n\n### Acceptance Criteria\n- Users should be able to set a due date for each task.\n- Implement a notification system to remind users of upcoming and overdue tasks.\n- Allow users to choose their preferred notification settings (e.g., notification time, frequency).\n- Test the reminder system thoroughly to ensure reliability and accuracy of reminders.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Task sharing with other users",
-        "description": "Enable users to share their tasks with other users of the application.",
+        "description": "Enable users to share their tasks with other users of the application.\n\n### Acceptance Criteria\n- Users should be able to invite other users to collaborate on specific tasks.\n- Implement user permissions to control what collaborators can do (e.g., edit, view-only).\n- Collaborators should receive real-time updates when changes are made to a shared task.\n- Allow task owners to revoke sharing access from specific collaborators.\n- Ensure data security and privacy when sharing tasks among users.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Implement user interface design",
-        "description": "Design and implement the user interface for the Exo Task Manager mobile application.",
+        "description": "Design and implement the user interface for the Exo Task Manager mobile application.\n\n### Acceptance Criteria\n- Create a visually appealing and intuitive UI design for all screens.\n- Ensure the app is responsive and works well on different screen sizes and orientations.\n- Implement smooth transitions and animations to enhance user experience.\n- Use appropriate color schemes and typography for a cohesive design.\n- Test the UI on various devices to identify and resolve layout issues.",
         "priority": 5,
         "points": 5
       },
       {
         "title": "Integrate Firebase Realtime Database",
-        "description": "Integrate Firebase Realtime Database to store and retrieve task data.",
+        "description": "Integrate Firebase Realtime Database to store and retrieve task data.\n\n### Acceptance Criteria\n- Data from the app should be synchronized with the Firebase Realtime Database.\n- Ensure proper data structuring for efficient querying and retrieval.\n- Implement data caching for offline access to tasks.\n- Test data synchronization in various scenarios to verify accuracy and reliability.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Implement Redux for state management",
-        "description": "Use Redux to manage the state of the Exo Task Manager application.",
+        "description": "Use Redux to manage the state of the Exo Task Manager application.\n\n### Acceptance Criteria\n- Set up Redux and related middleware for state management.\n- Ensure the entire app's state is handled through Redux.\n- Implement Redux actions and reducers to manage tasks, authentication, and other app data.\n- Test state management to verify data consistency and correct behavior across components.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Add task search functionality",
-        "description": "Implement a search feature to allow users to search for specific tasks.",
+        "description": "Implement a search feature to allow users to search for specific tasks.\n\n### Acceptance Criteria\n- Add a search bar to the app's UI for entering search queries.\n- Implement search functionality to filter tasks based on keywords.\n- Display search results in real-time as users type in the search bar.\n- Test the search feature with various search queries and verify accurate results.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Implement task filtering",
-        "description": "Add the ability for users to filter tasks based on categories or priorities.",
+        "description": "Add the ability for users to filter tasks based on categories or priorities.\n\n### Acceptance Criteria\n- Implement filter options for task categories and priorities.\n- Allow users to select multiple filters simultaneously.\n- Ensure the app updates the task list in real-time based on selected filters.\n- Test filtering with various combinations of categories and priorities.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Implement task sorting",
-        "description": "Allow users to sort their tasks based on due dates or priorities.",
+        "description": "Allow users to sort their tasks based on due dates or priorities.\n\n### Acceptance Criteria\n- Implement sorting options for task due dates and priorities.\n- Allow users to choose between ascending and descending order for sorting.\n- Ensure the app updates the task list in real-time based on the selected sorting criteria.\n- Test sorting functionality with tasks having different due dates and priorities.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Add task completion status",
-        "description": "Implement a feature to mark tasks as completed or incomplete.",
+        "description": "Implement a feature to mark tasks as completed or incomplete.\n\n### Acceptance Criteria\n- Add a checkbox or toggle to mark a task as completed.\n- Completed tasks should be visually distinguishable from incomplete tasks.\n- Ensure that completed tasks are persisted and remain marked as completed even after app restarts.\n- Provide an option to view only completed tasks or only incomplete tasks.\n- Test marking tasks as completed and verify the status is retained correctly.",
         "priority": 2,
         "points": 2
       },
       {
         "title": "Implement task deletion",
-        "description": "Allow users to delete tasks from the Exo Task Manager application.",
+        "description": "Allow users to delete tasks from the Exo Task Manager application.\n\n### Acceptance Criteria\n- Implement a delete button or swipe gesture for deleting tasks.\n- Add a confirmation prompt before permanently deleting a task.\n- Ensure that deleted tasks are removed from the database and not visible to the user anymore.\n- Test task deletion thoroughly to prevent accidental deletions or data corruption.",
         "priority": 2,
         "points": 2
       },
       {
         "title": "Add task notes functionality",
-        "description": "Implement the ability for users to add notes to their tasks.",
+        "description": "Implement the ability for users to add notes to their tasks.\n\n### Acceptance Criteria\n- Add a section for entering and viewing notes within each task.\n- Allow users to add, edit, and delete notes for a task.\n- Ensure notes are saved and associated with the correct task.\n- Test adding and editing notes to verify proper functionality and data integrity.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Implement task reminders",
-        "description": "Add functionality to set reminders for specific tasks.",
+        "description": "Add functionality to set reminders for specific tasks.\n\n### Acceptance Criteria\n- Users should be able to set a reminder date and time for a task.\n- Implement a notification system to remind users of upcoming task reminders.\n- Allow users to choose their preferred reminder settings (e.g., notification time, sound).\n- Test task reminders with different reminder configurations to ensure accurate and timely notifications.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Perform testing and bug fixing",
-        "description": "Test the Exo Task Manager application and fix any bugs or issues that arise.",
+        "description": "Test the Exo Task Manager application and fix any bugs or issues that arise.\n\n### Acceptance Criteria\n- Create a comprehensive test plan covering all aspects of the application.\n- Perform unit testing, integration testing, and end-to-end testing.\n- Identify and fix any bugs, crashes, or unexpected behaviors.\n- Ensure the app is stable, performs well, and handles errors gracefully.\n- Conduct usability testing to gather user feedback for further improvements.",
         "priority": 5,
         "points": 5
       }
