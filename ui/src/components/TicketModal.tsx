@@ -128,7 +128,6 @@ const TicketModal = ({ ticket, refreshProject }: TicketModalProps) => {
     API.editTicket(ticket.slug, { assignee: user.username }).then(
       (response) => {
         if (response.ok) {
-          console.log(`Assigned ${ticket.slug} to ${user.username}`);
           refreshProject("tickets");
         } else {
           console.log(

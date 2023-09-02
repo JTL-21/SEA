@@ -46,7 +46,6 @@ const ProjectPage = () => {
 
   const handleDragEnd = (event: DragEndEvent) => {
     setActiveTicket(null);
-    console.log(event);
     if (!event.collisions || !event.collisions[0]) return;
     const ticketSlug = String(event.active.id);
     const newStatus = event.collisions[0].id as Ticket["status"];
@@ -73,7 +72,6 @@ const ProjectPage = () => {
       const all = refresh === "all";
 
       if (all || refresh === "project") {
-        console.log("Refreshing project");
         API.getProject(key).then((response) => {
           if (response.ok) {
             setProject(response.data);
@@ -82,7 +80,6 @@ const ProjectPage = () => {
       }
 
       if (all || refresh === "tickets") {
-        console.log("Refreshing tickets");
         API.getProjectTickets(key).then((response) => {
           if (response.ok) {
             setTickets(response.data);
