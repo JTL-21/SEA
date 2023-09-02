@@ -1,4 +1,7 @@
 const formatDateTime = (date: Date) =>
   `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 
-export default formatDateTime;
+const wait = (ms: number) =>
+  new Promise((resolve) => window.setTimeout(resolve, ms));
+
+export { formatDateTime, wait };

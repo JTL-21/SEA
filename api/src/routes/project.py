@@ -5,20 +5,30 @@ from ..db import db
 from ..validation.project import create_project_schema, edit_project_schema
 from ..validation.utils import item_getter, validate_body
 from flask_login import login_required, current_user
+from sqlalchemy import or_
 
 
 @app.get("/api/project")
 @login_required
-def get_all_projects():
+def query_projects():
     """
-    Get all projects
+    Find projects based on their name or key similarity to a query passed from a query parameter
+
+    query: query
     """
 
-    projects = Project.query.all()
+    query = request.args.get("query", "")
 
-    project_dicts = []
-    for project in projects:
-        project_dicts.append(project.as_dict())
+    if not query:
+        abort(400, "Query not provided")
+
+    search_term = f"%{query}%"
+
+    similar_projects = Project.query.filter(
+        or_(Project.key.ilike(search_term), Project.title.ilike(search_term))
+    ).all()
+
+    project_dicts = list(map(lambda project: project.as_dict(), similar_projects))
 
     return project_dicts
 

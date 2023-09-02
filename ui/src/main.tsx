@@ -10,6 +10,7 @@ import { UserProvider } from "./hooks/useUser";
 import CreateProject from "./pages/CreateProject";
 import ProjectPage from "./pages/Project";
 import ProtectedRoute from "./components/ProtectedRoute";
+import SearchProjects from "./pages/SearchProjects";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               <Route path="/" Component={App} />
               <Route path="/create-project" Component={CreateProject} />
               <Route path="/project/:key/:slug?" Component={ProjectPage} />
+              <Route path="/projects" Component={SearchProjects} />
             </Route>
           </Routes>
         </Layout>

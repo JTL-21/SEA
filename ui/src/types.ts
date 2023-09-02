@@ -33,6 +33,7 @@ interface Ticket {
   points: number;
   priority: (typeof TICKET_PRIORITIES)[number];
   assignee?: User;
+  comments: Comment[];
 }
 
 interface Comment {
