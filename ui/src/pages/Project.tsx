@@ -98,7 +98,7 @@ const ProjectPage = () => {
       }
 
       if (all || refresh === "tickets") {
-        API.getProjectTickets(key).then((response) => {
+        API.queryTickets({ project: key }).then((response) => {
           if (response.ok) {
             setTickets(response.data);
           } else {

@@ -141,13 +141,20 @@ const queryProjects = (query: string) => {
   return APIFetch.get<Project[]>(`/api/project?${queryString}`);
 };
 
-const getProjectTickets = (key: string) =>
-  APIFetch.get<Ticket[]>(`/api/project/${key}/tickets`);
-
 const createTicket = (body: CreateTicketBody) =>
   APIFetch.post<Ticket>("/api/ticket", {
     body: body,
   });
+
+type QueryTicketsQueryString = {
+  assignee?: string;
+  project?: string;
+};
+
+const queryTickets = (query: QueryTicketsQueryString) => {
+  const queryString = new URLSearchParams(query).toString();
+  return APIFetch.get<Ticket[]>(`/api/ticket?${queryString}`);
+};
 
 const getTicket = (slug: string) => APIFetch.get<Ticket>(`/api/ticket/${slug}`);
 
@@ -182,8 +189,8 @@ export default {
   editProject,
   deleteProject,
   queryProjects,
-  getProjectTickets,
   createTicket,
+  queryTickets,
   getTicket,
   editTicket,
   deleteTicket,
