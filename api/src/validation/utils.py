@@ -7,6 +7,8 @@ def item_getter(*keys):
     """
     Returns a function that pulls keys from a dictionary
     Missing keys are returned as None
+
+    If only getting one key, the value is returned individually not as a tuple
     """
 
     def getter(data_dict):
@@ -17,6 +19,9 @@ def item_getter(*keys):
                 # Strip leading and trailing spaces from strings
                 value = value.strip()
             values.append(value)
+
+        if len(values) == 1:
+            return values[0]
 
         return tuple(values)
 
