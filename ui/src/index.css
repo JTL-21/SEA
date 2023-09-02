@@ -18,6 +18,7 @@
   [type="week"],
   [multiple],
   select {
+    @apply border-0;
   }
 
   [type="checkbox"],
