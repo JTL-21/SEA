@@ -12,6 +12,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Assigned from "./pages/Assigned";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -30,6 +31,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               <Route path="/project/:key/:slug?" Component={ProjectPage} />
               <Route path="/projects" Component={SearchProjects} />
               <Route path="/projects/create" Component={SearchProjects} />
+              <Route path="/assigned/:slug?" Component={Assigned} />
             </Route>
           </Routes>
         </Layout>

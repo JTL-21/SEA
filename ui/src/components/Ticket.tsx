@@ -38,7 +38,7 @@ const TicketComponent = ({ ticket, onClick }: TicketComponentProps) => {
       onMouseUp={onMouseUp}
     >
       <div className="text-sm text-gray-600">{ticket.title}</div>
-      <div className="flex items-center gap-1.5">
+      <div className="mt-auto flex items-center gap-1.5">
         <span className="mr-auto font-bold text-gray-600">{ticket.slug}</span>
         {ticket.comments.length > 0 && (
           <div

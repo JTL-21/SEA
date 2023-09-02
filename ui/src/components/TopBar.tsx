@@ -55,6 +55,9 @@ const TopBar = () => {
         <Link to="/projects" className={topBarLinkClasses}>
           Projects
         </Link>
+        <Link to="/assigned" className={topBarLinkClasses}>
+          Assigned to Me
+        </Link>
         <div className="flex-grow"></div>
         <LabeledIcon
           icon={user?.is_admin ? <Admin /> : <UserCircleIcon />}
