@@ -1,6 +1,7 @@
 import TicketComponent from "./Ticket";
 import { Ticket } from "../types";
 import { useDroppable } from "@dnd-kit/core";
+import { sortTickets } from "../utils/tickets";
 
 interface TicketColumnProps {
   status: Ticket["status"];
@@ -27,7 +28,7 @@ const TicketColumn = ({
         <span className="text-gray-300">{tickets.length}</span>
       </div>
       <div className="gap-2 space-y-2 overflow-y-scroll p-2">
-        {tickets.map((ticket) => (
+        {sortTickets(tickets).map((ticket) => (
           <TicketComponent
             onClick={onTicketClick}
             key={ticket.slug}
