@@ -11,7 +11,7 @@ const TopBar = () => {
       className="fixed left-0 right-0 top-0 h-14 bg-white p-3 shadow"
       title="home"
     >
-      <div className="mx-auto flex h-full max-w-[1200px] items-center gap-2">
+      <div className="mx-auto flex h-full items-center gap-2">
         <Link to="/" className="flex h-full items-center gap-2">
           <img src={logo} alt="logo" className="h-full" />
           <h1 className="select-none text-3xl font-light text-amber-950">

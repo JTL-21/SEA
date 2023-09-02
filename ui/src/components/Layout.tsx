@@ -9,7 +9,7 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <TopBar />
-      <div className="mx-auto h-full max-w-[1200px] p-2 pb-0 pt-14 text-gray-900">
+      <div className="mx-auto h-full p-2 pb-0 pt-14 text-gray-900">
         {children}
       </div>
     </>
