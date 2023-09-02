@@ -1,10 +1,10 @@
 import re
 from flask import abort
 from datetime import datetime
-from src.models import Project, User, Comment
-from src.extensions import db
-from src.validation.ticket import create_ticket_schema
-from src.utils.list import model_list_as_dict
+from app.models import Project, User, Comment
+from app.extensions import db
+from app.validation.ticket import create_ticket_schema
+from app.utils.list import model_list_as_dict
 
 
 class Ticket(db.Model):

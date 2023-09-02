@@ -3,7 +3,7 @@ dump-requirements:
 	echo Dumped requirements from pip into requirements.txt
 
 start:
-	python3 -m flask --app src --debug run --host=0.0.0.0
+	python3 -m flask --app app --debug run --host=0.0.0.0
 
 venv:
 	python3 -m venv ./api/.venv

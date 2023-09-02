@@ -1,10 +1,10 @@
 from flask import Blueprint, request, abort, make_response
 from flask_login import login_required, current_user
-from src.extensions import db
-from src.models import Ticket, Project, User, Comment
-from src.validation.ticket import create_ticket_schema, edit_ticket_schema
-from src.validation.utils import item_getter, validate_body
-from src.utils.list import model_list_as_dict
+from app.extensions import db
+from app.models import Ticket, Project, User, Comment
+from app.validation.ticket import create_ticket_schema, edit_ticket_schema
+from app.validation.utils import item_getter, validate_body
+from app.utils.list import model_list_as_dict
 
 ticket_bp = Blueprint("ticket", __name__)
 

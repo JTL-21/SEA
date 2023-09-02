@@ -1,10 +1,10 @@
 from flask import Blueprint, request, abort, make_response
 from flask_login import login_required, current_user
-from src.extensions import db
-from src.models import Ticket, Comment, User
-from src.validation.comment import create_comment_schema
-from src.validation.utils import item_getter, validate_body
-from src.utils.list import model_list_as_dict
+from app.extensions import db
+from app.models import Ticket, Comment, User
+from app.validation.comment import create_comment_schema
+from app.validation.utils import item_getter, validate_body
+from app.utils.list import model_list_as_dict
 
 
 comment_bp = Blueprint("comment", __name__)

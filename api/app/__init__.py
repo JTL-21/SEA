@@ -4,10 +4,10 @@ from dotenv import load_dotenv
 from flask import Flask, send_from_directory
 from flask_cors import CORS
 from werkzeug.exceptions import HTTPException
-from src.models import User, Project, Ticket, Comment
+from app.models import User, Project, Ticket, Comment
 from flask_sqlalchemy import SQLAlchemy
-from src.routes import comment_bp, project_bp, ticket_bp, user_bp
-from src.extensions import db, login_manager
+from app.routes import comment_bp, project_bp, ticket_bp, user_bp
+from app.extensions import db, login_manager
 
 load_dotenv()
 

@@ -2,11 +2,11 @@ import logging
 from flask import Blueprint, request, abort, make_response
 from flask_login import login_required, login_user, logout_user, current_user
 from sqlalchemy import func
-from src.extensions import db
-from src.models import User
-from src.validation.user import create_user_schema, login_schema
-from src.validation.utils import item_getter, validate_body
-from src.utils.list import model_list_as_dict
+from app.extensions import db
+from app.models import User
+from app.validation.user import create_user_schema, login_schema
+from app.validation.utils import item_getter, validate_body
+from app.utils.list import model_list_as_dict
 
 user_bp = Blueprint("user", __name__)
 

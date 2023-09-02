@@ -1,11 +1,11 @@
 from flask import Blueprint, request, abort, make_response
 from flask_login import login_required, current_user
 from sqlalchemy import or_
-from src.extensions import db
-from src.models import Project, User
-from src.validation.project import create_project_schema, edit_project_schema
-from src.validation.utils import item_getter, validate_body
-from src.utils.list import model_list_as_dict
+from app.extensions import db
+from app.models import Project, User
+from app.validation.project import create_project_schema, edit_project_schema
+from app.validation.utils import item_getter, validate_body
+from app.utils.list import model_list_as_dict
 
 project_bp = Blueprint("project", __name__)
 
