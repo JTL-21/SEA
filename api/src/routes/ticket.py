@@ -95,9 +95,10 @@ def create_ticket():
     project = Project.query.filter_by(key=project).first()
 
     if not project:
-        abort(404, "No user with the given username exists")
+        abort(404, "No project with the given key exists")
 
     new_ticket = Ticket(
+        id=project.ticket_counter,
         project=project.key,
         author=current_user.username,
         title=stripped_title,
@@ -105,6 +106,8 @@ def create_ticket():
         priority=priority,
         points=points,
     )
+
+    project.ticket_counter += 1
 
     db.session.add(new_ticket)
     db.session.commit()

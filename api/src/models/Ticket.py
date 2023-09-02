@@ -10,7 +10,7 @@ from ..utils.list import model_list_as_dict
 
 
 class Ticket(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True)
     project = db.Column(
         db.VARCHAR(3),
         db.ForeignKey("project.key", ondelete="CASCADE"),

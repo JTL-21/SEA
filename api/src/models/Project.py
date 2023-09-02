@@ -12,6 +12,7 @@ class Project(db.Model):
         db.ForeignKey("user.username", ondelete="CASCADE"),
         nullable=False,
     )
+    ticket_counter = db.Column(db.Integer, nullable=False, default=1)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
     tickets = db.relationship("Ticket", backref="Project")
@@ -20,12 +21,16 @@ class Project(db.Model):
         # Import here to prevent circular import
         from .Ticket import Ticket
 
-        tickets = Ticket.query.filter_by(project=self.key)[operator]()
+        if operator == "count":
+            tickets = Ticket.query.filter_by(project=self.key).count()
+        else:
+            tickets = Ticket.query.filter_by(project=self.key).all()
 
         return tickets
 
     def as_dict(self):
         owner = User.query.filter_by(username=self.owner).first()
+        ticket_count = self.get_tickets(operator="count")
 
         return {
             "key": self.key,
@@ -33,4 +38,5 @@ class Project(db.Model):
             "description": self.description,
             "owner": owner.as_dict(),
             "created_at": self.created_at.isoformat(),
+            "ticket_count": ticket_count,
         }

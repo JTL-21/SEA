@@ -10,6 +10,7 @@ interface Project {
   description: string;
   owner: User;
   created_at: string;
+  ticket_count: number;
 }
 
 const TICKET_STATUSES = ["WAITING", "IN_PROGRESS", "IN_TEST", "DONE"] as const;
