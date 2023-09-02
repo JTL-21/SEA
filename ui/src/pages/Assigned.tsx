@@ -56,6 +56,11 @@ const Assigned = () => {
             </Link>
           ))}
         </div>
+        {tickets.length === 0 && (
+          <div className="-mt-4 text-gray-400">
+            There aren't any tickets currently assigned to you.
+          </div>
+        )}
       </div>
       {focusedTicket && (
         <TicketModal
