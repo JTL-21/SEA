@@ -1,14 +1,16 @@
 import os
+import logging
 from flask import Flask, send_from_directory
 from .db import db
 from dotenv import load_dotenv
 from .models import *
-import logging
 from werkzeug.exceptions import HTTPException
+from flask_cors import CORS
 
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ["SQLALCHEMY_DATABASE_URI"]
 db.init_app(app)
@@ -26,7 +28,7 @@ def handle_error(error):
         # Only log actual errors
         logging.error(f"HTTP Error ${code}", str(error))
 
-    return {"code": code, "message": desc}, code
+    return {"message": desc}, code
 
 
 @app.route("/static/<path:path>")
