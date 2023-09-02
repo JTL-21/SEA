@@ -8,7 +8,7 @@ from ..utils.json import item_getter
 
 @app.get("/api/ticket/<key>")
 def get_ticket(key):
-    (is_valid_key, response) = Ticket.get_ticket_from_key(key)
+    (is_valid_key, response) = Ticket.from_key(key)
 
     if not is_valid_key:
         return response
@@ -18,14 +18,14 @@ def get_ticket(key):
 
 @app.post("/api/ticket")
 def create_ticket():
-    is_valid, data = item_getter(["project", "title", "author"], ["description"])(
-        request.json
-    )
+    is_valid, data_or_error = item_getter(
+        ["project", "title", "author"], ["description"]
+    )(request.json)
 
     if not is_valid:
-        return data
+        return data_or_error
 
-    project, title, author, description = data
+    project, title, author, description = data_or_error
 
     stripped_title = title.strip()
     stripped_description = (description or "").strip()

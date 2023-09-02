@@ -8,7 +8,7 @@ from ..utils.json import item_getter
 
 @app.get("/api/ticket/<key>/comments")
 def get_ticket_comments(key):
-    (is_valid, response) = Ticket.get_ticket_from_key(key)
+    (is_valid, response) = Ticket.from_key(key)
 
     if not is_valid:
         return response
@@ -27,19 +27,19 @@ def get_ticket_comments(key):
 
 @app.post("/api/ticket/<key>/comment")
 def create_ticket_comment(key):
-    (is_valid, response) = Ticket.get_ticket_from_key(key)
+    (is_valid_key, response) = Ticket.from_key(key)
 
-    if not is_valid:
+    if not is_valid_key:
         return response
 
     ticket = response
 
-    is_valid, data = item_getter(["text", "author"])(request.json)
+    is_valid, data_or_error = item_getter(["text", "author"])(request.json)
 
     if not is_valid:
-        return data
+        return data_or_error
 
-    text, author = data
+    text, author = data_or_error
 
     stripped_text = text.strip()
 

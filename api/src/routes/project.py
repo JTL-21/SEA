@@ -29,14 +29,14 @@ def get_project(key):
 
 @app.post("/api/project")
 def create_project():
-    is_valid, data = item_getter(["key", "title", "owner"], ["description"])(
+    is_valid, data_or_error = item_getter(["key", "title", "owner"], ["description"])(
         request.json
     )
 
     if not is_valid:
-        return data
+        return data_or_error
 
-    key, title, owner, description = data
+    key, title, owner, description = data_or_error
 
     upper_key = key.upper().strip()
     stripped_title = title.strip()

@@ -19,7 +19,12 @@ class Ticket(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
     @staticmethod
-    def get_ticket_from_key(key: str):
+    def from_key(key: str):
+        """
+        Take a ticket key like ABC-123 and return the ticket with the key
+        """
+
+        # Split ABC and 123
         [project, key] = key.split("-")
 
         upper_project_key = project.upper().strip()

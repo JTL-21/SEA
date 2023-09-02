@@ -40,12 +40,12 @@ def create_user():
     """
     Create a user with a given username and password
     """
-    is_valid, data = item_getter(["username", "password"])(request.json)
+    is_valid, data_or_error = item_getter(["username", "password"])(request.json)
 
     if not is_valid:
-        return data
+        return data_or_error
 
-    username, password = data
+    username, password = data_or_error
 
     stripped_username = username.strip()
 
