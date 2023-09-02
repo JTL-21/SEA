@@ -17,6 +17,7 @@ import TicketColumn from "../components/TicketColumn";
 import TicketComponent from "../components/Ticket";
 import TicketModal from "../components/TicketModal";
 import Button from "../components/Button";
+import Markdown from "../components/Markdown";
 
 const ProjectPage = () => {
   const { key, slug } = useParams();
@@ -94,76 +95,86 @@ const ProjectPage = () => {
   React.useEffect(refreshProject, [key, refreshProject]);
 
   return (
-    <div className="flex h-full flex-col pb-2">
-      <div className="my-4 flex items-end gap-2">
-        <h2 className="mr-auto text-4xl">
+    <div className="flex h-full justify-center gap-4 pb-2">
+      <div className="flex w-[200px] flex-col self-stretch lg:w-[300px] xl:w-[400px]">
+        <h2 className="my-4 mr-auto text-4xl">
           <span className="mr-2 border-r-[1px] pr-2 font-semibold">
             {project?.key ?? key?.trim()}
           </span>
           <span className="text-gray-600">{project?.title}</span>
         </h2>
-        <Button
-          className="bg-emerald-400 hover:bg-emerald-500"
-          icon={<PlusIcon />}
-        >
-          Add Ticket
-        </Button>
-        <Button className="bg-blue-400 hover:bg-blue-500" icon={<PencilIcon />}>
-          Edit Project
-        </Button>
-        <Button
-          className="bg-red-400 hover:bg-red-500"
-          confirmClasses="text-rose-50"
-          icon={<TrashIcon />}
-          requireConfirmation
-        >
-          Delete Project
-        </Button>
+        <div className="flex-grow rounded-md bg-gray-100 p-4 shadow-lg ring-2 ring-black ring-opacity-5">
+          <Markdown>{project?.description}</Markdown>
+        </div>
       </div>
-      <div className="flex flex-1 gap-4 overflow-hidden">
-        <DndContext
-          onDragStart={onDragStart}
-          onDragEnd={handleDragEnd}
-          sensors={sensors}
-        >
-          <TicketColumn
-            status="WAITING"
-            title="Waiting"
-            tickets={tickets.filter((ticket) => ticket.status === "WAITING")}
-            onTicketClick={onTicketClick}
-          ></TicketColumn>
-          <TicketColumn
-            status="IN_PROGRESS"
-            title="In Progress"
-            tickets={tickets.filter(
-              (ticket) => ticket.status === "IN_PROGRESS"
-            )}
-            onTicketClick={onTicketClick}
-          ></TicketColumn>
-          <TicketColumn
-            status="IN_TEST"
-            title="In Test"
-            tickets={tickets.filter((ticket) => ticket.status === "IN_TEST")}
-            onTicketClick={onTicketClick}
-          ></TicketColumn>
-          <TicketColumn
-            status="DONE"
-            title="Done"
-            tickets={tickets.filter((ticket) => ticket.status === "DONE")}
-            onTicketClick={onTicketClick}
-          ></TicketColumn>
-          <DragOverlay>
-            {activeTicket && (
-              <div className="z-[9999]">
-                <TicketComponent ticket={activeTicket} />
-              </div>
-            )}
-          </DragOverlay>
-        </DndContext>
+      <div className="flex h-full max-w-[1200px] flex-grow flex-col">
+        <div className="my-4 ml-auto flex items-end gap-2">
+          <Button
+            className="bg-emerald-400 hover:bg-emerald-500"
+            icon={<PlusIcon />}
+          >
+            Add Ticket
+          </Button>
+          <Button
+            className="bg-blue-400 hover:bg-blue-500"
+            icon={<PencilIcon />}
+          >
+            Edit Project
+          </Button>
+          <Button
+            className="bg-red-400 hover:bg-red-500"
+            confirmClasses="text-rose-50"
+            icon={<TrashIcon />}
+            requireConfirmation
+          >
+            Delete Project
+          </Button>
+        </div>
+        <div className="flex flex-1 gap-4 overflow-hidden">
+          <DndContext
+            onDragStart={onDragStart}
+            onDragEnd={handleDragEnd}
+            sensors={sensors}
+          >
+            <TicketColumn
+              status="WAITING"
+              title="Waiting"
+              tickets={tickets.filter((ticket) => ticket.status === "WAITING")}
+              onTicketClick={onTicketClick}
+            ></TicketColumn>
+            <TicketColumn
+              status="IN_PROGRESS"
+              title="In Progress"
+              tickets={tickets.filter(
+                (ticket) => ticket.status === "IN_PROGRESS"
+              )}
+              onTicketClick={onTicketClick}
+            ></TicketColumn>
+            <TicketColumn
+              status="IN_TEST"
+              title="In Test"
+              tickets={tickets.filter((ticket) => ticket.status === "IN_TEST")}
+              onTicketClick={onTicketClick}
+            ></TicketColumn>
+            <TicketColumn
+              status="DONE"
+              title="Done"
+              tickets={tickets.filter((ticket) => ticket.status === "DONE")}
+              onTicketClick={onTicketClick}
+            ></TicketColumn>
+            <DragOverlay>
+              {activeTicket && (
+                <div className="z-[9999]">
+                  <TicketComponent ticket={activeTicket} />
+                </div>
+              )}
+            </DragOverlay>
+          </DndContext>
+        </div>
+        {focusedTicket && (
+          <TicketModal ticket={focusedTicket} refreshProject={refreshProject} />
+        )}
       </div>
-      {focusedTicket && (
-        <TicketModal ticket={focusedTicket} refreshProject={refreshProject} />
-      )}
     </div>
   );
 };

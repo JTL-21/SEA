@@ -1,5 +1,4 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
-import { UserCircleIcon } from "@heroicons/react/24/solid";
+import { MagnifyingGlassIcon, TicketIcon } from "@heroicons/react/20/solid";
 import { Project } from "../types";
 import { Link } from "react-router-dom";
 import React from "react";
@@ -21,33 +20,21 @@ const ProjectTab = ({ project }: ProjectTabProps) => {
       <div className="flex w-24 items-center justify-center border-r-[1px] text-3xl font-bold text-gray-400 drop-shadow-sm">
         {project.key}
       </div>
-      <div className="flex flex-col justify-between">
-        <span className="text-xl font-semibold text-gray-500">
+      <div className="flex flex-grow flex-col justify-between gap-1">
+        <span className="text-xl font-semibold text-gray-700">
           {project.title}
         </span>
-        <Username user={project.owner} />
-      </div>
-    </Link>
-  );
-};
-
-const Placeholder = ({ index }: { index: number }) => {
-  return (
-    <div
-      className="flex min-h-[80px] min-w-[200px] select-none gap-2 rounded-md bg-gray-50 p-2 py-2 pr-2 text-transparent"
-      style={{ opacity: 1 - Math.floor(index / 3) / 6 }}
-    >
-      <div className="flex w-24 items-center justify-center text-3xl font-bold drop-shadow-sm">
-        KEY
-      </div>
-      <div className="flex flex-col justify-between">
-        <span className="text-xl font-semibold">TITLE</span>
-        <div className="flex gap-1">
-          <UserCircleIcon className="h-6 w-6" />
-          <span>USERNAME</span>
+        <div className="flex items-center gap-1">
+          <TicketIcon className="h-6 w-6 text-gray-600" />
+          <div className="font-semibold text-gray-600">
+            {project.ticket_count} Tickets
+          </div>
+        </div>
+        <div className="flex items-center gap-1">
+          <Username user={project.owner} />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -57,7 +44,7 @@ const SearchProjects = () => {
   const [query, setQuery] = React.useState("");
 
   React.useEffect(() => {
-    if (query.length === 0) return setProjects([]);
+    // if (query.length === 0) return setProjects([]);
 
     API.queryProjects(query).then((response) => {
       if (response.ok) {
@@ -67,25 +54,20 @@ const SearchProjects = () => {
   }, [query]);
 
   return (
-    <div className="px-2 py-4">
+    <div className="mx-auto max-w-[1200px] px-2 py-4">
       <Input
         id="project_query"
         onChange={(event) => setQuery(event.target.value)}
         icon={<MagnifyingGlassIcon className="h-6 w-6" />}
         className="mx-auto sm:max-w-[500px]"
+        placeholder="Project Name or Key"
       />
-      <div className="grid grid-cols-1 gap-2 py-4 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-2 py-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <div className="py-0-2" key={project.key}>
             <ProjectTab project={project} />
           </div>
         ))}
-        {projects.length === 0 && [
-          // </span> //   No projects found... // <span className="px-2 text-sm text-gray-400">
-          Array.from({ length: 15 }).map((_, index) => (
-            <Placeholder key={index} index={index} />
-          )),
-        ]}
       </div>
     </div>
   );
