@@ -15,20 +15,43 @@ import {
 
 const { VITE_API_URL } = import.meta.env;
 
-const JSONHeaders = { "Content-Type": "application/json" };
+const prefixURL = (url: string) => {
+  if (url.startsWith("http")) {
+    return url;
+  } else {
+    return `${VITE_API_URL}${url}`;
+  }
+};
 
 const APIFetch = async <TResponse>(
-  ...args: Parameters<typeof fetch>
+  url: string,
+  config?: Omit<RequestInit, "body"> & {
+    body?: string | object;
+  }
 ): Promise<APIResponse<TResponse>> => {
   let response: Response;
   try {
-    response = await fetch(args[0], { credentials: "include", ...args[1] });
+    response = await fetch(prefixURL(url), {
+      credentials: "include", // Include credentials by default
+      ...config,
+      headers: {
+        // Set content type to json if body is present
+        ...(config?.body && { "Content-Type": "application/json" }),
+        ...config?.headers, // Overwrite with passed headers
+      },
+      body:
+        typeof config?.body === "string"
+          ? config.body // Body is already serialized
+          : typeof config?.body === "object"
+          ? JSON.stringify(config.body)
+          : undefined, // Body is invalid
+    });
   } catch (error) {
     console.error(error);
     return { ok: false, err: true, error: { message: "Network Error" } };
   }
 
-  let data: any;
+  let data;
   if (
     response.status !== 201 &&
     response.status !== 204 &&
@@ -44,116 +67,100 @@ const APIFetch = async <TResponse>(
   }
 };
 
+const APIFetchMethodFactory =
+  (method: RequestInit["method"]) =>
+  <TResponse>(...args: Parameters<typeof APIFetch>) =>
+    APIFetch<TResponse>(args[0], { ...args[1], method: method });
+
+APIFetch.get = APIFetchMethodFactory("GET");
+APIFetch.post = APIFetchMethodFactory("POST");
+APIFetch.put = APIFetchMethodFactory("PUT");
+APIFetch.patch = APIFetchMethodFactory("PATCH");
+APIFetch.delete = APIFetchMethodFactory("DELETE");
+
 const getUser = (username: string) =>
-  APIFetch<User>(`${VITE_API_URL}/api/user/${username}`);
+  APIFetch.get<User>(`/api/user/${username}`);
 
 const createUser = (body: CreateUserBody) =>
-  APIFetch<User>(`${VITE_API_URL}/api/user`, {
-    method: "POST",
-    headers: JSONHeaders,
-    body: JSON.stringify(body),
+  APIFetch.post<User>("/api/user", {
+    body: body,
   });
 
 const queryUsers = (username: string) => {
   const query = new URLSearchParams({ username }).toString();
-  return APIFetch<User[]>(`${VITE_API_URL}/api/user?${query}`);
+  return APIFetch.get<User[]>(`/api/user?${query}`);
 };
 
 const login = (body: LogInBody) =>
-  APIFetch<User>(`${VITE_API_URL}/api/login`, {
-    method: "POST",
-    headers: JSONHeaders,
-    body: JSON.stringify(body),
+  APIFetch.post<User>("/api/login", {
+    body: body,
   });
 
-const logout = () =>
-  APIFetch<never>(`${VITE_API_URL}/api/logout`, {
-    method: "POST",
-  });
+const logout = () => APIFetch.post<never>("/api/logout");
 
-const whoami = () => APIFetch<User>(`${VITE_API_URL}/api/whoami`);
+const whoami = () => APIFetch.get<User>("/api/whoami");
 
 const createProject = (body: CreateProjectBody) =>
-  APIFetch<Project>(`${VITE_API_URL}/api/project`, {
-    method: "POST",
-    headers: JSONHeaders,
-    body: JSON.stringify(body),
+  APIFetch.post<Project>("/api/project", {
+    body: body,
   });
 
 const getProject = (key: string) =>
-  APIFetch<Project>(`${VITE_API_URL}/api/project/${key}`);
+  APIFetch.get<Project>(`/api/project/${key}`);
 
 const editProject = (key: string, body: EditProjectBody) =>
-  APIFetch<Project>(`${VITE_API_URL}/api/project/${key}`, {
-    method: "PATCH",
-    headers: JSONHeaders,
-    body: JSON.stringify(body),
+  APIFetch.patch<Project>(`/api/project/${key}`, {
+    body: body,
   });
 
-const getAllProjects = () => APIFetch<Project[]>(`${VITE_API_URL}/api/project`);
+const getAllProjects = () => APIFetch.get<Project[]>("/api/project");
 
 const getProjectTickets = (key: string) =>
-  APIFetch<Ticket[]>(`${VITE_API_URL}/api/project/${key}/tickets`);
+  APIFetch.get<Ticket[]>(`/api/project/${key}/tickets`);
 
 const createTicket = (body: CreateTicketBody) =>
-  APIFetch<Ticket>(`${VITE_API_URL}/api/ticket`, {
-    method: "POST",
-    headers: JSONHeaders,
-    body: JSON.stringify(body),
+  APIFetch.post<Ticket>("/api/ticket", {
+    body: body,
   });
 
-const getTicket = (slug: string) =>
-  APIFetch<Ticket>(`${VITE_API_URL}/api/ticket/${slug}`);
+const getTicket = (slug: string) => APIFetch.get<Ticket>(`/api/ticket/${slug}`);
 
 const editTicket = (slug: string, body: EditTicketBody) =>
-  APIFetch<Ticket>(`${VITE_API_URL}/api/ticket/${slug}`, {
-    method: "PATCH",
-    headers: JSONHeaders,
-    body: JSON.stringify(body),
+  APIFetch.patch<Ticket>(`/api/ticket/${slug}`, {
+    body: body,
   });
 
 const deleteTicket = (slug: string) =>
-  APIFetch<"">(`${VITE_API_URL}/api/ticket/${slug}`, {
-    method: "DELETE",
-  });
+  APIFetch.delete<never>(`/api/ticket/${slug}`);
 
 const getTicketComments = (slug: string) =>
-  APIFetch<Comment[]>(`${VITE_API_URL}/api/ticket/${slug}/comments`);
+  APIFetch.get<Comment[]>(`/api/ticket/${slug}/comments`);
 
 const createComment = (slug: string, body: CreateCommentBody) =>
-  APIFetch<Comment>(`${VITE_API_URL}/api/ticket/${slug}/comment`, {
-    method: "POST",
-    headers: JSONHeaders,
-    body: JSON.stringify(body),
+  APIFetch.post<Comment>(`/api/ticket/${slug}/comment`, {
+    body: body,
   });
 
-const deleteComment = (id: string | number) =>
-  APIFetch<"">(`${VITE_API_URL}/api/comment/${id}`, {
-    method: "DELETE",
-  });
+const deleteComment = (id: number) =>
+  APIFetch.delete<never>(`/api/comment/${id}`);
 
-const user = { getUser, createUser, queryUsers, login, logout, whoami };
-
-const project = {
+export default {
+  getUser,
+  createUser,
+  queryUsers,
+  login,
+  logout,
+  whoami,
   createProject,
   getProject,
   editProject,
   getAllProjects,
   getProjectTickets,
-};
-
-const ticket = {
   createTicket,
   getTicket,
   editTicket,
   deleteTicket,
   getTicketComments,
-};
-
-const comment = {
   createComment,
   deleteComment,
 };
-
-export default { ...user, ...project, ...ticket, ...comment };
-export { user, project, ticket, comment };
