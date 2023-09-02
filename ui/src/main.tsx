@@ -24,6 +24,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <Route element={<ProtectedRoute />}>
               <Route path="/" element={<Navigate to="/projects" />} />
               <Route path="/create-project" Component={CreateProject} />
+              <Route path="/project/:key/add-ticket" Component={ProjectPage} />
               <Route path="/project/:key/:slug?" Component={ProjectPage} />
               <Route path="/projects" Component={SearchProjects} />
             </Route>

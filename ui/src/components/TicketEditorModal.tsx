@@ -1,30 +1,31 @@
-import API from "../api";
 import React from "react";
 import Input from "./Input";
 import MarkdownEditor from "./MarkdownEditor";
 import Button from "./Button";
-import { XMarkIcon, WrenchIcon } from "@heroicons/react/20/solid";
+import { XMarkIcon, WrenchIcon, PlusIcon } from "@heroicons/react/20/solid";
 import { TICKET_PRIORITIES, Ticket } from "../types";
 import { useForm, useWatch } from "react-hook-form";
 import { priorityNameMap } from "./Ticket";
+import { TicketModalProps } from "./TicketModal";
+
+type FormData = Pick<Ticket, "title" | "description" | "priority" | "points">;
 
 interface TicketEditModalProps {
-  ticket: Ticket;
-  onFinish: () => void;
+  ticket: FormData;
+  mode?: TicketModalProps["mode"];
+  formError?: string;
+  onSubmit: (data: FormData) => void;
+  onCancel: () => void;
 }
 
-interface FormData {
-  title: Ticket["title"];
-  description: Ticket["description"];
-  priority: Ticket["priority"];
-  points: Ticket["points"];
-}
-
-const TicketEditModal = ({ ticket, onFinish }: TicketEditModalProps) => {
+const TicketEditorModal = ({
+  ticket,
+  mode = "edit",
+  formError,
+  onSubmit,
+  onCancel,
+}: TicketEditModalProps) => {
   const id = React.useId();
-  const [formError, setFormError] = React.useState<string | undefined>(
-    undefined
-  );
 
   const {
     register,
@@ -42,22 +43,13 @@ const TicketEditModal = ({ ticket, onFinish }: TicketEditModalProps) => {
 
   const description = useWatch({ control, name: "description" });
 
-  const onSubmit = (state: FormData) => {
-    API.editTicket(ticket.slug, {
-      ...state,
-      points: Number(state.points),
-    }).then((response) => {
-      if (response.ok) {
-        onFinish();
-      } else {
-        setFormError(response.error.message);
-      }
-    });
+  const handleFormSubmit = (state: FormData) => {
+    onSubmit(state);
   };
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(handleFormSubmit)}
       className="flex flex-col gap-2 px-4 pb-4 [&>*]:flex-grow"
     >
       {formError && (
@@ -124,20 +116,30 @@ const TicketEditModal = ({ ticket, onFinish }: TicketEditModalProps) => {
           confirmClasses="text-rose-50"
           icon={<XMarkIcon />}
           requireConfirmation
-          onClick={onFinish}
+          onClick={onCancel}
         >
           Cancel
         </Button>
-        <Button
-          type="submit"
-          icon={<WrenchIcon />}
-          className="w-52 bg-blue-400 hover:bg-blue-500"
-        >
-          Save
-        </Button>
+        {mode === "add" ? (
+          <Button
+            type="submit"
+            icon={<PlusIcon />}
+            className="w-52 bg-emerald-400 hover:bg-emerald-500"
+          >
+            Add
+          </Button>
+        ) : (
+          <Button
+            type="submit"
+            icon={<WrenchIcon />}
+            className="w-52 bg-blue-400 hover:bg-blue-500"
+          >
+            Save
+          </Button>
+        )}
       </div>
     </form>
   );
 };
 
-export default TicketEditModal;
+export default TicketEditorModal;

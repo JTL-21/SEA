@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useTitle from "../hooks/useTitle";
 import React from "react";
 import { Project, Ticket } from "../types";
@@ -18,9 +18,11 @@ import TicketComponent from "../components/Ticket";
 import TicketModal from "../components/TicketModal";
 import Button from "../components/Button";
 import Markdown from "../components/Markdown";
+import LinkButton from "../components/LinkButton";
 
 const ProjectPage = () => {
   const { key, slug } = useParams();
+  const location = useLocation();
   useTitle(slug ? `Project ${key} - ${slug}` : `Project ${key}`);
 
   const navigate = useNavigate();
@@ -116,12 +118,13 @@ const ProjectPage = () => {
       </div>
       <div className="flex h-full max-w-[1200px] flex-grow flex-col">
         <div className="my-4 ml-auto flex items-end gap-2">
-          <Button
+          <LinkButton
             className="bg-emerald-400 hover:bg-emerald-500"
             icon={<PlusIcon />}
+            to={`/project/${key}/add-ticket`}
           >
             Add Ticket
-          </Button>
+          </LinkButton>
           <Button
             className="bg-blue-400 hover:bg-blue-500"
             icon={<PencilIcon />}
@@ -180,7 +183,19 @@ const ProjectPage = () => {
           </DndContext>
         </div>
         {focusedTicket && (
-          <TicketModal ticket={focusedTicket} refresh={refreshProject} />
+          <TicketModal
+            ticket={focusedTicket}
+            refresh={refreshProject}
+            mode="edit"
+            project={{ key: key ?? "" }}
+          />
+        )}
+        {location.pathname.endsWith("/add-ticket") && (
+          <TicketModal
+            refresh={refreshProject}
+            mode="add"
+            project={{ key: key ?? "" }}
+          />
         )}
       </div>
     </div>
