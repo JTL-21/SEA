@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import useUser from "../hooks/useUser";
-import Close from "./icons/Close";
+import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 
 const App = () => {
   const { logout } = useUser();
@@ -13,7 +13,11 @@ const App = () => {
       <Link to="/create-project">Create Project</Link>
       <Link to="/project/ABC">View Project ABC</Link>
       <span>
-        <Button centered={false} icon={<Close />} onClick={logout}>
+        <Button
+          centered={false}
+          icon={<ArrowLeftOnRectangleIcon />}
+          onClick={logout}
+        >
           Log Out
         </Button>
       </span>

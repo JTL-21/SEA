@@ -1,6 +1,6 @@
 import logo from "../assets/kong.png";
 import { Link } from "react-router-dom";
-import AccountCircleIcon from "./icons/AccountCircleIcon";
+import { UserCircleIcon } from "@heroicons/react/24/outline";
 import useUser from "../hooks/useUser";
 
 const TopBar = () => {
@@ -24,7 +24,7 @@ const TopBar = () => {
           title={user.user ? "Account" : "Sign In"}
           className="flex flex-col items-center text-xs text-gray-600"
         >
-          <AccountCircleIcon className="h-8 w-8 cursor-pointer text-yellow-600" />
+          <UserCircleIcon className="h-8 w-8 cursor-pointer" />
           {user.user?.username ?? "Sign In"}
         </Link>
       </div>

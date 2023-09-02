@@ -1,24 +1,28 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Ticket, Comment, CreateCommentBody } from "../types";
+import { Ticket, User } from "../types";
 import Markdown from "./Markdown";
-import { priorityIconMap, priorityNameMap } from "./Ticket";
-import AccountCircleIcon from "./icons/AccountCircleIcon";
-import Close from "./icons/Close";
-import Edit from "./icons/Edit";
-import Time from "./icons/Time";
-import Delete from "./icons/Delete";
-import Assign from "./icons/Assign";
+import { priorityNameMap } from "./Ticket";
+import {
+  XMarkIcon,
+  TrashIcon,
+  TagIcon,
+  PencilIcon,
+  ClockIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/outline";
 import React from "react";
 import cn from "clsx";
-import Button from "./Button";
+import Button, { Props as ButtonProps } from "./Button";
 import API from "../api";
-import CommentComponent from "./CommentComponent";
 import formatDateTime from "../utils/time";
-import Send from "./icons/Send";
-import { useForm } from "react-hook-form";
+import { Dialog, Popover } from "@headlessui/react";
+import CommentColumn from "./CommentColumn";
+import UserSearch from "./UserSearch";
+import Priority from "./icons/Priority";
 
 interface TicketModalProps {
   ticket: Ticket;
+  refreshProject: (refresh?: "project" | "tickets" | "all") => void;
 }
 
 interface UserLinkProps extends React.ComponentPropsWithoutRef<"a"> {
@@ -35,44 +39,70 @@ const UserLink = ({ children, className, ...aProps }: UserLinkProps) => (
   </Link>
 );
 
-interface ModalDataProps {
+interface ModalDataProps extends React.ComponentPropsWithoutRef<"div"> {
   icon: React.ReactNode;
-  children?: React.ReactNode;
 }
 
-const ModalData = ({ icon, children }: ModalDataProps) => {
+const ModalData = ({
+  icon,
+  children,
+  className,
+  ...divProps
+}: ModalDataProps) => {
   return (
-    <div className="flex items-center gap-2 rounded-md bg-white p-2">
-      <div className="[&>svg]:h-6 [&>svg]:w-6">{icon}</div>
+    <div
+      className={cn(
+        "flex items-center gap-2 rounded-md bg-white p-2 [&>svg]:h-6 [&>svg]:w-6",
+        className
+      )}
+      {...divProps}
+    >
+      {icon}
       {children}
     </div>
   );
 };
 
-interface ModalButtonProps extends ModalDataProps {
+interface ModalButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+  icon: React.ReactNode;
   requireConfirmation?: boolean;
   onClick?: () => void;
+  as?: ButtonProps["as"];
 }
 
-const ModalButton = ({
-  icon,
-  children,
-  requireConfirmation = false,
-  onClick,
-}: ModalButtonProps) => {
-  return (
-    <Button
-      className="flex items-center gap-2 rounded-md bg-white p-2 filter hover:bg-gray-100 active:brightness-95"
-      onClick={onClick}
-      styled={false}
-      centered={false}
-      requireConfirmation={requireConfirmation}
-      icon={icon}
-    >
-      {children}
-    </Button>
-  );
-};
+const ModalButton = React.forwardRef<HTMLElement, ModalButtonProps>(
+  (
+    {
+      icon,
+      children,
+      className,
+      requireConfirmation = false,
+      onClick,
+      as = "button",
+      ...buttonProps
+    },
+    ref
+  ) => {
+    return (
+      <Button
+        className={cn(
+          "flex items-center gap-2 rounded-md bg-white p-2 filter hover:bg-gray-100 active:brightness-95",
+          className
+        )}
+        onClick={onClick}
+        styled={false}
+        centered={false}
+        requireConfirmation={requireConfirmation}
+        icon={icon}
+        as={as}
+        ref={ref}
+        {...buttonProps}
+      >
+        {children}
+      </Button>
+    );
+  }
+);
 
 interface ModalGroupProps {
   children?: React.ReactNode;
@@ -86,57 +116,50 @@ const ModalGroupDivider = () => (
   <div className="h-[1px] w-full bg-gray-200"></div>
 );
 
-const TicketModal = ({ ticket }: TicketModalProps) => {
+const TicketModal = ({ ticket, refreshProject }: TicketModalProps) => {
   const navigate = useNavigate();
-  const id = React.useId();
-  const [comments, setComments] = React.useState<Comment[]>([]);
-  const [formError, setFormError] = React.useState<string | null>(null);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<CreateCommentBody>();
-
-  const onSubmit = (state: CreateCommentBody) => {
-    setFormError(null);
-    API.createComment(ticket.slug, state).then((response) => {
-      if (response.ok) {
-        setComments((old) => [...old, response.data]);
-      } else {
-        setFormError(response.error.message);
-      }
-    });
-  };
 
   const handleModalClose = () => navigate(`/project/${ticket.project.key}`);
+  const assignUserButtonRef = React.useRef<HTMLElement | null>(null);
 
   const handleDeleteTicket = () => {
     API.deleteTicket(ticket.slug).then((response) => {
       if (response.ok) {
+        refreshProject("tickets");
         handleModalClose();
       }
     });
   };
 
-  React.useEffect(() => {
-    API.getTicketComments(ticket.slug).then((response) => {
-      if (response.ok) {
-        setComments(response.data);
+  const handleAssignUser = (user: User) => {
+    assignUserButtonRef.current?.click();
+    API.editTicket(ticket.slug, { assignee: user.username }).then(
+      (response) => {
+        if (response.ok) {
+          console.log(`Assigned ${ticket.slug} to ${user.username}`);
+          refreshProject("tickets");
+        } else {
+          console.log(
+            `Failed to assign ${ticket.slug} to ${user.username}: ${response.error}`
+          );
+        }
       }
-    });
-  }, [ticket]);
+    );
+  };
 
   const date = new Date(ticket.created_at);
 
   return (
-    <div
-      className="absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center bg-gray-800 bg-opacity-70 p-2"
-      onClick={handleModalClose}
+    <Dialog
+      open={true}
+      onClose={handleModalClose}
+      className="fixed inset-0 grid place-content-center p-2"
     >
-      <div
-        className="flex min-h-[550px] w-[1400px] flex-col overflow-hidden rounded-md bg-white text-gray-600 shadow"
-        onClick={(event) => event.stopPropagation()}
+      <Dialog.Overlay className="fixed inset-0 bg-gray-700 bg-opacity-50" />
+
+      <Dialog.Panel
+        as="div"
+        className="relative flex min-h-[550px] max-w-[1400px] flex-col rounded-md bg-white text-gray-600 shadow-2xl ring-1 ring-black ring-opacity-5"
       >
         <div className="flex items-stretch gap-2 border-b-[1px] text-2xl">
           <div className="flex items-center pl-4 ">
@@ -147,60 +170,25 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
           </div>
           <div className="aspect-square border-l-[1px]">
             <button
-              className="grid h-full w-full place-content-center bg-white p-2 hover:bg-gray-100"
+              className="grid h-full w-full place-content-center rounded-tr-md bg-white p-2 hover:bg-gray-100"
               onClick={handleModalClose}
             >
-              <Close className="h-10 w-10" />
+              <XMarkIcon className="h-10 w-10" />
             </button>
           </div>
         </div>
-
         <div className="flex flex-grow">
           <div className="flex max-h-[600px] flex-grow basis-2/4 flex-col overflow-y-scroll px-4 py-2">
             <h4 className="text-xl font-semibold">Description</h4>
             <Markdown>{ticket.description}</Markdown>
           </div>
-
-          <div className="flex max-h-[600px] flex-grow basis-1/4 flex-col border-l-[1px] py-2">
+          <div className="flex max-h-[600px] flex-grow basis-1/4 flex-col border-l-[1px] pt-2">
             <h4 className="ml-4 text-xl font-semibold">Comments</h4>
-            <div className="ml-4 flex flex-grow flex-col gap-2 overflow-y-scroll py-1 pr-4">
-              {comments.map((comment) => (
-                <CommentComponent comment={comment} key={comment.id} />
-              ))}
-              {comments.length === 0 && (
-                <span className="text-sm text-gray-400">
-                  No comments to show...
-                </span>
-              )}
-            </div>
-
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="flex items-end gap-2 border-t-[1px] p-2 pb-0">
-                <textarea
-                  {...register("text", {
-                    required: {
-                      value: true,
-                      message: "Comment text is required",
-                    },
-                    maxLength: {
-                      value: 512,
-                      message: "Comment text must not exceed 512 characters",
-                    },
-                  })}
-                  id={`${id}_text`}
-                  placeholder="Add comment..."
-                  className="h-20 flex-grow resize-none rounded-md border-[1px] border-gray-300 bg-gray-50 p-1 text-sm focus:border-[1px]"
-                />
-                <Button icon={<Send />} type="submit"></Button>
-              </div>
-              <div className="px-2 pt-1 text-sm font-semibold text-rose-500">
-                {formError ?? errors.text?.message}
-              </div>
-            </form>
+            <CommentColumn ticket={ticket} />
           </div>
           <div className="max-w-[250px] basis-1/4 flex-col border-l-[1px] text-sm">
             <ModalGroup>
-              <ModalData icon={priorityIconMap[ticket.priority]}>
+              <ModalData icon={<Priority priority={ticket.priority} />}>
                 {priorityNameMap[ticket.priority]} Priority
               </ModalData>
               <ModalData
@@ -212,7 +200,7 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
               >
                 Story Points
               </ModalData>
-              <ModalData icon={<AccountCircleIcon />}>
+              <ModalData icon={<UserCircleIcon />} className="relative">
                 <span>
                   Assigned to{" "}
                   {ticket.assignee ? (
@@ -225,20 +213,32 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
             </ModalGroup>
             <ModalGroupDivider />
             <ModalGroup>
-              <ModalButton icon={<Edit />}>Edit</ModalButton>
+              <ModalButton icon={<PencilIcon />}>Edit</ModalButton>
               <ModalButton
-                icon={<Delete />}
+                icon={<TrashIcon />}
                 onClick={handleDeleteTicket}
                 requireConfirmation={true}
               >
                 Delete
               </ModalButton>
-              <ModalButton icon={<Assign />}>Assign</ModalButton>
+              <Popover className="relative">
+                <ModalButton
+                  icon={<TagIcon />}
+                  as={Popover.Button}
+                  className="w-full"
+                  ref={assignUserButtonRef}
+                >
+                  Assign
+                </ModalButton>
+                <Popover.Panel className="absolute top-full z-10">
+                  <UserSearch onChange={handleAssignUser} />
+                </Popover.Panel>
+              </Popover>
             </ModalGroup>
             <ModalGroupDivider />
             <ModalGroup>
-              <ModalData icon={<Time />}>{formatDateTime(date)}</ModalData>
-              <ModalData icon={<AccountCircleIcon />}>
+              <ModalData icon={<ClockIcon />}>{formatDateTime(date)}</ModalData>
+              <ModalData icon={<UserCircleIcon />}>
                 <span>
                   Created by <UserLink>{ticket.author.username}</UserLink>
                 </span>
@@ -246,8 +246,8 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
             </ModalGroup>
           </div>
         </div>
-      </div>
-    </div>
+      </Dialog.Panel>
+    </Dialog>
   );
 };
 

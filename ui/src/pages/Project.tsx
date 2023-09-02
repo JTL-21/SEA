@@ -10,7 +10,7 @@ import {
   DragStartEvent,
   useSensors,
   useSensor,
-  PointerSensor,
+  MouseSensor,
 } from "@dnd-kit/core";
 import TicketColumn from "../components/TicketColumn";
 import TicketComponent from "../components/Ticket";
@@ -27,9 +27,9 @@ const ProjectPage = () => {
   const focusedTicket = tickets.find((ticket) => ticket.slug === slug);
 
   const sensors = useSensors(
-    useSensor(PointerSensor, {
+    useSensor(MouseSensor, {
       activationConstraint: {
-        distance: 8,
+        distance: 2,
       },
     })
   );
@@ -62,27 +62,40 @@ const ProjectPage = () => {
     navigate(`/project/${key}/${slug}`);
   };
 
-  React.useEffect(() => {
-    if (!key) return;
-    API.getProject(key).then((response) => {
-      if (response.ok) {
-        setProject(response.data);
-      }
-    });
+  const refreshProject = React.useCallback(
+    (refresh: "project" | "tickets" | "all" = "all") => {
+      if (!key) return;
+      const all = refresh === "all";
 
-    API.getProjectTickets(key).then((response) => {
-      if (response.ok) {
-        setTickets(response.data);
+      if (all || refresh === "project") {
+        console.log("Refreshing project");
+        API.getProject(key).then((response) => {
+          if (response.ok) {
+            setProject(response.data);
+          }
+        });
       }
-    });
-  }, [key]);
+
+      if (all || refresh === "tickets") {
+        console.log("Refreshing tickets");
+        API.getProjectTickets(key).then((response) => {
+          if (response.ok) {
+            setTickets(response.data);
+          }
+        });
+      }
+    },
+    [key]
+  );
+
+  React.useEffect(refreshProject, [key, refreshProject]);
 
   return (
     <div className="flex h-full flex-col">
       <h2 className="my-4 text-4xl font-semibold">
         Project {project?.key ?? key}
       </h2>
-      <div className="roounded-md flex h-full gap-[1px] overflow-hidden rounded-lg bg-gray-200 shadow">
+      <div className="flex gap-4">
         <DndContext
           onDragStart={onDragStart}
           onDragEnd={handleDragEnd}
@@ -91,14 +104,12 @@ const ProjectPage = () => {
           <TicketColumn
             status="WAITING"
             title="Waiting"
-            headerClasses="bg-gray-100 text-gray-700"
             tickets={tickets.filter((ticket) => ticket.status === "WAITING")}
             onTicketClick={onTicketClick}
           ></TicketColumn>
           <TicketColumn
             status="IN_PROGRESS"
             title="In Progress"
-            headerClasses="bg-indigo-100 text-indigo-800"
             tickets={tickets.filter(
               (ticket) => ticket.status === "IN_PROGRESS"
             )}
@@ -107,14 +118,12 @@ const ProjectPage = () => {
           <TicketColumn
             status="IN_TEST"
             title="In Test"
-            headerClasses="bg-rose-100 text-rose-900"
             tickets={tickets.filter((ticket) => ticket.status === "IN_TEST")}
             onTicketClick={onTicketClick}
           ></TicketColumn>
           <TicketColumn
             status="DONE"
             title="Done"
-            headerClasses="bg-emerald-100 text-emerald-800"
             tickets={tickets.filter((ticket) => ticket.status === "DONE")}
             onTicketClick={onTicketClick}
           ></TicketColumn>
@@ -127,7 +136,9 @@ const ProjectPage = () => {
           </DragOverlay>
         </DndContext>
       </div>
-      {focusedTicket && <TicketModal ticket={focusedTicket} />}
+      {focusedTicket && (
+        <TicketModal ticket={focusedTicket} refreshProject={refreshProject} />
+      )}
     </div>
   );
 };
