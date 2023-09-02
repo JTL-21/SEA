@@ -12,7 +12,7 @@ const allowedElements = ["b", "i", "em", "p", "a", "pre", "code", "strong"];
 const Markdown = ({ children = "", className, ...divProps }: Props) => {
   return (
     <ReactMarkdown
-      className={cn("prose-sm prose-p:mt-0 prose-p:break-all", className)}
+      className={cn("prose-sm prose-p:mt-0 prose-p:break-words", className)}
       allowedElements={allowedElements}
       unwrapDisallowed={true}
       {...divProps}
