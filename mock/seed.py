@@ -2,7 +2,7 @@ import requests
 import json
 from random import randint, choice
 
-url = "http://172.29.169.12:5000"
+url = "http://127.0.0.1:5000"
 priorities = ["VERY_LOW", "LOW", "MEDIUM", "HIGH", "VERY_HIGH"]
 status = ["WAITING", "IN_PROGRESS", "IN_TEST", "DONE"]
 
