@@ -5,6 +5,7 @@ from ..db import db
 from ..validation.user import create_user_schema, login_schema
 from ..validation.utils import item_getter, validate_body
 from flask_login import login_required, login_user, logout_user, current_user
+from sqlalchemy import func
 
 
 @app.get("/api/user")
@@ -21,7 +22,9 @@ def query_users():
     if not username:
         return abort(400, "Username not provided")
 
-    similar_users = User.query.filter(User.username.ilike(f"%{username}%")).all()
+    similar_users = User.query.filter(
+        func.lower(User.username).ilike(f"%{username.lower()}%")
+    ).all()
 
     user_dicts = []
     for user in similar_users:
@@ -97,7 +100,7 @@ def login():
     password_match = user.verify_password(password)
 
     if not password_match:
-        return abort(401, "Incorrect username or password")
+        return abort(401, "Incorrect password")
 
     login_user(user, remember=bool(stay_signed_in))
 

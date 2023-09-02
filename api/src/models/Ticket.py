@@ -10,12 +10,23 @@ import re
 class Ticket(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     project = db.Column(
-        db.VARCHAR(3), db.ForeignKey("project.key"), primary_key=True, nullable=False
+        db.VARCHAR(3),
+        db.ForeignKey("project.key", ondelete="CASCADE"),
+        primary_key=True,
+        nullable=False,
     )
     title = db.Column(db.VARCHAR(length=64), unique=False, nullable=False)
     description = db.Column(db.VARCHAR(length=2000), default="", nullable=False)
-    author = db.Column(db.VARCHAR(32), db.ForeignKey("user.username"), nullable=False)
-    assignee = db.Column(db.VARCHAR(32), db.ForeignKey("user.username"), nullable=True)
+    author = db.Column(
+        db.VARCHAR(32),
+        db.ForeignKey("user.username", ondelete="CASCADE"),
+        nullable=False,
+    )
+    assignee = db.Column(
+        db.VARCHAR(32),
+        db.ForeignKey("user.username", ondelete="SET NULL"),
+        nullable=True,
+    )
     status = db.Column(
         db.VARCHAR(length=16), unique=False, nullable=False, default="WAITING"
     )
@@ -26,7 +37,7 @@ class Ticket(db.Model):
     comments = db.relationship(
         "Comment",
         backref="Ticket",
-        cascade="all, delete-orphan",
+        cascade="all,delete,delete-orphan",
         primaryjoin="and_(Ticket.project==Comment.ticket_project, Ticket.id==Comment.ticket_id)",
     )
 

@@ -16,10 +16,9 @@ class User(UserMixin, db.Model):
     tickets = db.relationship(
         "Ticket",
         backref="User",
-        cascade="all, delete-orphan",
         foreign_keys="Ticket.author",
     )
-    comments = db.relationship("Comment", backref="User", cascade="all, delete-orphan")
+    comments = db.relationship("Comment", backref="User")
 
     @staticmethod
     def hash_password(password: str) -> str:
