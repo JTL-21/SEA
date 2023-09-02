@@ -1,9 +1,27 @@
 import logo from "../assets/kong.png";
 import useUser from "../hooks/useUser";
 import { Link } from "react-router-dom";
-import { UserCircleIcon } from "@heroicons/react/24/solid";
+import { BoltIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import React from "react";
 
 const topBarLinkClasses = "text-gray-500 hover:underline";
+
+interface LabeledIconProps {
+  icon: React.ReactNode;
+  text: string;
+}
+
+const LabeledIcon = ({ icon, text }: LabeledIconProps) => {
+  return (
+    <div
+      title={text}
+      className="flex flex-col items-center text-xs text-gray-600"
+    >
+      <div className="[&>svg]:h-8 [&>svg]:w-8">{icon}</div>
+      {text}
+    </div>
+  );
+};
 
 const TopBar = () => {
   const { user } = useUser();
@@ -27,13 +45,16 @@ const TopBar = () => {
           Create Project
         </Link>
         <div className="flex-grow"></div>
-        <div
-          title={user ? user.username : "Sign In"}
-          className="flex flex-col items-center text-xs text-gray-600"
-        >
-          <UserCircleIcon className="h-8 w-8" />
-          {user?.username ?? "Sign In"}
-        </div>
+        <LabeledIcon
+          icon={<UserCircleIcon />}
+          text={user?.username ?? "Not signed in"}
+        />
+        {user && user.is_admin && (
+          <LabeledIcon
+            icon={<BoltIcon className="text-amber-400" />}
+            text="Admin"
+          />
+        )}
       </div>
     </div>
   );
