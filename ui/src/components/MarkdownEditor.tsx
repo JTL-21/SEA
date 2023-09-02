@@ -17,7 +17,7 @@ const tabButtonClasses = cn(
   "md:border-r-[1px]"
 );
 
-const offTabButtonClasses = "filter brightness-95 md:brightness-100";
+const offTabButtonClasses = "filter brightness-95";
 
 const MarkdownEditor = React.forwardRef<
   HTMLTextAreaElement,
