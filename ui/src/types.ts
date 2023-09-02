@@ -43,39 +43,40 @@ interface Comment {
 }
 
 interface CreateUserBody {
-  username: string;
+  username: User["username"];
   password: string;
 }
 
 interface CreateProjectBody {
-  key: string;
-  title: string;
-  description?: string;
+  key: Project["key"];
+  title: Project["title"];
+  description?: Project["description"];
 }
 
 interface EditProjectBody {
-  title?: string;
-  description?: string;
+  title?: Project["title"];
+  description?: Project["description"];
 }
 
 interface CreateTicketBody {
-  project: string;
-  title: string;
-  description?: string;
+  project: Project["key"];
+  title: Ticket["title"];
+  description?: Ticket["description"];
 }
 
 interface EditTicketBody {
-  title?: string;
-  description?: string;
+  title?: Ticket["title"];
+  description?: Ticket["description"];
   status?: Ticket["status"];
+  assignee?: User["username"];
 }
 
 interface CreateCommentBody {
-  text: string;
+  text: Comment["text"];
 }
 
 interface LogInBody {
-  username: string;
+  username: User["username"];
   password: string;
   stay_signed_in: boolean;
 }
