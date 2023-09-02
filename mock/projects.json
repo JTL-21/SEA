@@ -109,97 +109,97 @@
     "tickets": [
       {
         "title": "Implement user registration and login",
-        "description": "As a user, I want to be able to register and login to the website so that I can access my account and make purchases.\n\n**Tasks:**\n- Create a registration form with fields for username, email, and password.\n- Implement server-side validation for the registration form.\n- Create a login form with fields for email and password.\n- Implement server-side validation for the login form.\n- Store user information securely in the database.\n\n**Priority:** 3",
+        "description": "As a user, I want to be able to register and login to the website so that I can access my account and make purchases.\n\n**Tasks:**\n- Create a registration form with fields for username, email, and password.\n- Implement server-side validation for the registration form.\n- Create a login form with fields for email and password.\n- Implement server-side validation for the login form.\n- Store user information securely in the database.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Implement product browsing and filtering",
-        "description": "As a user, I want to be able to browse through various categories of products and filter them based on my preferences.\n\n**Tasks:**\n- Create a page to display all products.\n- Implement filtering options such as category, price range, and rating.\n- Fetch product data from the database.\n\n**Priority:** 4",
+        "description": "As a user, I want to be able to browse through various categories of products and filter them based on my preferences.\n\n**Tasks:**\n- Create a page to display all products.\n- Implement filtering options such as category, price range, and rating.\n- Fetch product data from the database.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Implement shopping cart functionality",
-        "description": "As a user, I want to be able to add items to my cart and view the items in my cart.\n\n**Tasks:**\n- Create a cart page to display the items in the cart.\n- Implement the ability to add items to the cart.\n- Implement the ability to remove items from the cart.\n- Update the cart total when items are added or removed.\n\n**Priority:** 2",
+        "description": "As a user, I want to be able to add items to my cart and view the items in my cart.\n\n**Tasks:**\n- Create a cart page to display the items in the cart.\n- Implement the ability to add items to the cart.\n- Implement the ability to remove items from the cart.\n- Update the cart total when items are added or removed.",
         "priority": 2,
         "points": 2
       },
       {
         "title": "Implement secure online payments",
-        "description": "As a user, I want to be able to make secure online payments for the items in my cart.\n\n**Tasks:**\n- Integrate a secure payment gateway such as PayPal or Stripe.\n- Implement the ability to enter payment details.\n- Handle payment processing and confirmation.\n\n**Priority:** 5",
+        "description": "As a user, I want to be able to make secure online payments for the items in my cart.\n\n**Tasks:**\n- Integrate a secure payment gateway such as PayPal or Stripe.\n- Implement the ability to enter payment details.\n- Handle payment processing and confirmation.",
         "priority": 5,
         "points": 5
       },
       {
         "title": "Implement order tracking",
-        "description": "As a user, I want to be able to track the status of my orders.\n\n**Tasks:**\n- Create an order tracking page.\n- Implement the ability to view the status of each order.\n- Update the order status based on order processing.\n\n**Priority:** 4",
+        "description": "As a user, I want to be able to track the status of my orders.\n\n**Tasks:**\n- Create an order tracking page.\n- Implement the ability to view the status of each order.\n- Update the order status based on order processing.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Design and implement the database schema",
-        "description": "As a developer, I need to design and implement the database schema for the project.\n\n**Tasks:**\n- Design the schema to store user information, product details, and order information.\n- Implement the schema using MongoDB.\n\n**Priority:** 3",
+        "description": "As a developer, I need to design and implement the database schema for the project.\n\n**Tasks:**\n- Design the schema to store user information, product details, and order information.\n- Implement the schema using MongoDB.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Create user interface wireframes",
-        "description": "As a designer, I need to create wireframes for the user interface of the website.\n\n**Tasks:**\n- Create wireframes for the registration and login pages.\n- Create wireframes for the product browsing and filtering pages.\n- Create wireframes for the shopping cart and payment pages.\n- Create wireframes for the order tracking page.\n\n**Priority:** 2",
+        "description": "As a designer, I need to create wireframes for the user interface of the website.\n\n**Tasks:**\n- Create wireframes for the registration and login pages.\n- Create wireframes for the product browsing and filtering pages.\n- Create wireframes for the shopping cart and payment pages.\n- Create wireframes for the order tracking page.",
         "priority": 2,
         "points": 2
       },
       {
         "title": "Implement user interface using React.js",
-        "description": "As a developer, I need to implement the user interface of the website using React.js.\n\n**Tasks:**\n- Create React components for the registration and login pages.\n- Create React components for the product browsing and filtering pages.\n- Create React components for the shopping cart and payment pages.\n- Create a React component for the order tracking page.\n\n**Priority:** 3",
+        "description": "As a developer, I need to implement the user interface of the website using React.js.\n\n**Tasks:**\n- Create React components for the registration and login pages.\n- Create React components for the product browsing and filtering pages.\n- Create React components for the shopping cart and payment pages.\n- Create a React component for the order tracking page.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Implement server-side API using Express.js",
-        "description": "As a developer, I need to implement the server-side API of the website using Express.js.\n\n**Tasks:**\n- Create API endpoints for user registration and login.\n- Create API endpoints for fetching product data.\n- Create API endpoints for managing the shopping cart.\n- Create API endpoints for processing payments.\n- Create API endpoints for order tracking.\n\n**Priority:** 4",
+        "description": "As a developer, I need to implement the server-side API of the website using Express.js.\n\n**Tasks:**\n- Create API endpoints for user registration and login.\n- Create API endpoints for fetching product data.\n- Create API endpoints for managing the shopping cart.\n- Create API endpoints for processing payments.\n- Create API endpoints for order tracking.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Set up MongoDB database",
-        "description": "As a developer, I need to set up the MongoDB database for the project.\n\n**Tasks:**\n- Install and configure MongoDB.\n- Create a database for the project.\n- Set up collections for user information, product details, and order information.\n\n**Priority:** 3",
+        "description": "As a developer, I need to set up the MongoDB database for the project.\n\n**Tasks:**\n- Install and configure MongoDB.\n- Create a database for the project.\n- Set up collections for user information, product details, and order information.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Set up Express.js server",
-        "description": "As a developer, I need to set up the Express.js server for the project.\n\n**Tasks:**\n- Install and configure Express.js.\n- Set up routes for handling API requests.\n- Set up middleware for handling authentication and error handling.\n\n**Priority:** 2",
+        "description": "As a developer, I need to set up the Express.js server for the project.\n\n**Tasks:**\n- Install and configure Express.js.\n- Set up routes for handling API requests.\n- Set up middleware for handling authentication and error handling.",
         "priority": 2,
         "points": 2
       },
       {
         "title": "Set up React.js project",
-        "description": "As a developer, I need to set up the React.js project for the website.\n\n**Tasks:**\n- Install and configure React.js.\n- Set up the project structure.\n- Set up routing for different pages.\n\n**Priority:** 2",
+        "description": "As a developer, I need to set up the React.js project for the website.\n\n**Tasks:**\n- Install and configure React.js.\n- Set up the project structure.\n- Set up routing for different pages.",
         "priority": 2,
         "points": 2
       },
       {
         "title": "Implement user authentication and authorization",
-        "description": "As a developer, I need to implement user authentication and authorization for the website.\n\n**Tasks:**\n- Implement authentication middleware to verify user credentials.\n- Implement authorization middleware to restrict access to certain routes.\n\n**Priority:** 4",
+        "description": "As a developer, I need to implement user authentication and authorization for the website.\n\n**Tasks:**\n- Implement authentication middleware to verify user credentials.\n- Implement authorization middleware to restrict access to certain routes.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Implement responsive design",
-        "description": "As a designer, I need to implement responsive design for the website.\n\n**Tasks:**\n- Design and implement responsive layouts for different screen sizes.\n- Test the website on different devices and screen sizes.\n\n**Priority:** 3",
+        "description": "As a designer, I need to implement responsive design for the website.\n\n**Tasks:**\n- Design and implement responsive layouts for different screen sizes.\n- Test the website on different devices and screen sizes.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Implement unit tests",
-        "description": "As a developer, I need to implement unit tests for the project to ensure code quality and reliability.\n\n**Tasks:**\n- Write unit tests for server-side API endpoints.\n- Write unit tests for React components.\n- Set up a testing framework such as Jest or Mocha.\n\n**Priority:** 5",
+        "description": "As a developer, I need to implement unit tests for the project to ensure code quality and reliability.\n\n**Tasks:**\n- Write unit tests for server-side API endpoints.\n- Write unit tests for React components.\n- Set up a testing framework such as Jest or Mocha.",
         "priority": 5,
         "points": 5
       },
       {
         "title": "Deploy the website to a hosting platform",
-        "description": "As a developer, I need to deploy the website to a hosting platform so that it can be accessed by users.\n\n**Tasks:**\n- Choose a hosting platform such as Heroku or AWS.\n- Set up the necessary configurations for deployment.\n- Deploy the website to the hosting platform.\n\n**Priority:** 4",
+        "description": "As a developer, I need to deploy the website to a hosting platform so that it can be accessed by users.\n\n**Tasks:**\n- Choose a hosting platform such as Heroku or AWS.\n- Set up the necessary configurations for deployment.\n- Deploy the website to the hosting platform.",
         "priority": 4,
         "points": 4
       }
@@ -315,97 +315,97 @@
     "tickets": [
       {
         "title": "Implement user registration and login",
-        "description": "As a user, I want to be able to register and login to the JustFood app so that I can access all its features.\n\n**Tasks:**\n- Create a registration form with fields for name, email, and password.\n- Implement server-side validation for the registration form.\n- Create a login form with fields for email and password.\n- Implement server-side validation for the login form.\n\n**Priority:** 3",
+        "description": "As a user, I want to be able to register and login to the JustFood app so that I can access all its features.\n\n**Tasks:**\n- Create a registration form with fields for name, email, and password.\n- Implement server-side validation for the registration form.\n- Create a login form with fields for email and password.\n- Implement server-side validation for the login form.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Develop restaurant browsing and menu display",
-        "description": "As a user, I want to be able to browse local restaurants and view their menus.\n\n**Tasks:**\n- Fetch a list of restaurants from the server.\n- Display the list of restaurants with their names and ratings.\n- Implement a search feature to filter restaurants by name or cuisine.\n- Fetch and display the menu of a selected restaurant.\n\n**Priority:** 4",
+        "description": "As a user, I want to be able to browse local restaurants and view their menus.\n\n**Tasks:**\n- Fetch a list of restaurants from the server.\n- Display the list of restaurants with their names and ratings.\n- Implement a search feature to filter restaurants by name or cuisine.\n- Fetch and display the menu of a selected restaurant.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Implement order placement and tracking",
-        "description": "As a user, I want to be able to place orders and track their status in real-time.\n\n**Tasks:**\n- Create an order form with fields for selecting items, quantities, and delivery address.\n- Implement server-side validation for the order form.\n- Store the order details in the database.\n- Implement real-time tracking of order status using websockets.\n\n**Priority:** 5",
+        "description": "As a user, I want to be able to place orders and track their status in real-time.\n\n**Tasks:**\n- Create an order form with fields for selecting items, quantities, and delivery address.\n- Implement server-side validation for the order form.\n- Store the order details in the database.\n- Implement real-time tracking of order status using websockets.",
         "priority": 5,
         "points": 5
       },
       {
         "title": "Enable user reviews and ratings",
-        "description": "As a user, I want to be able to leave reviews and ratings for restaurants.\n\n**Tasks:**\n- Add a review form to the restaurant page.\n- Implement server-side validation for the review form.\n- Store the review details in the database.\n- Display the average rating and all reviews for each restaurant.\n\n**Priority:** 3",
+        "description": "As a user, I want to be able to leave reviews and ratings for restaurants.\n\n**Tasks:**\n- Add a review form to the restaurant page.\n- Implement server-side validation for the review form.\n- Store the review details in the database.\n- Display the average rating and all reviews for each restaurant.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Integrate payment gateway",
-        "description": "As a user, I want to be able to make payments for my orders.\n\n**Tasks:**\n- Research and select a suitable payment gateway.\n- Implement the payment gateway integration on the server-side.\n- Create a payment form with fields for card details.\n- Implement server-side validation for the payment form.\n\n**Priority:** 5",
+        "description": "As a user, I want to be able to make payments for my orders.\n\n**Tasks:**\n- Research and select a suitable payment gateway.\n- Implement the payment gateway integration on the server-side.\n- Create a payment form with fields for card details.\n- Implement server-side validation for the payment form.",
         "priority": 5,
         "points": 5
       },
       {
         "title": "Design and implement user interface",
-        "description": "As a user, I want the JustFood app to have an intuitive and visually appealing user interface.\n\n**Tasks:**\n- Create wireframes and design mockups for all screens.\n- Implement the user interface using React Native components.\n- Apply appropriate styling and layout to enhance the user experience.\n\n**Priority:** 4",
+        "description": "As a user, I want the JustFood app to have an intuitive and visually appealing user interface.\n\n**Tasks:**\n- Create wireframes and design mockups for all screens.\n- Implement the user interface using React Native components.\n- Apply appropriate styling and layout to enhance the user experience.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Implement user authentication",
-        "description": "As a user, I want my account to be secure and protected from unauthorized access.\n\n**Tasks:**\n- Implement password hashing and salting for user accounts.\n- Create a forgot password feature with email verification.\n- Implement session management and token-based authentication.\n\n**Priority:** 4",
+        "description": "As a user, I want my account to be secure and protected from unauthorized access.\n\n**Tasks:**\n- Implement password hashing and salting for user accounts.\n- Create a forgot password feature with email verification.\n- Implement session management and token-based authentication.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Implement restaurant rating algorithm",
-        "description": "As a user, I want the restaurant ratings to be accurate and reflect the quality of their services.\n\n**Tasks:**\n- Research and select a suitable rating algorithm.\n- Implement the rating algorithm on the server-side.\n- Update restaurant ratings based on user reviews and ratings.\n\n**Priority:** 3",
+        "description": "As a user, I want the restaurant ratings to be accurate and reflect the quality of their services.\n\n**Tasks:**\n- Research and select a suitable rating algorithm.\n- Implement the rating algorithm on the server-side.\n- Update restaurant ratings based on user reviews and ratings.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Implement push notifications",
-        "description": "As a user, I want to receive push notifications for order updates and promotions.\n\n**Tasks:**\n- Research and select a suitable push notification service.\n- Implement push notification integration on the server-side.\n- Send push notifications for order status updates and promotional offers.\n\n**Priority:** 4",
+        "description": "As a user, I want to receive push notifications for order updates and promotions.\n\n**Tasks:**\n- Research and select a suitable push notification service.\n- Implement push notification integration on the server-side.\n- Send push notifications for order status updates and promotional offers.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Implement user profile management",
-        "description": "As a user, I want to be able to manage my profile information and preferences.\n\n**Tasks:**\n- Create a profile page with fields for name, email, and contact information.\n- Implement server-side validation for the profile form.\n- Allow users to update their profile information.\n\n**Priority:** 2",
+        "description": "As a user, I want to be able to manage my profile information and preferences.\n\n**Tasks:**\n- Create a profile page with fields for name, email, and contact information.\n- Implement server-side validation for the profile form.\n- Allow users to update their profile information.",
         "priority": 2,
         "points": 2
       },
       {
         "title": "Implement restaurant management dashboard",
-        "description": "As a restaurant owner, I want to be able to manage my restaurant's information and menu.\n\n**Tasks:**\n- Create a restaurant management dashboard with sections for basic information, menu, and reviews.\n- Implement server-side validation for the restaurant management forms.\n- Allow restaurant owners to update their restaurant's information and menu.\n\n**Priority:** 3",
+        "description": "As a restaurant owner, I want to be able to manage my restaurant's information and menu.\n\n**Tasks:**\n- Create a restaurant management dashboard with sections for basic information, menu, and reviews.\n- Implement server-side validation for the restaurant management forms.\n- Allow restaurant owners to update their restaurant's information and menu.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Implement order history and tracking for users",
-        "description": "As a user, I want to be able to view my order history and track the status of my past orders.\n\n**Tasks:**\n- Create an order history page with a list of past orders.\n- Fetch and display the details of a selected past order.\n- Implement real-time tracking of past order status using websockets.\n\n**Priority:** 4",
+        "description": "As a user, I want to be able to view my order history and track the status of my past orders.\n\n**Tasks:**\n- Create an order history page with a list of past orders.\n- Fetch and display the details of a selected past order.\n- Implement real-time tracking of past order status using websockets.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Implement restaurant search and filtering",
-        "description": "As a user, I want to be able to search for restaurants based on various criteria.\n\n**Tasks:**\n- Implement a search feature to filter restaurants by name, cuisine, or location.\n- Allow users to sort the search results by rating or distance.\n- Implement pagination for large search result sets.\n\n**Priority:** 3",
+        "description": "As a user, I want to be able to search for restaurants based on various criteria.\n\n**Tasks:**\n- Implement a search feature to filter restaurants by name, cuisine, or location.\n- Allow users to sort the search results by rating or distance.\n- Implement pagination for large search result sets.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Implement order cancellation and refund",
-        "description": "As a user, I want to be able to cancel my order and receive a refund if necessary.\n\n**Tasks:**\n- Create a cancellation form with fields for order ID and reason.\n- Implement server-side validation for the cancellation form.\n- Process order cancellations and initiate refunds.\n\n**Priority:** 4",
+        "description": "As a user, I want to be able to cancel my order and receive a refund if necessary.\n\n**Tasks:**\n- Create a cancellation form with fields for order ID and reason.\n- Implement server-side validation for the cancellation form.\n- Process order cancellations and initiate refunds.",
         "priority": 4,
         "points": 4
       },
       {
         "title": "Implement user notifications",
-        "description": "As a user, I want to receive notifications for order updates, promotions, and other important information.\n\n**Tasks:**\n- Implement a notification system on the server-side.\n- Send notifications for order status updates, promotions, and other relevant information.\n- Allow users to manage their notification preferences.\n\n**Priority:** 3",
+        "description": "As a user, I want to receive notifications for order updates, promotions, and other important information.\n\n**Tasks:**\n- Implement a notification system on the server-side.\n- Send notifications for order status updates, promotions, and other relevant information.\n- Allow users to manage their notification preferences.",
         "priority": 3,
         "points": 3
       },
       {
         "title": "Implement user feedback and support",
-        "description": "As a user, I want to be able to provide feedback and get support for any issues or concerns.\n\n**Tasks:**\n- Create a feedback form with fields for name, email, and message.\n- Implement server-side validation for the feedback form.\n- Store the feedback details in the database.\n- Provide a support contact for users to reach out.\n\n**Priority:** 2",
+        "description": "As a user, I want to be able to provide feedback and get support for any issues or concerns.\n\n**Tasks:**\n- Create a feedback form with fields for name, email, and message.\n- Implement server-side validation for the feedback form.\n- Store the feedback details in the database.\n- Provide a support contact for users to reach out.",
         "priority": 2,
         "points": 2
       }
