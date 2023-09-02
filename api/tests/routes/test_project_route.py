@@ -6,7 +6,7 @@ def test_query_project(client):
     response = client.get("/api/project", query_string={"query": "EXO"})
 
     assert response.status_code == 200
-    assert type(response.json) == list
+    assert isinstance(response.json, list)
     assert len(response.json) == 1
     assert response.json[0]["key"] == "EXO"
 

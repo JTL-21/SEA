@@ -1,6 +1,4 @@
-import json
 import pytest
-from app.models.User import User
 
 
 @pytest.mark.usefixtures("load_mock_data")
@@ -8,7 +6,7 @@ def test_query_users(client):
     username = "James"
     response = client.get("/api/user", query_string={"username": username})
 
-    assert type(response.json) == list
+    assert isinstance(response.json, list)
     assert response.json[0]["username"] == "James"
 
 

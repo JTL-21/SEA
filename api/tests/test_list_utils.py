@@ -8,7 +8,7 @@ def test_model_list_as_dict(now):
 
     dict_list = model_list_as_dict([new_user1, new_user2])
 
-    assert type(dict_list) == list
-    assert type(dict_list[0]) == dict
+    assert isinstance(dict_list, list)
+    assert isinstance(dict_list[0], dict)
     assert len(dict_list) == 2
     assert dict_list[0]["username"] == new_user1.username

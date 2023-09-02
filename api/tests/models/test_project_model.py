@@ -8,7 +8,7 @@ def test_as_dict():
 
     project_dict = project.as_dict()
 
-    assert type(project_dict) == dict
+    assert isinstance(project_dict, dict)
 
 
 @pytest.mark.usefixtures("load_mock_data")
@@ -26,5 +26,5 @@ def test_get_project_tickets():
 
     tickets = project.get_tickets()
 
-    assert type(tickets) == list
+    assert isinstance(tickets, list)
     assert tickets[0].project == "EXO"

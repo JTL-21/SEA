@@ -8,4 +8,4 @@ def test_as_dict():
 
     comment_dict = comment.as_dict()
 
-    assert type(comment_dict) == dict
+    assert isinstance(comment_dict, dict)

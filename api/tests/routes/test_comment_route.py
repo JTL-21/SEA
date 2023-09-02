@@ -8,7 +8,7 @@ def test_get_ticket_comments(client):
     response = client.get("/api/ticket/EXO-1/comments")
 
     assert response.status_code == 200
-    assert type(response.json) == list
+    assert isinstance(response.json, list)
 
 
 @pytest.mark.usefixtures("load_mock_data")

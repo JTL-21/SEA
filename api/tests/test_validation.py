@@ -1,6 +1,6 @@
 import pytest
 from flask import Flask
-from app.validation.utils import validate_body
+from app.validation.utils import validate_request
 
 
 @pytest.fixture
@@ -14,7 +14,7 @@ def validation_test_client():
     app = Flask(__name__)
 
     @app.post("/test")
-    @validate_body(test_schema)
+    @validate_request(body_schema=test_schema)
     def test_route():
         return "Success"
 
@@ -41,7 +41,7 @@ def test_exception_handling(monkeypatch):
     app = Flask(__name__)
 
     @app.post("/test")
-    @validate_body(test_schema)
+    @validate_request(body_schema=test_schema)
     def test_route():
         return "Success"
 
@@ -68,7 +68,7 @@ def test_custom_error_message():
     app = Flask(__name__)
 
     @app.route("/test", methods=["POST"])
-    @validate_body(test_schema)
+    @validate_request(body_schema=test_schema)
     def test_route():
         return "Success"
 

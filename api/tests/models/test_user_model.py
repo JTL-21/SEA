@@ -4,7 +4,7 @@ from app.models.User import User
 def test_hash_password():
     hashed_password = User.hash_password("password123")
 
-    assert type(hashed_password) == str
+    assert isinstance(hashed_password, str)
 
 
 def test_verify_password():
