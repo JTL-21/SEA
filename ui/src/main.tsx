@@ -17,10 +17,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Layout>
           <Routes>
             <Route index element={<App />} />
-            <Route path="sign-up" element={<SignUp />} />
-            <Route path="sign-in" element={<SignIn />} />
-            <Route path="create-project" element={<CreateProject />} />
-            <Route path="project/:key" element={<ProjectPage />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/create-project" element={<CreateProject />} />
+            <Route path="/project/:key/:slug?" element={<ProjectPage />} />
           </Routes>
         </Layout>
       </BrowserRouter>

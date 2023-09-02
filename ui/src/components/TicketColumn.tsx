@@ -8,6 +8,7 @@ interface TicketColumnProps {
   title: string;
   headerClasses?: string;
   tickets: Ticket[];
+  onTicketClick: (slug: string) => void;
 }
 
 const TicketColumn = ({
@@ -15,6 +16,7 @@ const TicketColumn = ({
   title,
   headerClasses,
   tickets,
+  onTicketClick,
 }: TicketColumnProps) => {
   const { setNodeRef } = useDroppable({ id: status });
 
@@ -33,7 +35,11 @@ const TicketColumn = ({
       </div>
       <div className="flex flex-col gap-2 overflow-y-scroll p-2">
         {tickets.map((ticket) => (
-          <TicketComponent key={ticket.slug} ticket={ticket}></TicketComponent>
+          <TicketComponent
+            onClick={onTicketClick}
+            key={ticket.slug}
+            ticket={ticket}
+          ></TicketComponent>
         ))}
       </div>
     </div>

@@ -15,6 +15,7 @@ class Ticket(db.Model):
     title = db.Column(db.VARCHAR(length=64), unique=False, nullable=False)
     description = db.Column(db.VARCHAR(length=2000), default="", nullable=False)
     author = db.Column(db.VARCHAR(32), db.ForeignKey("user.username"), nullable=False)
+    assignee = db.Column(db.VARCHAR(32), db.ForeignKey("user.username"), nullable=True)
     status = db.Column(
         db.VARCHAR(length=16), unique=False, nullable=False, default="WAITING"
     )
@@ -58,6 +59,7 @@ class Ticket(db.Model):
     def as_dict(self):
         project = Project.query.filter_by(key=self.project).first()
         author = User.query.filter_by(username=self.author).first()
+        assignee = User.query.filter_by(username=self.assignee).first()
 
         return {
             "id": self.id,
@@ -70,4 +72,5 @@ class Ticket(db.Model):
             "created_at": self.created_at.isoformat(),
             "points": self.points,
             "priority": self.priority,
+            "assignee": assignee.as_dict() if assignee else None,
         }
