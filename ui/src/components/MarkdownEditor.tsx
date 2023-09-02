@@ -11,12 +11,7 @@ interface MarkdownEditorProps
   responsive?: boolean;
 }
 
-const tabButtonClasses = cn(
-  "relative top-[1px] h-6 w-16 rounded-t-lg border-[1px] border-b-0 border-r-0 border-stone-300 bg-white text-sm text-gray-800 [&:last-child]:border-r-[1px]",
-  "md:border-r-[1px]"
-);
-
-const offTabButtonClasses = "filter brightness-95";
+const buttonClasses = "hover:bg-gray-200 px-4 py-1";
 
 const MarkdownEditor = React.forwardRef<
   HTMLTextAreaElement,
@@ -25,13 +20,13 @@ const MarkdownEditor = React.forwardRef<
   const [focus, setFocus] = React.useState<"edit" | "preview">("edit");
 
   return (
-    <div className="h-auto w-full drop-shadow-md [&:focus-within>div:first-child>button]:border-amber-400 [&:focus-within>div:last-child>.focus]:border-amber-400">
-      <div className="relative">
+    <div className="h-auto w-full overflow-hidden rounded-md border-[1px] border-gray-300 shadow-sm ring-1 ring-black ring-opacity-5 focus-within:ring-2 focus-within:ring-amber-300">
+      <div className="flex border-b-[1px]">
         <button
           type="button"
           className={cn(
-            tabButtonClasses,
-            focus !== "edit" && offTabButtonClasses
+            buttonClasses,
+            focus === "edit" ? "bg-gray-100" : "bg-white"
           )}
           onClick={() => setFocus("edit")}
         >
@@ -40,10 +35,8 @@ const MarkdownEditor = React.forwardRef<
         <button
           type="button"
           className={cn(
-            tabButtonClasses,
-            focus !== "preview" && offTabButtonClasses,
-            responsive &&
-              "absolute md:left-1/2 md:ml-[-1px] md:-translate-x-full"
+            buttonClasses,
+            focus === "preview" ? "bg-gray-100" : "bg-white"
           )}
           onClick={() => setFocus("preview")}
         >
@@ -57,17 +50,17 @@ const MarkdownEditor = React.forwardRef<
           // value={value}
           {...textAreaProps}
           className={cn(
-            "focus  block h-auto resize-none rounded-md rounded-tl-none border-b-[1px] border-stone-300 p-1 shadow-none focus:ring-0",
+            "block h-auto resize-none border-none bg-transparent focus:outline-0 focus:ring-0",
             focus !== "edit" && "hidden",
-            responsive && "md:block md:rounded-r-none"
+            responsive && "md:block"
           )}
           ref={ref}
         ></textarea>
         <Markdown
           className={cn(
+            "overflow-y-scroll p-2",
             focus !== "preview" && "hidden",
-            "focus  overflow-y-scroll rounded-md rounded-tl-none border-[1px] border-stone-300 bg-white p-1",
-            responsive && "md:block md:rounded-bl-none md:border-l-0"
+            responsive && "md:block"
           )}
         >
           {value}
