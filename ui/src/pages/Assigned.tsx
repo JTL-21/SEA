@@ -6,6 +6,22 @@ import { toast } from "react-toastify";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import TicketComponent from "../components/Ticket";
 import TicketModal from "../components/TicketModal";
+import { TICKET_PRIORITIES } from "../types";
+
+const getNumericalPriority = (priority: Ticket["priority"]) =>
+  TICKET_PRIORITIES.indexOf(priority);
+
+// Sorts tickets first based on priority and then by points
+const sortTickets = (tickets: Ticket[]) =>
+  tickets.sort((a, b) => {
+    if (a.priority !== b.priority) {
+      return (
+        getNumericalPriority(b.priority) - getNumericalPriority(a.priority)
+      );
+    }
+
+    return b.points - a.points;
+  });
 
 const Assigned = () => {
   const navigate = useNavigate();
@@ -49,7 +65,7 @@ const Assigned = () => {
       <div className="mx-auto max-w-[1200px] px-2 py-4">
         <h2 className="text-3xl font-semibold">Assigned to Me</h2>
         <div className="grid grid-cols-2 gap-2 py-4 sm:grid-cols-3 lg:grid-cols-4">
-          {tickets.map((ticket) => (
+          {sortTickets(tickets).map((ticket) => (
             <Link to={`/assigned/${ticket.slug}`} className="[&>div]:h-full">
               <TicketComponent key={ticket.slug} ticket={ticket} />
             </Link>
