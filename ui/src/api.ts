@@ -27,6 +27,22 @@ const prefixURL = (url: string) => {
   }
 };
 
+const serializeBody = (
+  body: string | object | undefined
+): string | undefined => {
+  switch (typeof body) {
+    case "string": {
+      return body;
+    }
+    case "object": {
+      return JSON.stringify(body);
+    }
+    default: {
+      return undefined;
+    }
+  }
+};
+
 const APIFetch = async <TResponse>(
   url: string,
   config?: Omit<RequestInit, "body"> & {
@@ -49,12 +65,7 @@ const APIFetch = async <TResponse>(
         ...(config?.body && { "Content-Type": "application/json" }),
         ...config?.headers, // Overwrite with passed headers
       },
-      body:
-        typeof config?.body === "string"
-          ? config.body // Body is already serialized
-          : typeof config?.body === "object"
-          ? JSON.stringify(config.body)
-          : undefined, // Body is invalid
+      body: serializeBody(config?.body),
     });
   } catch (error) {
     console.error(error);
