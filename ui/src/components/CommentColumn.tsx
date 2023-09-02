@@ -27,11 +27,13 @@ const CommentColumn = ({ ticket }: Props) => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<CreateCommentBody>();
 
   const onSubmit = (state: CreateCommentBody) => {
     setFormError(null);
+    setValue("text", "");
     API.createComment(ticket.slug, state).then((response) => {
       if (response.ok) {
         setComments((old) => [...old, response.data]);
