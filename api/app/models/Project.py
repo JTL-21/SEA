@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import List
 from app.models.User import User
 from app.extensions import db
 
@@ -15,7 +16,7 @@ class Project(db.Model):
     ticket_counter = db.Column(db.Integer, nullable=False, default=1)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
-    def get_tickets(self, operator="all"):
+    def get_tickets(self, operator="all") -> List["Ticket"]:
         # Import here to prevent circular import
         from app.models.Ticket import Ticket
 
@@ -26,7 +27,7 @@ class Project(db.Model):
 
         return tickets
 
-    def as_dict(self):
+    def as_dict(self) -> dict:
         owner = User.query.filter_by(username=self.owner).first()
         ticket_count = self.get_tickets(operator="count")
 

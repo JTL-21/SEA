@@ -1,5 +1,6 @@
 import os
 import logging
+from typing import Type, Tuple
 from flask import Flask, send_from_directory
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
@@ -10,7 +11,7 @@ from app.extensions import db, login_manager
 from app.config import Config
 
 
-def create_app(config=Config):
+def create_app(config: Config = Config):
     app = Flask(__name__)
 
     app.config.from_object(config)
@@ -30,7 +31,7 @@ def create_app(config=Config):
         db.create_all()
 
     @app.errorhandler(Exception)
-    def handle_error(error):
+    def handle_error(error: Exception) -> Tuple[dict, int]:
         code = getattr(error, "code", 500)
         desc = getattr(error, "description", "Unexpected error")
 
@@ -53,5 +54,5 @@ def create_app(config=Config):
 
 
 @login_manager.user_loader
-def load_user(username):
+def load_user(username: str) -> User:
     return User.query.filter_by(username=username).first()

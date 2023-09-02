@@ -3,7 +3,8 @@ from flask import Flask
 from app.validation.utils import validate_body
 
 
-def test_valid_request():
+@pytest.fixture
+def validation_test_client():
     test_schema = {
         "type": "object",
         "properties": {"key": {"type": "string"}},
@@ -17,28 +18,17 @@ def test_valid_request():
     def test_route():
         return "Success"
 
-    with app.test_client() as test_client:
-        response = test_client.post("/test", json={"key": "value"})
-        assert response.status_code == 200
+    return app.test_client()
 
 
-def test_invalid_request():
-    test_schema = {
-        "type": "object",
-        "properties": {"key": {"type": "string"}},
-        "required": ["key"],
-    }
+def test_valid_request(validation_test_client):
+    response = validation_test_client.post("/test", json={"key": "value"})
+    assert response.status_code == 200
 
-    app = Flask(__name__)
 
-    @app.post("/test")
-    @validate_body(test_schema)
-    def test_route():
-        return "Success"
-
-    with app.test_client() as test_client:
-        response = test_client.post("/test", json={"invalid_key": "value"})
-        assert response.status_code == 400
+def test_invalid_request(validation_test_client):
+    response = validation_test_client.post("/test", json={"invalid_key": "value"})
+    assert response.status_code == 400
 
 
 def test_exception_handling(monkeypatch):

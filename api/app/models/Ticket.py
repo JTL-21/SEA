@@ -1,6 +1,7 @@
 import re
 from flask import abort
 from datetime import datetime
+from typing import List
 from app.models.Project import Project
 from app.models.User import User
 from app.models.Comment import Comment
@@ -37,7 +38,7 @@ class Ticket(db.Model):
     priority = db.Column(db.VARCHAR(9), default="MEDIUM", nullable=False)
 
     @staticmethod
-    def from_slug(slug: str):
+    def from_slug(slug: str) -> "Ticket":
         """
         Take a ticket slug like ABC-123 and return the corresponding ticket
         """
@@ -62,14 +63,14 @@ class Ticket(db.Model):
 
         return ticket
 
-    def get_comments(self):
+    def get_comments(self) -> List[Comment]:
         comments = Comment.query.filter_by(
             ticket_project=self.project, ticket_id=self.id
         ).all()
 
         return comments
 
-    def as_dict(self):
+    def as_dict(self) -> dict:
         project = Project.query.filter_by(key=self.project).first()
         author = User.query.filter_by(username=self.author).first()
         assignee = User.query.filter_by(username=self.assignee).first()

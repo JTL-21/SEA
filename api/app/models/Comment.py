@@ -17,7 +17,7 @@ class Comment(db.Model):
     )
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
-    def as_dict(self):
+    def as_dict(self) -> dict:
         author = User.query.filter_by(username=self.author).first()
 
         return {

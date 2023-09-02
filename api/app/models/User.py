@@ -31,12 +31,12 @@ class User(UserMixin, db.Model):
         except exceptions.VerifyMismatchError:
             return False
 
-    def as_dict(self):
+    def as_dict(self) -> dict:
         return {
             "username": self.username,
             "is_admin": self.is_admin,
             "created_at": self.created_at.isoformat(),
         }
 
-    def get_id(self):
+    def get_id(self) -> str:
         return self.username
