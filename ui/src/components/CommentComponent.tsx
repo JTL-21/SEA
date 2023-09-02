@@ -1,7 +1,7 @@
 import { Comment } from "../types";
-import formatDateTime from "../utils/time";
+import { formatDateTime } from "../utils/time";
 import InlineMarkdown from "./InlineMarkdown";
-import { UserCircleIcon } from "@heroicons/react/24/outline";
+import { UserCircleIcon } from "@heroicons/react/24/solid";
 
 interface CommentComponentProps {
   comment: Comment;

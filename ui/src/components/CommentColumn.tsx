@@ -4,7 +4,7 @@ import CommentComponent from "./CommentComponent";
 import { useForm } from "react-hook-form";
 import API from "../api";
 import Button from "./Button";
-import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
+import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 
 interface Props {
   ticket: Ticket;
