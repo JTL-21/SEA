@@ -20,9 +20,6 @@ def query_projects():
 
     query = request.args.get("query", "")
 
-    if not query:
-        abort(400, "Query not provided")
-
     search_term = f"%{query}%"
 
     similar_projects = Project.query.filter(
