@@ -26,7 +26,7 @@ def query_projects():
     search_term = f"%{query}%"
 
     similar_projects = Project.query.filter(
-        or_(Project.key.ilike(search_term), Project.title.ilike(search_term))
+        or_(Project.key.contains(search_term), Project.title.contains(search_term))
     ).all()
 
     project_dicts = model_list_as_dict(similar_projects)
