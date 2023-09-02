@@ -19,60 +19,29 @@
   [multiple],
   textarea,
   select {
-    @apply rounded-md border-stone-300 shadow focus:border-indigo-500 focus:ring-2 focus:ring-offset-2;
+    @apply border-b-2 border-transparent border-b-stone-300 px-0 py-1 focus:border-transparent focus:border-b-amber-500 focus:outline-none focus:ring-0;
   }
 
   [type="checkbox"],
   [type="radio"] {
-    @apply rounded-md border-stone-300 shadow;
+    @apply h-6 w-6 rounded-md border-stone-300 text-amber-400 shadow;
+  }
+
+  form {
+    @apply flex flex-col gap-2;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  ul {
+    @apply list-disc;
   }
 }
 
-.markdown h1 {
-  @apply text-4xl;
-}
-
-.markdown h2 {
-  @apply text-3xl;
-}
-
-.markdown h3 {
-  @apply text-2xl;
-}
-
-.markdown h4 {
-  @apply text-xl;
-}
-
-.markdown h5 {
-  @apply text-lg;
-}
-
-.markdown h6 {
-  @apply text-base;
-}
-
-.markdown ol {
-  list-style: decimal;
-}
-
-.markdown ul {
-  list-style: disc;
-}
-
-.markdown a {
-  @apply text-blue-500 hover:underline;
-}
-
-.markdown blockquote {
-  @apply relative my-2 ml-2 pl-3;
-}
-
-.markdown blockquote::before {
-  @apply absolute left-0 block h-full w-1 rounded-full bg-stone-300;
-  content: "";
-}
-
-.markdown code {
-  @apply rounded-md bg-stone-100 px-2 py-1;
+html,
+body,
+#root {
+  @apply h-full;
 }
