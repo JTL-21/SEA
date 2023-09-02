@@ -35,7 +35,7 @@ def create_app(config=Config):
 
         if not isinstance(error, HTTPException):
             # Only log actual errors
-            logging.error(f"HTTP Error ${code}", str(error))
+            logging.error(f"HTTP Error {code}: {str(error)}")
 
         return {"message": desc}, code
 

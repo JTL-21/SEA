@@ -17,7 +17,7 @@ class Project(db.Model):
 
     def get_tickets(self, operator="all"):
         # Import here to prevent circular import
-        from .Ticket import Ticket
+        from app.models.Ticket import Ticket
 
         if operator == "count":
             tickets = Ticket.query.filter_by(project=self.key).count()

@@ -5,7 +5,8 @@ from app.models.Ticket import Ticket
 from app.models.User import User
 from app.models.Comment import Comment
 from app.validation.comment import create_comment_schema
-from app.validation.utils import item_getter, validate_body
+from app.validation.utils import validate_body
+from app.utils.input import item_getter
 from app.utils.list import model_list_as_dict
 
 

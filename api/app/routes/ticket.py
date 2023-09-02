@@ -7,7 +7,8 @@ from app.models.User import User
 from app.models.Comment import Comment
 from app.models.Project import Project
 from app.validation.ticket import create_ticket_schema, edit_ticket_schema
-from app.validation.utils import item_getter, validate_body
+from app.validation.utils import validate_body
+from app.utils.input import item_getter
 from app.utils.list import model_list_as_dict
 
 ticket_bp = Blueprint("ticket", __name__)
@@ -23,6 +24,9 @@ def get_ticket(slug):
     """
 
     ticket = Ticket.from_slug(slug)
+    comments = ticket.get_comments()
+
+    comment_dicts = model_list_as_dict(comments)
 
     return {**ticket.as_dict(), "comments": comment_dicts}
 

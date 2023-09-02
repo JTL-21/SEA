@@ -5,7 +5,8 @@ from sqlalchemy import func
 from app.extensions import db
 from app.models.User import User
 from app.validation.user import create_user_schema, login_schema
-from app.validation.utils import item_getter, validate_body
+from app.validation.utils import validate_body
+from app.utils.input import item_getter
 from app.utils.list import model_list_as_dict
 
 user_bp = Blueprint("user", __name__)
@@ -26,7 +27,7 @@ def query_users():
         abort(400, "Username not provided")
 
     similar_users = User.query.filter(
-        func.lower(User.username).ilike(f"%{username.lower()}%")
+        func.lower(User.username).contains(username.lower())
     ).all()
 
     user_dicts = model_list_as_dict(similar_users)

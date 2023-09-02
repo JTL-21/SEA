@@ -13,3 +13,8 @@ test:
 
 seed:
 	PYTHONPATH=$(pwd):$PYTHONPATH python3 mock/seed.py
+
+coverage:
+	PYTHONPATH=$(pwd):$PYTHONPATH python3 -m coverage run --source=app -m pytest
+	coverage report -m
+	coverage html
