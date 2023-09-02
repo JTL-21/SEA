@@ -6,6 +6,7 @@ from ..db import db
 from ..models import User
 from ..validation.user import create_user_schema, login_schema
 from ..validation.utils import item_getter, validate_body
+from ..utils.list import model_list_as_dict
 
 
 @app.get("/api/user")
