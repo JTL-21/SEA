@@ -1,7 +1,7 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useTitle from "../hooks/useTitle";
 import React from "react";
-import { Project, Ticket } from "../types";
+import { EditProjectBody, Project, Ticket } from "../types";
 import API from "../api";
 import {
   DndContext,
@@ -19,6 +19,7 @@ import TicketModal from "../components/TicketModal";
 import Button from "../components/Button";
 import Markdown from "../components/Markdown";
 import LinkButton from "../components/LinkButton";
+import ProjectEditorModal from "../components/ProjectEditorModal";
 
 const ProjectPage = () => {
   const { key, slug } = useParams();
@@ -68,6 +69,8 @@ const ProjectPage = () => {
     navigate(`/project/${key}/${slug}`);
   };
 
+  const closeModals = () => navigate(`/project/${key}`);
+
   const refreshProject = React.useCallback(
     (refresh: "project" | "tickets" | "all" = "all") => {
       if (!key) return;
@@ -77,6 +80,8 @@ const ProjectPage = () => {
         API.getProject(key).then((response) => {
           if (response.ok) {
             setProject(response.data);
+          } else {
+            // TODO: Handle Error
           }
         });
       }
@@ -85,6 +90,8 @@ const ProjectPage = () => {
         API.getProjectTickets(key).then((response) => {
           if (response.ok) {
             setTickets(response.data);
+          } else {
+            // TODO: Handle Error
           }
         });
       }
@@ -97,6 +104,20 @@ const ProjectPage = () => {
     API.deleteProject(project.key).then((response) => {
       if (response.ok) {
         navigate("/projects");
+      } else {
+        // TODO: Handle Error
+      }
+    });
+  };
+
+  const handleProjectEditSubmit = (data: EditProjectBody) => {
+    if (!key) return;
+    API.editProject(key, data).then((response) => {
+      if (response.ok) {
+        refreshProject("project");
+        closeModals();
+      } else {
+        //TODO:  Handle Error
       }
     });
   };
@@ -125,12 +146,13 @@ const ProjectPage = () => {
           >
             Add Ticket
           </LinkButton>
-          <Button
+          <LinkButton
             className="bg-blue-400 hover:bg-blue-500"
             icon={<PencilIcon />}
+            to={`/project/${key}/edit`}
           >
             Edit Project
-          </Button>
+          </LinkButton>
           <Button
             className="bg-red-400 hover:bg-red-500"
             confirmClasses="text-rose-50"
@@ -188,6 +210,7 @@ const ProjectPage = () => {
             refresh={refreshProject}
             mode="edit"
             project={{ key: key ?? "" }}
+            onClose={closeModals}
           />
         )}
         {location.pathname.endsWith("/add-ticket") && (
@@ -195,6 +218,15 @@ const ProjectPage = () => {
             refresh={refreshProject}
             mode="add"
             project={{ key: key ?? "" }}
+            onClose={closeModals}
+          />
+        )}
+        {project && location.pathname.endsWith("/edit") && (
+          <ProjectEditorModal
+            mode="edit"
+            project={project}
+            onSubmit={handleProjectEditSubmit}
+            onCancel={closeModals}
           />
         )}
       </div>

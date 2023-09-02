@@ -49,7 +49,7 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
           placeholder={label ?? placeholder}
           className={cn(
             styled &&
-              "block w-full rounded-md border-[1px] border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm ring-0 placeholder:text-gray-400",
+              "block w-full rounded-md border-[1px] border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm ring-0 placeholder:text-gray-400 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-100 disabled:text-gray-500",
             styled &&
               !focusClasses &&
               "focus:ring-2 focus:ring-inset focus:ring-amber-400 focus:ring-offset-1",

@@ -3,14 +3,15 @@ import {
   PlusIcon,
   TicketIcon,
 } from "@heroicons/react/20/solid";
-import { Project } from "../types";
-import { Link } from "react-router-dom";
+import { CreateProjectBody, Project } from "../types";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import React from "react";
 import API from "../api";
 import useTitle from "../hooks/useTitle";
 import Username from "../components/Username";
 import Input from "../components/Input";
 import LinkButton from "../components/LinkButton";
+import ProjectEditorModal from "../components/ProjectEditorModal";
 
 interface ProjectTabProps {
   project: Project;
@@ -47,16 +48,33 @@ const SearchProjects = () => {
   useTitle("Search Projects");
   const [projects, setProjects] = React.useState<Project[]>([]);
   const [query, setQuery] = React.useState("");
+  const [formError, setFormError] = React.useState<string | undefined>(
+    undefined
+  );
+  const location = useLocation();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
-    // if (query.length === 0) return setProjects([]);
-
     API.queryProjects(query).then((response) => {
       if (response.ok) {
         setProjects(response.data);
       }
     });
   }, [query]);
+
+  const closeModal = () => {
+    navigate("/projects");
+  };
+
+  const handleProjectCreateSubmit = (data: CreateProjectBody) => {
+    API.createProject(data).then((response) => {
+      if (response.ok) {
+        navigate(`/project/${data.key}`);
+      } else {
+        setFormError(response.error.message);
+      }
+    });
+  };
 
   return (
     <div className="mx-auto max-w-[1200px] px-2 py-4">
@@ -71,18 +89,26 @@ const SearchProjects = () => {
         <LinkButton
           className="right-0 bg-emerald-400 hover:bg-emerald-500 sm:self-end"
           icon={<PlusIcon />}
-          to="/create-project"
+          to="/projects/create"
         >
           Create Project
         </LinkButton>
       </div>
       <div className="grid grid-cols-1 gap-2 py-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
-          <div className="py-0-2" key={project.key}>
+          <div key={project.key}>
             <ProjectTab project={project} />
           </div>
         ))}
       </div>
+      {location.pathname.endsWith("/create") && (
+        <ProjectEditorModal
+          mode="add"
+          onSubmit={handleProjectCreateSubmit}
+          onCancel={closeModal}
+          formError={formError}
+        />
+      )}
     </div>
   );
 };
