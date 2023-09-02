@@ -19,6 +19,7 @@ import { formatDateTime } from "../utils/time";
 import { Popover } from "@headlessui/react";
 import { Ticket, User } from "../types";
 import { TicketModalProps } from "./TicketModal";
+import { toast } from "react-toastify";
 
 interface ModalDataProps extends React.ComponentPropsWithoutRef<"div"> {
   icon: React.ReactNode;
@@ -118,8 +119,13 @@ const TicketViewModal = ({
   const handleDeleteTicket = () => {
     API.deleteTicket(ticket.slug).then((response) => {
       if (response.ok) {
+        toast.success(`Successfully deleted ticket ${ticket.slug}`);
         refresh("tickets");
         onClose();
+      } else {
+        toast.error(
+          `Failed to delete ticket ${ticket.slug}: ${response.error.message}`
+        );
       }
     });
   };
@@ -130,9 +136,12 @@ const TicketViewModal = ({
       (response) => {
         if (response.ok) {
           refresh("tickets");
+          toast.success(
+            `Successfully assigned ${user.username} to ${ticket.slug}`
+          );
         } else {
-          console.log(
-            `Failed to assign ${ticket.slug} to ${user.username}: ${response.error}`
+          toast.error(
+            `Failed to assign ${ticket.slug} to ${user.username}: ${response.error.message}`
           );
         }
       }

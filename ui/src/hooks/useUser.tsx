@@ -2,6 +2,7 @@ import React from "react";
 import { User } from "../types";
 import API from "../api";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface UserContext {
   user: User | null;
@@ -35,6 +36,9 @@ const UserProvider = ({ children }: UserProviderProps) => {
       if (response.ok) {
         setUser(null);
         navigate("/sign-in");
+        toast.success("Signed out");
+      } else {
+        toast.error(`Sign out failed: ${response.error.message}`);
       }
     });
   };

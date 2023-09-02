@@ -1,14 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import Layout from "./components/Layout";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import SignUp from "./pages/SignUp";
-import SignIn from "./pages/SignIn";
-import { UserProvider } from "./hooks/useUser";
-import ProjectPage from "./pages/Project";
+import "react-toastify/dist/ReactToastify.css";
+import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { UserProvider } from "./hooks/useUser";
+import "./index.css";
+import ProjectPage from "./pages/Project";
 import SearchProjects from "./pages/SearchProjects";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -30,6 +33,13 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             </Route>
           </Routes>
         </Layout>
+        <ToastContainer
+          autoClose={5000}
+          hideProgressBar={true}
+          newestOnTop={true}
+          closeOnClick
+          position="bottom-right"
+        />
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>

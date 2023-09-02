@@ -4,6 +4,7 @@ import API from "../api";
 import { User } from "../types";
 import { Combobox } from "@headlessui/react";
 import { MagnifyingGlassIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import { toast } from "react-toastify";
 
 interface UserSearchProps {
   onChange: (user: User) => void;
@@ -19,6 +20,8 @@ const UserSearch = ({ onChange }: UserSearchProps) => {
     API.queryUsers(query).then((response) => {
       if (response.ok) {
         setUsers(response.data);
+      } else {
+        toast.error(`User query failed: ${response.error.message}`);
       }
     });
   }, [query]);

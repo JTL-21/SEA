@@ -5,6 +5,7 @@ import CommentComponent from "./CommentComponent";
 import { Comment, CreateCommentBody, Ticket } from "../types";
 import { useForm } from "react-hook-form";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import { toast } from "react-toastify";
 
 interface Props {
   ticket: Ticket;
@@ -18,6 +19,10 @@ const CommentColumn = ({ ticket }: Props) => {
     API.getTicketComments(ticket.slug).then((response) => {
       if (response.ok) {
         setComments(response.data);
+      } else {
+        toast.error(
+          `Failed to get comments on ticket ${ticket.slug}: ${response.error.message}`
+        );
       }
     });
   }, [ticket]);

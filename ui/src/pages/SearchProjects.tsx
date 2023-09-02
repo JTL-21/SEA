@@ -12,6 +12,7 @@ import Username from "../components/Username";
 import Input from "../components/Input";
 import LinkButton from "../components/LinkButton";
 import ProjectEditorModal from "../components/ProjectEditorModal";
+import { toast } from "react-toastify";
 
 interface ProjectTabProps {
   project: Project;
@@ -58,6 +59,8 @@ const SearchProjects = () => {
     API.queryProjects(query).then((response) => {
       if (response.ok) {
         setProjects(response.data);
+      } else {
+        toast.error(`Project query failed: ${response.error.message}`);
       }
     });
   }, [query]);

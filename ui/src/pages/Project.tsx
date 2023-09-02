@@ -20,6 +20,7 @@ import Button from "../components/Button";
 import Markdown from "../components/Markdown";
 import LinkButton from "../components/LinkButton";
 import ProjectEditorModal from "../components/ProjectEditorModal";
+import { toast } from "react-toastify";
 
 const ProjectPage = () => {
   const { key, slug } = useParams();
@@ -50,11 +51,19 @@ const ProjectPage = () => {
   const handleDragEnd = (event: DragEndEvent) => {
     setActiveTicket(null);
     if (!event.collisions || !event.collisions[0]) return;
+
     const ticketSlug = String(event.active.id);
     const newStatus = event.collisions[0].id as Ticket["status"];
 
     if (newStatus === activeTicket?.status) return;
-    API.editTicket(ticketSlug, { status: newStatus });
+
+    API.editTicket(ticketSlug, { status: newStatus }).then((response) => {
+      if (response.err) {
+        toast.error(
+          `Failed to update ${ticketSlug}: ${response.error.message}`
+        );
+      }
+    });
 
     setTickets((old) =>
       old.map((ticket) => {
@@ -81,7 +90,9 @@ const ProjectPage = () => {
           if (response.ok) {
             setProject(response.data);
           } else {
-            // TODO: Handle Error
+            toast.error(
+              `Failed to update project view: ${response.error.message}`
+            );
           }
         });
       }
@@ -91,7 +102,9 @@ const ProjectPage = () => {
           if (response.ok) {
             setTickets(response.data);
           } else {
-            // TODO: Handle Error
+            toast.error(
+              `Failed to update tickets view: ${response.error.message}`
+            );
           }
         });
       }
@@ -104,8 +117,9 @@ const ProjectPage = () => {
     API.deleteProject(project.key).then((response) => {
       if (response.ok) {
         navigate("/projects");
+        toast.success(`Successfully deleted project ${project.key}`);
       } else {
-        // TODO: Handle Error
+        toast.error(`Failed to delete project: ${response.error.message}`);
       }
     });
   };
@@ -117,7 +131,7 @@ const ProjectPage = () => {
         refreshProject("project");
         closeModals();
       } else {
-        //TODO:  Handle Error
+        toast.error(`Failed to update project: ${response.error.message}`);
       }
     });
   };
