@@ -93,14 +93,14 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
       onClick={handleModalClose}
     >
       <div
-        className="flex max-w-[800px] flex-col rounded-md bg-white text-gray-600 shadow"
+        className="flex w-[800px] flex-col rounded-md bg-white text-gray-600 shadow"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-stretch gap-2 border-b-[1px]">
           <div className="flex items-center pl-4 text-xl">
             <span className="font-semibold text-gray-400">{ticket.slug}</span>
           </div>
-          <div className="flex items-center">
+          <div className="flex flex-grow items-center">
             <h3 className="text-xl">{ticket.title}</h3>
           </div>
           <div className="aspect-square border-l-[1px]">
@@ -133,12 +133,14 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
                 Story Points
               </ModalData>
               <ModalData icon={<AccountCircleIcon />}>
-                Assigned To{" "}
-                {ticket.assignee ? (
-                  <UserLink>{ticket.assignee.username}</UserLink>
-                ) : (
-                  "Nobody"
-                )}
+                <span>
+                  Assigned to{" "}
+                  {ticket.assignee ? (
+                    <UserLink>{ticket.assignee.username}</UserLink>
+                  ) : (
+                    "Nobody"
+                  )}
+                </span>
               </ModalData>
             </ModalGroup>
             <ModalGroupDivider />

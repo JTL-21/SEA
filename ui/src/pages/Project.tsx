@@ -82,7 +82,7 @@ const ProjectPage = () => {
       <h2 className="my-4 text-4xl font-semibold">
         Project {project?.key ?? key}
       </h2>
-      <div className="flex h-full gap-2 pb-2 ">
+      <div className="roounded-md flex h-full gap-[1px] overflow-hidden rounded-lg bg-gray-200 shadow">
         <DndContext
           onDragStart={onDragStart}
           onDragEnd={handleDragEnd}
