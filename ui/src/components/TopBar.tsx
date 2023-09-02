@@ -1,8 +1,9 @@
+import React from "react";
 import logo from "../assets/kong.png";
 import useUser from "../hooks/useUser";
+import Admin from "./icons/Admin";
 import { Link } from "react-router-dom";
-import { BoltIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import React from "react";
+import { UserCircleIcon } from "@heroicons/react/24/solid";
 
 const topBarLinkClasses = "text-gray-500 hover:underline";
 
@@ -46,15 +47,9 @@ const TopBar = () => {
         </Link>
         <div className="flex-grow"></div>
         <LabeledIcon
-          icon={<UserCircleIcon />}
+          icon={user?.is_admin ? <Admin /> : <UserCircleIcon />}
           text={user?.username ?? "Not signed in"}
         />
-        {user && user.is_admin && (
-          <LabeledIcon
-            icon={<BoltIcon className="text-amber-400" />}
-            text="Admin"
-          />
-        )}
       </div>
     </div>
   );

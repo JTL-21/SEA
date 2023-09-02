@@ -1,5 +1,6 @@
-import { UserCircleIcon, BoltIcon } from "@heroicons/react/24/solid";
+import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { User } from "../types";
+import Admin from "./icons/Admin";
 
 interface UsernameProps extends React.ComponentPropsWithoutRef<"div"> {
   user: User;
@@ -9,8 +10,11 @@ interface UsernameProps extends React.ComponentPropsWithoutRef<"div"> {
 const Username = ({ user, icons = true, ...divProps }: UsernameProps) => {
   return icons ? (
     <div className="flex items-center gap-1 text-gray-600" {...divProps}>
-      <UserCircleIcon className="h-5 w-5" />
-      {user.is_admin && <BoltIcon className="h-5 w-5 text-amber-400" />}
+      {user.is_admin ? (
+        <Admin className="h-5 w-5" />
+      ) : (
+        <UserCircleIcon className="h-5 w-5" />
+      )}
 
       <span className="font-semibold text-gray-600">{user.username}</span>
     </div>
