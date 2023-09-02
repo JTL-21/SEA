@@ -27,10 +27,6 @@ interface TicketModalProps {
   refreshProject: (refresh?: "project" | "tickets" | "all") => void;
 }
 
-interface UserLinkProps extends React.ComponentPropsWithoutRef<"a"> {
-  children: string;
-}
-
 interface ModalDataProps extends React.ComponentPropsWithoutRef<"div"> {
   icon: React.ReactNode;
 }
