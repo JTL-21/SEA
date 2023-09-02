@@ -4,16 +4,21 @@ import { useForm } from "react-hook-form";
 import Input from "../components/Input";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
+import API from "../api";
+import useUser from "../hooks/useUser";
+import { useNavigate } from "react-router-dom";
 
 interface FormData {
   username: string;
   password: string;
-  staySignedIn: boolean;
+  stay_signed_in: boolean;
 }
 
 const SignIn = () => {
   useTitle("Sign In");
+  const navigate = useNavigate();
   const id = React.useId();
+  const user = useUser();
   const [formError, setFormError] = React.useState<string | undefined>(
     undefined
   );
@@ -25,7 +30,14 @@ const SignIn = () => {
   } = useForm<FormData>();
 
   const onSubmit = (state: FormData) => {
-    //
+    API.login(state).then((response) => {
+      if (response.ok) {
+        user.setUser(response.data);
+        navigate("/");
+      } else {
+        setFormError(response.error.message);
+      }
+    });
   };
 
   return (
@@ -63,7 +75,7 @@ const SignIn = () => {
         <div className="flex items-center gap-2">
           <input
             type="checkbox"
-            {...register("staySignedIn")}
+            {...register("stay_signed_in")}
             name={`${id}_stay-signed-in`}
             id={`${id}_stay-signed-in`}
             className="cursor-pointer"

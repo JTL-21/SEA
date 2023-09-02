@@ -1,10 +1,10 @@
 import React from "react";
 import { User } from "../types";
+import API from "../api";
 
 interface UserContext {
   user: User | null;
-  signIn: (username: string, password: string) => void;
-  signOut: () => void;
+  setUser: (user: User) => void;
 }
 
 interface UserProviderProps {
@@ -16,13 +16,16 @@ const userContext = React.createContext({} as UserContext);
 const UserProvider = ({ children }: UserProviderProps) => {
   const [user, setUser] = React.useState<User | null>(null);
 
-  const signIn = React.useCallback((username: string, password: string) => {
-    //
+  React.useEffect(() => {
+    API.whoami().then((response) => {
+      if (response.ok) {
+        setUser(response.data);
+      }
+    });
   }, []);
-  const signOut = React.useCallback(() => setUser(null), []);
 
   return (
-    <userContext.Provider value={{ user, signIn, signOut }}>
+    <userContext.Provider value={{ user, setUser }}>
       {children}
     </userContext.Provider>
   );

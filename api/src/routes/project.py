@@ -4,9 +4,11 @@ from ..models import Project, User
 from ..db import db
 from ..validation.project import create_project_schema, edit_project_schema
 from ..validation.utils import item_getter, validate_body
+from flask_login import login_required, current_user
 
 
 @app.get("/api/project")
+@login_required
 def get_all_projects():
     """
     Get all projects
@@ -22,6 +24,7 @@ def get_all_projects():
 
 
 @app.get("/api/project/<key>")
+@login_required
 def get_project(key):
     """
     Get a project from its key
@@ -38,6 +41,7 @@ def get_project(key):
 
 
 @app.patch("/api/project/<key>")
+@login_required
 @validate_body(edit_project_schema)
 def edit_project(key):
     """
@@ -52,6 +56,9 @@ def edit_project(key):
     if not project:
         return abort(404, "No project with the given key exists")
 
+    if current_user.username != project.owner and not current_user.is_admin:
+        return abort(403, "You do not have permission to edit this project")
+
     title, description = item_getter("title", "description")(request.json)
 
     project.title = title or ticket.title
@@ -63,6 +70,7 @@ def edit_project(key):
 
 
 @app.delete("/api/project/<key>")
+@login_required
 def delete_project(key):
     """
     Delete a project from its key
@@ -75,6 +83,9 @@ def delete_project(key):
     if not project:
         return abort(404, "No project with the given key exists")
 
+    if current_user.username != project.owner and not current_user.is_admin:
+        return abort(403, "You do not have permission to delete this project")
+
     db.session.delete(project)
     db.session.commit()
 
@@ -82,6 +93,7 @@ def delete_project(key):
 
 
 @app.post("/api/project")
+@login_required
 @validate_body(create_project_schema)
 def create_project():
     """
@@ -90,27 +102,21 @@ def create_project():
     body: key, title, owner, description?
     """
 
-    key, title, description, owner = item_getter(
-        "key", "title", "description", "owner"
-    )(request.json)
+    key, title, description = item_getter("key", "title", "description")(request.json)
 
     upper_key = key.upper().strip()
     stripped_title = title.strip()
     stripped_description = (description or "").strip()
 
     existing_project = Project.query.filter_by(key=upper_key).first()
+
     if existing_project:
         return abort(409, f"Project key {upper_key} is already in use")
-
-    user = User.query.filter_by(username=owner.strip()).first()
-
-    if not user:
-        return abort(404, "No user with the given username exists")
 
     new_project = Project(
         key=upper_key,
         title=stripped_title,
-        owner=user.username,
+        owner=current_user.username,
         description=stripped_description,
     )
 

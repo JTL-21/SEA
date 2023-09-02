@@ -4,9 +4,11 @@ from ..models import Ticket, Comment, User
 from ..db import db
 from ..validation.comment import create_comment_schema
 from ..validation.utils import item_getter, validate_body
+from flask_login import login_required, current_user
 
 
 @app.get("/api/ticket/<slug>/comments")
+@login_required
 def get_ticket_comments(slug):
     """
     Get all comments on a given ticket from its slug
@@ -32,6 +34,7 @@ def get_ticket_comments(slug):
 
 
 @app.post("/api/ticket/<slug>/comment")
+@login_required
 @validate_body(create_comment_schema)
 def create_ticket_comment(slug):
     """
@@ -48,17 +51,11 @@ def create_ticket_comment(slug):
 
     ticket = ticket_or_error
 
-    text, author = item_getter("text", "author")(request.json)
-
-    stripped_text = text.strip()
-
-    user = User.query.filter_by(username=author).first()
-    if not user:
-        return (404, "No user with the given username exists")
+    text = item_getter("text")(request.json)
 
     new_comment = Comment(
-        text=stripped_text,
-        author=user.username,
+        text=text.strip(),
+        author=current_user.username,
         ticket_project=ticket.project,
         ticket_id=ticket.id,
     )
@@ -70,6 +67,7 @@ def create_ticket_comment(slug):
 
 
 @app.delete("/api/comment/<id>")
+@login_required
 def delete_comment(id):
     """
     Delete a comment on a ticket by its id
@@ -81,6 +79,9 @@ def delete_comment(id):
 
     if not comment:
         return abort(404, "No comment with the given id exists")
+
+    if current_user.username != comment.author and not current_user.is_admin:
+        return abort(403, "You do not have permission to delete this comment")
 
     db.session.delete(comment)
     db.session.commit()

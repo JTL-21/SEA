@@ -22,8 +22,10 @@ const TopBar = () => {
         <Link
           to={user.user ? "/account" : "/sign-in"}
           title={user.user ? "Account" : "Sign In"}
+          className="flex flex-col items-center text-xs text-gray-600"
         >
           <AccountCircleIcon className="h-8 w-8 cursor-pointer text-yellow-600" />
+          {user.user?.username ?? "Sign In"}
         </Link>
       </div>
     </div>

@@ -4,9 +4,11 @@ from ..models import Ticket, Project, User
 from ..db import db
 from ..validation.ticket import create_ticket_schema, edit_ticket_schema
 from ..validation.utils import item_getter, validate_body
+from flask_login import login_required, current_user
 
 
 @app.get("/api/ticket/<slug>")
+@login_required
 def get_ticket(slug):
     """
     Get a ticket from its slug
@@ -23,6 +25,7 @@ def get_ticket(slug):
 
 
 @app.patch("/api/ticket/<slug>")
+@login_required
 @validate_body(edit_ticket_schema)
 def edit_ticket(slug):
     """
@@ -55,6 +58,7 @@ def edit_ticket(slug):
 
 
 @app.delete("/api/ticket/<slug>")
+@login_required
 def delete_ticket(slug):
     """
     Delete a ticket from its slug
@@ -76,38 +80,36 @@ def delete_ticket(slug):
 
 
 @app.post("/api/ticket")
+@login_required
 @validate_body(create_ticket_schema)
 def create_ticket():
     """
     Create a new ticket in a given project
 
-    body: project, title, author, description?
+    body: project, title, description?
     """
 
-    project, title, author, description, priority, points = item_getter(
-        "project", "title", "author", "description", "priority", "points"
+    project, title, description, priority, points = item_getter(
+        "project", "title", "description", "priority", "points"
     )(request.json)
 
     stripped_title = title.strip()
     stripped_description = (description or "").strip()
 
     project = Project.query.filter_by(key=project).first()
+
     if not project:
         return abort(404, "No project with the given key exists")
 
-    author = User.query.filter_by(username=author.strip()).first()
-
-    if not author:
-        return abort(404, "No user with the given username exists")
-
     new_ticket = Ticket(
         project=project.key,
-        author=author.username,
+        author=current_user.username,
         title=stripped_title,
         description=stripped_description,
         priority=priority,
         points=points,
     )
+
     db.session.add(new_ticket)
     db.session.commit()
 
@@ -115,6 +117,7 @@ def create_ticket():
 
 
 @app.get("/api/project/<project_key>/tickets")
+@login_required
 def get_project_tickets(project_key):
     """
     Get all tickets within a given project
