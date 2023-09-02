@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Ticket, Comment } from "../types";
+import { Ticket, Comment, CreateCommentBody } from "../types";
 import Markdown from "./Markdown";
 import { priorityIconMap, priorityNameMap } from "./Ticket";
 import AccountCircleIcon from "./icons/AccountCircleIcon";
@@ -14,6 +14,8 @@ import Button from "./Button";
 import API from "../api";
 import CommentComponent from "./CommentComponent";
 import formatDateTime from "../utils/time";
+import Send from "./icons/Send";
+import { useForm } from "react-hook-form";
 
 interface TicketModalProps {
   ticket: Ticket;
@@ -86,7 +88,26 @@ const ModalGroupDivider = () => (
 
 const TicketModal = ({ ticket }: TicketModalProps) => {
   const navigate = useNavigate();
+  const id = React.useId();
   const [comments, setComments] = React.useState<Comment[]>([]);
+  const [formError, setFormError] = React.useState<string | null>(null);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CreateCommentBody>();
+
+  const onSubmit = (state: CreateCommentBody) => {
+    setFormError(null);
+    API.createComment(ticket.slug, state).then((response) => {
+      if (response.ok) {
+        setComments((old) => [...old, response.data]);
+      } else {
+        setFormError(response.error.message);
+      }
+    });
+  };
 
   const handleModalClose = () => navigate(`/project/${ticket.project.key}`);
 
@@ -114,7 +135,7 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
       onClick={handleModalClose}
     >
       <div
-        className="flex w-[1500px] flex-col overflow-hidden rounded-md bg-white text-gray-600 shadow"
+        className="flex min-h-[550px] w-[1400px] flex-col overflow-hidden rounded-md bg-white text-gray-600 shadow"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-stretch gap-2 border-b-[1px] text-2xl">
@@ -140,18 +161,42 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
             <Markdown>{ticket.description}</Markdown>
           </div>
 
-          <div className="flex max-h-[600px] flex-grow basis-1/4 flex-col overflow-y-scroll border-l-[1px] px-4 py-2">
-            <h4 className="text-xl font-semibold">Comments</h4>
-            <div className="mt-1 flex flex-col gap-2">
+          <div className="flex max-h-[600px] flex-grow basis-1/4 flex-col border-l-[1px] py-2">
+            <h4 className="ml-4 text-xl font-semibold">Comments</h4>
+            <div className="ml-4 flex flex-grow flex-col gap-2 overflow-y-scroll py-1 pr-4">
               {comments.map((comment) => (
                 <CommentComponent comment={comment} key={comment.id} />
               ))}
+              {comments.length === 0 && (
+                <span className="text-sm text-gray-400">
+                  No comments to show...
+                </span>
+              )}
             </div>
-            {comments.length === 0 && (
-              <span className="text-sm text-gray-400">
-                No comments to show...
-              </span>
-            )}
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="flex items-end gap-2 border-t-[1px] p-2 pb-0">
+                <textarea
+                  {...register("text", {
+                    required: {
+                      value: true,
+                      message: "Comment text is required",
+                    },
+                    maxLength: {
+                      value: 512,
+                      message: "Comment text must not exceed 512 characters",
+                    },
+                  })}
+                  id={`${id}_text`}
+                  placeholder="Add comment..."
+                  className="h-20 flex-grow resize-none rounded-md border-[1px] border-gray-300 bg-gray-50 p-1 text-sm focus:border-[1px]"
+                />
+                <Button icon={<Send />} type="submit"></Button>
+              </div>
+              <div className="px-2 pt-1 text-sm font-semibold text-rose-500">
+                {formError ?? errors.text?.message}
+              </div>
+            </form>
           </div>
           <div className="max-w-[250px] basis-1/4 flex-col border-l-[1px] text-sm">
             <ModalGroup>

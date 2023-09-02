@@ -17,7 +17,6 @@
   [type="time"],
   [type="week"],
   [multiple],
-  textarea,
   select {
     @apply border-b-2 border-transparent border-b-stone-300 px-0 py-1 focus:border-transparent focus:border-b-amber-500 focus:outline-none focus:ring-0;
   }
@@ -25,10 +24,6 @@
   [type="checkbox"],
   [type="radio"] {
     @apply h-6 w-6 rounded-md border-stone-300 text-amber-400 shadow;
-  }
-
-  form {
-    @apply flex flex-col gap-2;
   }
 
   ol {
