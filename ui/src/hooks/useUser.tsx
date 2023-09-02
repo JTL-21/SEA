@@ -1,7 +1,7 @@
 import React from "react";
 import { User } from "../types";
 import API from "../api";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface UserContext {
   user: User | null;
@@ -18,16 +18,11 @@ const userContext = React.createContext({} as UserContext);
 const UserProvider = ({ children }: UserProviderProps) => {
   const [user, setUser] = React.useState<User | null>(null);
   const navigate = useNavigate();
-  const location = useLocation();
-
-  console.log(location);
 
   React.useEffect(() => {
     API.whoami().then((response) => {
       if (response.ok) {
         setUser(response.data);
-      } else if (location.pathname !== "/sign-up") {
-        navigate("/sign-in");
       }
     });
   }, [navigate]);
