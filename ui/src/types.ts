@@ -64,6 +64,8 @@ interface CreateTicketBody {
   project: Project["key"];
   title: Ticket["title"];
   description?: Ticket["description"];
+  priority?: Ticket["priority"];
+  points?: Ticket["points"];
 }
 
 interface EditTicketBody {
