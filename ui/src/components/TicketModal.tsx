@@ -11,6 +11,7 @@ import Assign from "./icons/Assign";
 import React from "react";
 import cn from "clsx";
 import API from "../api";
+import Button from "./Button";
 
 interface TicketModalProps {
   ticket: Ticket;
@@ -45,18 +46,27 @@ const ModalData = ({ icon, children }: ModalDataProps) => {
 };
 
 interface ModalButtonProps extends ModalDataProps {
+  requireConfirmation?: boolean;
   onClick?: () => void;
 }
 
-const ModalButton = ({ icon, children, onClick }: ModalButtonProps) => {
+const ModalButton = ({
+  icon,
+  children,
+  requireConfirmation = false,
+  onClick,
+}: ModalButtonProps) => {
   return (
-    <button
+    <Button
       className="flex items-center gap-2 rounded-md bg-white p-2 filter hover:bg-gray-100 active:brightness-95"
       onClick={onClick}
+      styled={false}
+      centered={false}
+      requireConfirmation={requireConfirmation}
+      icon={icon}
     >
-      <div className="[&>svg]:h-6 [&>svg]:w-6">{icon}</div>
       {children}
-    </button>
+    </Button>
   );
 };
 
@@ -89,11 +99,11 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
 
   return (
     <div
-      className="absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center bg-gray-600 bg-opacity-50 p-2"
+      className="absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center bg-gray-800 bg-opacity-70 p-2"
       onClick={handleModalClose}
     >
       <div
-        className="flex w-[800px] flex-col rounded-md bg-white text-gray-600 shadow"
+        className="flex w-[800px] flex-col overflow-hidden rounded-md bg-white text-gray-600 shadow"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-stretch gap-2 border-b-[1px]">
@@ -105,7 +115,7 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
           </div>
           <div className="aspect-square border-l-[1px]">
             <button
-              className="grid h-full w-full place-content-center p-2 hover:drop-shadow"
+              className="grid h-full w-full place-content-center bg-white p-2 hover:bg-gray-100"
               onClick={handleModalClose}
             >
               <Close className="h-10 w-10" />
@@ -114,7 +124,7 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
         </div>
 
         <div className="flex flex-grow">
-          <div className="flex flex-grow basis-2/3 flex-col p-4">
+          <div className="flex max-h-[450px] flex-grow basis-2/3 flex-col overflow-y-scroll px-4 py-2 ">
             <h4 className="text-xl font-semibold">Description</h4>
             <Markdown>{ticket.description}</Markdown>
           </div>
@@ -146,7 +156,11 @@ const TicketModal = ({ ticket }: TicketModalProps) => {
             <ModalGroupDivider />
             <ModalGroup>
               <ModalButton icon={<Edit />}>Edit</ModalButton>
-              <ModalButton icon={<Delete />} onClick={handleDeleteTicket}>
+              <ModalButton
+                icon={<Delete />}
+                onClick={handleDeleteTicket}
+                requireConfirmation={true}
+              >
                 Delete
               </ModalButton>
               <ModalButton icon={<Assign />}>Assign</ModalButton>
