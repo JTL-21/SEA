@@ -6,14 +6,20 @@ from ..validation.comment import validate_comment_text
 from ..utils.json import item_getter
 
 
-@app.get("/api/ticket/<key>/comments")
-def get_ticket_comments(key):
-    (is_valid, response) = Ticket.from_key(key)
+@app.get("/api/ticket/<slug>/comments")
+def get_ticket_comments(slug):
+    """
+    Get all comments on a given ticket from its slug
 
-    if not is_valid:
-        return response
+    path: slug
+    """
 
-    ticket = response
+    (is_valid_slug, ticket_or_error) = Ticket.from_slug(slug)
+
+    if not is_valid_slug:
+        return ticket_or_error
+
+    ticket = ticket_or_error
     comments = Comment.query.filter_by(
         ticket_project=ticket.project, ticket_id=ticket.id
     ).all()
@@ -25,14 +31,21 @@ def get_ticket_comments(key):
     return comment_dicts
 
 
-@app.post("/api/ticket/<key>/comment")
-def create_ticket_comment(key):
-    (is_valid_key, response) = Ticket.from_key(key)
+@app.post("/api/ticket/<slug>/comment")
+def create_ticket_comment(slug):
+    """
+    Create a comment on a given ticket from its slug
 
-    if not is_valid_key:
-        return response
+    path: slug
+    body: text, author
+    """
 
-    ticket = response
+    (is_valid_slug, ticket_or_error) = Ticket.from_slug(slug)
+
+    if not is_valid_slug:
+        return ticket_or_error
+
+    ticket = ticket_or_error
 
     is_valid, data_or_error = item_getter(["text", "author"])(request.json)
 

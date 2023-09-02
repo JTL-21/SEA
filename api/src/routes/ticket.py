@@ -6,11 +6,17 @@ from ..validation.ticket import validate_create_ticket
 from ..utils.json import item_getter
 
 
-@app.get("/api/ticket/<key>")
-def get_ticket(key):
-    (is_valid_key, response) = Ticket.from_key(key)
+@app.get("/api/ticket/<slug>")
+def get_ticket(slug):
+    """
+    Get a ticket from its slug
 
-    if not is_valid_key:
+    path: slug
+    """
+
+    (is_valid_slug, response) = Ticket.from_slug(slug)
+
+    if not is_valid_slug:
         return response
 
     return response.as_dict()
@@ -18,6 +24,12 @@ def get_ticket(key):
 
 @app.post("/api/ticket")
 def create_ticket():
+    """
+    Create a new ticket in a given project
+
+    body: project, title, author, description?
+    """
+
     is_valid, data_or_error = item_getter(
         ["project", "title", "author"], ["description"]
     )(request.json)
@@ -59,6 +71,11 @@ def create_ticket():
 
 @app.get("/api/project/<project_key>/tickets")
 def get_project_tickets(project_key):
+    """
+    Get all tickets within a given project
+
+    path: project_key
+    """
     project = Project.query.filter_by(key=project_key).first()
     if not project:
         return abort(404, "No project with the given key exists")

@@ -19,13 +19,13 @@ class Ticket(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
     @staticmethod
-    def from_key(key: str):
+    def from_slug(slug: str):
         """
-        Take a ticket key like ABC-123 and return the ticket with the key
+        Take a ticket slug like ABC-123 and return the corresponding ticket
         """
 
         # Split ABC and 123
-        [project, key] = key.split("-")
+        [project, key] = slug.split("-")
 
         upper_project_key = project.upper().strip()
         format_key = key.strip()
@@ -37,7 +37,7 @@ class Ticket(db.Model):
 
         ticket = Ticket.query.filter_by(project=project.key, id=format_key).first()
         if not ticket:
-            return (False, abort(404, "No ticket with the given key exists"))
+            return (False, abort(404, "No ticket with the given slug exists"))
 
         return (True, ticket)
 
@@ -52,6 +52,6 @@ class Ticket(db.Model):
             "description": self.description,
             "status": self.status,
             "author": author.as_dict(),
-            "key": f"{project.key}-{self.id}",
+            "slug": f"{project.key}-{self.id}",
             "created_at": self.created_at.isoformat(),
         }

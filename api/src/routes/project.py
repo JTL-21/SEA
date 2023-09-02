@@ -8,6 +8,10 @@ from ..utils.json import item_getter
 
 @app.get("/api/project")
 def get_all_projects():
+    """
+    Get all projects
+    """
+
     projects = Project.query.all()
 
     project_dicts = []
@@ -19,6 +23,12 @@ def get_all_projects():
 
 @app.get("/api/project/<key>")
 def get_project(key):
+    """
+    Get a project from its key
+
+    path: key
+    """
+
     project = Project.query.filter_by(key=key).first()
 
     if not project:
@@ -29,6 +39,12 @@ def get_project(key):
 
 @app.post("/api/project")
 def create_project():
+    """
+    Create a new project
+
+    body: key, title, owner, description?
+    """
+
     is_valid, data_or_error = item_getter(["key", "title", "owner"], ["description"])(
         request.json
     )
