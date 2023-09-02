@@ -26,9 +26,7 @@ def query_users():
         func.lower(User.username).ilike(f"%{username.lower()}%")
     ).all()
 
-    user_dicts = []
-    for user in similar_users:
-        user_dicts.append(user.as_dict())
+    user_dicts = list(map(lambda user: user.as_dict(), similar_users))
 
     return user_dicts
 

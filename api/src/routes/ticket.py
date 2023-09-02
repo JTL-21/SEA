@@ -1,6 +1,6 @@
 from flask import request, abort, make_response
 from .. import app
-from ..models import Ticket, Project, User
+from ..models import Ticket, Project, User, Comment
 from ..db import db
 from ..validation.ticket import create_ticket_schema, edit_ticket_schema
 from ..validation.utils import item_getter, validate_body
@@ -18,7 +18,7 @@ def get_ticket(slug):
 
     ticket = Ticket.from_slug(slug)
 
-    return response.as_dict()
+    return {**ticket.as_dict(), "comments": comment_dicts}
 
 
 @app.patch("/api/ticket/<slug>")
@@ -33,8 +33,6 @@ def edit_ticket(slug):
     """
 
     ticket = Ticket.from_slug(slug)
-
-    ticket = response
 
     title, description, status, priority, points, assignee = item_getter(
         "title", "description", "status", "priority", "points", "assignee"
@@ -128,8 +126,6 @@ def get_project_tickets(project_key):
 
     tickets = Ticket.query.filter_by(project=project.key).all()
 
-    ticket_dicts = []
-    for ticket in tickets:
-        ticket_dicts.append(ticket.as_dict())
+    ticket_dicts = list(map(lambda ticket: ticket.as_dict(), tickets))
 
     return ticket_dicts

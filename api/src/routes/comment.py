@@ -18,13 +18,7 @@ def get_ticket_comments(slug):
 
     ticket = Ticket.from_slug(slug)
 
-    comments = Comment.query.filter_by(
-        ticket_project=ticket.project, ticket_id=ticket.id
-    ).all()
-
-    comment_dicts = []
-    for comment in comments:
-        comment_dicts.append(comment.as_dict())
+    comment_dicts = list(map(lambda comment: comment.as_dict(), ticket.comments))
 
     return comment_dicts
 
