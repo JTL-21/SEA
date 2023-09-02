@@ -1,7 +1,8 @@
 import { Ticket } from "../types";
 import { useDraggable } from "@dnd-kit/core";
 import cn from "clsx";
-import { UserCircleIcon } from "@heroicons/react/24/outline";
+import { UserCircleIcon } from "@heroicons/react/24/solid";
+import { Bars3BottomRightIcon } from "@heroicons/react/20/solid";
 import Priority from "./icons/Priority";
 
 interface TicketComponentProps {
@@ -44,16 +45,21 @@ const TicketComponent = ({ ticket, onClick }: TicketComponentProps) => {
       onMouseUp={onMouseUp}
     >
       <div className="text-sm text-gray-600">{ticket.title}</div>
-      <div className="flex items-center gap-[0.5]">
-        <span className="font-bold text-gray-400">{ticket.slug}</span>
+      <div className="flex items-center gap-1.5">
+        <span className="mr-auto font-bold text-gray-600">{ticket.slug}</span>
+        {ticket.comments.length > 0 && (
+          <div className="[&>svg]:h-5 [&>svg]:w-5" title="Has comments">
+            <Bars3BottomRightIcon />
+          </div>
+        )}
         <div
-          className="ml-auto rounded-full bg-gray-200 px-2 py-0.5 text-xs font-semibold text-gray-500"
+          className="rounded-full bg-gray-200 px-2 py-0.5 text-xs font-semibold text-gray-500"
           title={`${ticket.points} points`}
         >
           {ticket.points}
         </div>
         <div
-          className="[&>svg]:h-8 [&>svg]:w-8"
+          className="[&>svg]:h-6 [&>svg]:w-6"
           title={`${priorityNameMap[ticket.priority]} Priority`}
         >
           <Priority priority={ticket.priority} />
