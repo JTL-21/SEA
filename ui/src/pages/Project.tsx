@@ -12,9 +12,11 @@ import {
   useSensor,
   MouseSensor,
 } from "@dnd-kit/core";
+import { TrashIcon, PencilIcon, PlusIcon } from "@heroicons/react/24/solid";
 import TicketColumn from "../components/TicketColumn";
 import TicketComponent from "../components/Ticket";
 import TicketModal from "../components/TicketModal";
+import Button from "../components/Button";
 
 const ProjectPage = () => {
   const { key, slug } = useParams();
@@ -42,6 +44,7 @@ const ProjectPage = () => {
 
   const handleDragEnd = (event: DragEndEvent) => {
     setActiveTicket(null);
+    console.log(event);
     if (!event.collisions || !event.collisions[0]) return;
     const ticketSlug = String(event.active.id);
     const newStatus = event.collisions[0].id as Ticket["status"];
@@ -91,11 +94,33 @@ const ProjectPage = () => {
   React.useEffect(refreshProject, [key, refreshProject]);
 
   return (
-    <div className="flex h-full flex-col">
-      <h2 className="my-4 text-4xl font-semibold">
-        Project {project?.key ?? key}
-      </h2>
-      <div className="flex gap-4">
+    <div className="flex h-full flex-col pb-2">
+      <div className="my-4 flex items-end gap-2">
+        <h2 className="mr-auto text-4xl">
+          <span className="mr-2 border-r-[1px] pr-2 font-semibold">
+            {project?.key ?? key?.trim()}
+          </span>
+          <span className="text-gray-600">{project?.title}</span>
+        </h2>
+        <Button
+          className="bg-emerald-400 hover:bg-emerald-500"
+          icon={<PlusIcon />}
+        >
+          Add Ticket
+        </Button>
+        <Button className="bg-blue-400 hover:bg-blue-500" icon={<PencilIcon />}>
+          Edit Project
+        </Button>
+        <Button
+          className="bg-red-400 hover:bg-red-500"
+          confirmClasses="text-rose-50"
+          icon={<TrashIcon />}
+          requireConfirmation
+        >
+          Delete Project
+        </Button>
+      </div>
+      <div className="flex flex-1 gap-4 overflow-hidden">
         <DndContext
           onDragStart={onDragStart}
           onDragEnd={handleDragEnd}

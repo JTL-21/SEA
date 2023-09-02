@@ -1,10 +1,10 @@
 import logo from "../assets/kong.png";
 import { Link } from "react-router-dom";
-import { UserCircleIcon } from "@heroicons/react/24/outline";
+import { UserCircleIcon } from "@heroicons/react/24/solid";
 import useUser from "../hooks/useUser";
 
 const TopBar = () => {
-  const user = useUser();
+  const { user } = useUser();
 
   return (
     <div
@@ -19,14 +19,13 @@ const TopBar = () => {
           </h1>
         </Link>
         <div className="flex-grow"></div>
-        <Link
-          to={user.user ? `/account/${user.user.username}` : "/sign-in"}
-          title={user.user ? "Account" : "Sign In"}
+        <div
+          title={user ? user.username : "Sign In"}
           className="flex flex-col items-center text-xs text-gray-600"
         >
-          <UserCircleIcon className="h-8 w-8 cursor-pointer" />
-          {user.user?.username ?? "Sign In"}
-        </Link>
+          <UserCircleIcon className="h-8 w-8" />
+          {user?.username ?? "Sign In"}
+        </div>
       </div>
     </div>
   );
