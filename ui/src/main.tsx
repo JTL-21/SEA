@@ -12,18 +12,18 @@ import ProjectPage from "./pages/Project";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <UserProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <UserProvider>
         <Layout>
           <Routes>
-            <Route index element={<App />} />
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/create-project" element={<CreateProject />} />
-            <Route path="/project/:key/:slug?" element={<ProjectPage />} />
+            <Route index Component={App} />
+            <Route path="/sign-up" Component={SignUp} />
+            <Route path="/sign-in" Component={SignIn} />
+            <Route path="/create-project" Component={CreateProject} />
+            <Route path="/project/:key/:slug?" Component={ProjectPage} />
           </Routes>
         </Layout>
-      </BrowserRouter>
-    </UserProvider>
+      </UserProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
