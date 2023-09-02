@@ -8,9 +8,13 @@ class Comment(db.Model):
     text = db.Column(db.VARCHAR(length=512), unique=False, nullable=False)
     author = db.Column(db.VARCHAR(32), db.ForeignKey("user.username"), nullable=False)
     ticket_project = db.Column(
-        db.VARCHAR(3), db.ForeignKey("ticket.project"), nullable=False
+        db.VARCHAR(3),
+        db.ForeignKey("ticket.project", ondelete="CASCADE"),
+        nullable=False,
     )
-    ticket_id = db.Column(db.Integer, db.ForeignKey("ticket.id"), nullable=False)
+    ticket_id = db.Column(
+        db.Integer, db.ForeignKey("ticket.id", ondelete="CASCADE"), nullable=False
+    )
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
     def as_dict(self):
