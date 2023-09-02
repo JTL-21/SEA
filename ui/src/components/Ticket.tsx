@@ -41,7 +41,10 @@ const TicketComponent = ({ ticket, onClick }: TicketComponentProps) => {
       <div className="flex items-center gap-1.5">
         <span className="mr-auto font-bold text-gray-600">{ticket.slug}</span>
         {ticket.comments.length > 0 && (
-          <div className="[&>svg]:h-5 [&>svg]:w-5" title="Has comments">
+          <div
+            className="[&>svg]:h-5 [&>svg]:w-5"
+            title={`${ticket.comments.length} comments`}
+          >
             <Bars3BottomRightIcon />
           </div>
         )}

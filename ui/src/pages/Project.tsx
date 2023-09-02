@@ -180,7 +180,7 @@ const ProjectPage = () => {
           </DndContext>
         </div>
         {focusedTicket && (
-          <TicketModal ticket={focusedTicket} refreshProject={refreshProject} />
+          <TicketModal ticket={focusedTicket} refresh={refreshProject} />
         )}
       </div>
     </div>
