@@ -38,8 +38,7 @@ query_project_schema = {
     "properties": {
         "query": {
             "type": "string",
-            "minLength": 1,
-            "error_message": "Query must be a string of length 1 or greater.",
+            "error_message": "Query must be of type string.",
         }
     },
     "required": ["query"],
