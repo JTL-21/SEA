@@ -18,11 +18,12 @@ def validate_create_ticket(title: str, description: str) -> (bool, str):
     if not title_valid:
         return (False, title_fail_reason)
 
-    description_valid, description_fail_reason = validate_ticket_description(
-        description
-    )
+    if description:
+        description_valid, description_fail_reason = validate_ticket_description(
+            description
+        )
 
-    if not description_valid:
-        return (False, description_fail_reason)
+        if not description_valid:
+            return (False, description_fail_reason)
 
     return (True, None)

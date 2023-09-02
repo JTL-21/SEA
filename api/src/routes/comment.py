@@ -1,9 +1,9 @@
-from operator import itemgetter
 from flask import request, abort
 from .. import app
 from ..models import Ticket, Comment, User
 from ..db import db
 from ..validation.comment import validate_comment_text
+from ..utils.json import item_getter
 
 
 @app.get("/api/ticket/<key>/comments")
@@ -34,7 +34,12 @@ def create_ticket_comment(key):
 
     ticket = response
 
-    text, author = itemgetter("text", "author")(request.json)
+    is_valid, data = item_getter(["text", "author"])(request.json)
+
+    if not is_valid:
+        return data
+
+    text, author = data
 
     stripped_text = text.strip()
 

@@ -1,9 +1,9 @@
-from operator import itemgetter
 from flask import request, abort
 from .. import app
 from ..models import User
 from ..db import db
 from ..validation.user import validate_user_username
+from ..utils.json import item_getter
 
 
 @app.get("/api/user")
@@ -40,7 +40,12 @@ def create_user():
     """
     Create a user with a given username and password
     """
-    username, password = itemgetter("username", "password")(request.json)
+    is_valid, data = item_getter(["username", "password"])(request.json)
+
+    if not is_valid:
+        return data
+
+    username, password = data
 
     stripped_username = username.strip()
 

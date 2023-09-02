@@ -1,9 +1,9 @@
-from operator import itemgetter
 from flask import request, abort
 from .. import app
-from ..models import Project, User, Ticket
+from ..models import Project, User
 from ..db import db
 from ..validation.project import validate_create_project
+from ..utils.json import item_getter
 
 
 @app.get("/api/project")
@@ -29,13 +29,21 @@ def get_project(key):
 
 @app.post("/api/project")
 def create_project():
-    key, title, owner = itemgetter("key", "title", "owner")(request.json)
+    is_valid, data = item_getter(["key", "title", "owner"], ["description"])(
+        request.json
+    )
+
+    if not is_valid:
+        return data
+
+    key, title, owner, description = data
 
     upper_key = key.upper().strip()
     stripped_title = title.strip()
+    stripped_description = (description or "").strip()
 
     validation_pass, validation_fail_reason = validate_create_project(
-        upper_key, stripped_title
+        upper_key, stripped_title, stripped_description
     )
     if not validation_pass:
         return abort(400, validation_fail_reason)
@@ -49,7 +57,12 @@ def create_project():
     if not user:
         return abort(404, "No user with the given username exists")
 
-    new_project = Project(key=upper_key, title=stripped_title, owner=user.username)
+    new_project = Project(
+        key=upper_key,
+        title=stripped_title,
+        owner=user.username,
+        description=stripped_description,
+    )
 
     db.session.add(new_project)
     db.session.commit()

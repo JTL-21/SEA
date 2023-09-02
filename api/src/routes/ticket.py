@@ -1,9 +1,9 @@
-from operator import itemgetter
 from flask import request, abort
 from .. import app
 from ..models import Ticket, Project, User
 from ..db import db
 from ..validation.ticket import validate_create_ticket
+from ..utils.json import item_getter
 
 
 @app.get("/api/ticket/<key>")
@@ -18,12 +18,17 @@ def get_ticket(key):
 
 @app.post("/api/ticket")
 def create_ticket():
-    project, title, description, author = itemgetter(
-        "project", "title", "description", "author"
-    )(request.json)
+    is_valid, data = item_getter(["project", "title", "author"], ["description"])(
+        request.json
+    )
+
+    if not is_valid:
+        return data
+
+    project, title, author, description = data
 
     stripped_title = title.strip()
-    stripped_description = description.strip()
+    stripped_description = (description or "").strip()
 
     validation_pass, validation_fail_reason = validate_create_ticket(
         stripped_title, stripped_description
@@ -41,7 +46,10 @@ def create_ticket():
         return abort(404, "No user with the given username exists")
 
     new_ticket = Ticket(
-        project=project.key, author=author.username, title=stripped_title
+        project=project.key,
+        author=author.username,
+        title=stripped_title,
+        description=stripped_description,
     )
     db.session.add(new_ticket)
     db.session.commit()
