@@ -4,3 +4,6 @@ dump-requirements:
 
 start:
 	python3 -m flask --app src --debug run --host=0.0.0.0
+
+venv:
+	python3 -m venv ./api/.venv
